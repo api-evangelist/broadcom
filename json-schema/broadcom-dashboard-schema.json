@@ -1,0 +1,115 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/api-evangelist/broadcom/blob/main/json-schema/broadcom-dashboard-schema.json",
+  "title": "Broadcom Dashboard",
+  "description": "A Dashboard represents a configurable visualization in Operations for Applications that displays metric data through charts, tables, and other widgets for monitoring and analysis.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The unique identifier of the dashboard."
+    },
+    "name": {
+      "type": "string",
+      "description": "The display name of the dashboard."
+    },
+    "description": {
+      "type": "string",
+      "description": "A description of the dashboard."
+    },
+    "url": {
+      "type": "string",
+      "description": "The URL slug used to access the dashboard."
+    },
+    "tags": {
+      "type": "object",
+      "properties": {
+        "customerTags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "User-defined tags for the dashboard."
+        }
+      },
+      "description": "Tags associated with the dashboard."
+    },
+    "sections": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "The name of the dashboard section."
+          },
+          "rows": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "charts": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string",
+                        "description": "The name of the chart."
+                      },
+                      "sources": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "name": {
+                              "type": "string",
+                              "description": "The name of the data source."
+                            },
+                            "query": {
+                              "type": "string",
+                              "description": "The query expression for the data source."
+                            }
+                          }
+                        },
+                        "description": "The data sources for the chart."
+                      },
+                      "chartSettings": {
+                        "type": "object",
+                        "description": "Display settings for the chart."
+                      }
+                    }
+                  },
+                  "description": "The charts in this row."
+                }
+              }
+            },
+            "description": "The rows in this section."
+          }
+        }
+      },
+      "description": "The sections of the dashboard containing rows of charts."
+    },
+    "creatorId": {
+      "type": "string",
+      "description": "The identifier of the user who created the dashboard."
+    },
+    "updaterId": {
+      "type": "string",
+      "description": "The identifier of the user who last updated the dashboard."
+    },
+    "createdEpochMillis": {
+      "type": "integer",
+      "description": "The creation timestamp in epoch milliseconds."
+    },
+    "updatedEpochMillis": {
+      "type": "integer",
+      "description": "The last update timestamp in epoch milliseconds."
+    },
+    "parameters": {
+      "type": "object",
+      "additionalProperties": true,
+      "description": "Dashboard parameters for dynamic filtering."
+    }
+  }
+}

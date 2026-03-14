@@ -1,0 +1,115 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/api-evangelist/broadcom/blob/main/json-schema/broadcom-task-schema.json",
+  "title": "Broadcom Task",
+  "description": "A Task represents an asynchronous operation in VMware Cloud Foundation that tracks the progress and status of long-running infrastructure management activities.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The unique identifier of the task."
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the task."
+    },
+    "type": {
+      "type": "string",
+      "description": "The type of the task operation."
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "IN_PROGRESS",
+        "SUCCESSFUL",
+        "FAILED",
+        "CANCELLED"
+      ],
+      "description": "The current status of the task."
+    },
+    "creationTimestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The timestamp when the task was created."
+    },
+    "completionTimestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The timestamp when the task completed."
+    },
+    "isCancellable": {
+      "type": "boolean",
+      "description": "Whether the task can be cancelled."
+    },
+    "isRetryable": {
+      "type": "boolean",
+      "description": "Whether the task can be retried after failure."
+    },
+    "resources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "resourceId": {
+            "type": "string",
+            "description": "The identifier of the associated resource."
+          },
+          "type": {
+            "type": "string",
+            "description": "The type of the associated resource."
+          }
+        }
+      },
+      "description": "The resources associated with this task."
+    },
+    "subTasks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "The name of the subtask."
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "IN_PROGRESS",
+              "SUCCESSFUL",
+              "FAILED",
+              "CANCELLED",
+              "PENDING"
+            ],
+            "description": "The current status of the subtask."
+          },
+          "description": {
+            "type": "string",
+            "description": "A description of the subtask."
+          }
+        }
+      },
+      "description": "The subtasks that make up this task."
+    },
+    "errors": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "errorCode": {
+            "type": "string",
+            "description": "The error code."
+          },
+          "message": {
+            "type": "string",
+            "description": "The error message."
+          },
+          "remediationMessage": {
+            "type": "string",
+            "description": "Guidance on how to resolve the error."
+          }
+        }
+      },
+      "description": "Errors encountered during task execution."
+    }
+  }
+}

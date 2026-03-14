@@ -1,0 +1,110 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/api-evangelist/broadcom/blob/main/json-schema/broadcom-host-schema.json",
+  "title": "Broadcom Host",
+  "description": "A Host represents a physical ESXi server that provides compute, memory, storage, and networking resources to virtual machines within a vSphere or VCF environment.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The unique identifier of the host."
+    },
+    "name": {
+      "type": "string",
+      "description": "The hostname or display name of the host."
+    },
+    "fqdn": {
+      "type": "string",
+      "description": "The fully qualified domain name of the host."
+    },
+    "connection_state": {
+      "type": "string",
+      "enum": [
+        "CONNECTED",
+        "DISCONNECTED",
+        "NOT_RESPONDING"
+      ],
+      "description": "The connection state of the host."
+    },
+    "power_state": {
+      "type": "string",
+      "enum": [
+        "POWERED_ON",
+        "POWERED_OFF",
+        "STANDBY"
+      ],
+      "description": "The power state of the host."
+    },
+    "cluster": {
+      "type": "string",
+      "description": "The identifier of the cluster to which this host belongs."
+    },
+    "cpu": {
+      "type": "object",
+      "description": "CPU resource information for the host.",
+      "properties": {
+        "cores": {
+          "type": "integer",
+          "description": "The total number of CPU cores."
+        },
+        "frequency_MHz": {
+          "type": "integer",
+          "description": "The CPU frequency in megahertz."
+        },
+        "model": {
+          "type": "string",
+          "description": "The CPU model name."
+        }
+      }
+    },
+    "memory": {
+      "type": "object",
+      "description": "Memory resource information for the host.",
+      "properties": {
+        "total_MiB": {
+          "type": "integer",
+          "description": "Total physical memory in mebibytes."
+        },
+        "used_MiB": {
+          "type": "integer",
+          "description": "Used physical memory in mebibytes."
+        }
+      }
+    },
+    "version": {
+      "type": "string",
+      "description": "The ESXi version running on the host."
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "ASSIGNED",
+        "UNASSIGNED_USEABLE",
+        "UNASSIGNED_UNUSEABLE"
+      ],
+      "description": "The commissioning status of the host in VCF."
+    },
+    "ip_addresses": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "ip_address": {
+            "type": "string",
+            "description": "The IP address."
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "MANAGEMENT",
+              "VMOTION",
+              "VSAN"
+            ],
+            "description": "The type of network associated with this IP."
+          }
+        }
+      },
+      "description": "Network addresses assigned to the host."
+    }
+  }
+}

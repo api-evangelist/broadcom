@@ -14,6 +14,14 @@ apis:
         type: Documentation
       - url: openapi/broadcom-vsphere-automation-openapi.yml
         type: OpenAPI
+      - url: json-schema/broadcom-virtual-machine-schema.json
+        type: JSONSchema
+      - url: json-schema/broadcom-host-schema.json
+        type: JSONSchema
+      - url: json-schema/broadcom-cluster-schema.json
+        type: JSONSchema
+      - url: json-ld/broadcom-context.jsonld
+        type: JSONLD
     description: >-
       The vSphere Automation API provides a unified programmatic interface for
       managing VMware vSphere environments. It enables automation of virtual
@@ -31,6 +39,12 @@ apis:
         type: Documentation
       - url: openapi/broadcom-operations-for-applications-openapi.yml
         type: OpenAPI
+      - url: json-schema/broadcom-dashboard-schema.json
+        type: JSONSchema
+      - url: json-schema/broadcom-alert-schema.json
+        type: JSONSchema
+      - url: json-ld/broadcom-context.jsonld
+        type: JSONLD
     description: >-
       The VMware Aria Operations for Applications REST API (formerly Tanzu
       Observability by Wavefront) enables programmatic interaction with the
@@ -49,6 +63,12 @@ apis:
         type: Documentation
       - url: openapi/broadcom-vmware-cloud-foundation-openapi.yml
         type: OpenAPI
+      - url: json-schema/broadcom-workload-domain-schema.json
+        type: JSONSchema
+      - url: json-schema/broadcom-task-schema.json
+        type: JSONSchema
+      - url: json-ld/broadcom-context.jsonld
+        type: JSONLD
     description: >-
       The VMware Cloud Foundation API provides RESTful endpoints for managing
       SDDC (Software-Defined Data Center) infrastructure through the SDDC

@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/api-evangelist/broadcom/blob/main/json-schema/broadcom-cluster-schema.json",
+  "title": "Broadcom Cluster",
+  "description": "A Cluster represents a grouping of ESXi hosts that share resources and provide high availability, distributed resource scheduling, and vSAN storage capabilities.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The unique identifier of the cluster."
+    },
+    "name": {
+      "type": "string",
+      "description": "The display name of the cluster."
+    },
+    "ha_enabled": {
+      "type": "boolean",
+      "description": "Whether vSphere High Availability is enabled for the cluster."
+    },
+    "drs_enabled": {
+      "type": "boolean",
+      "description": "Whether Distributed Resource Scheduler is enabled for the cluster."
+    },
+    "drs_automation_level": {
+      "type": "string",
+      "enum": [
+        "MANUAL",
+        "PARTIALLY_AUTOMATED",
+        "FULLY_AUTOMATED"
+      ],
+      "description": "The DRS automation level for the cluster."
+    },
+    "vsan_enabled": {
+      "type": "boolean",
+      "description": "Whether vSAN is enabled for the cluster."
+    },
+    "host_count": {
+      "type": "integer",
+      "description": "The number of hosts in the cluster."
+    },
+    "hosts": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "The identifiers of hosts belonging to this cluster."
+    },
+    "resource_pool": {
+      "type": "string",
+      "description": "The root resource pool identifier for the cluster."
+    },
+    "datacenter": {
+      "type": "string",
+      "description": "The identifier of the datacenter containing this cluster."
+    },
+    "is_stretched": {
+      "type": "boolean",
+      "description": "Whether the cluster is a stretched cluster spanning multiple sites."
+    },
+    "primary_datastore": {
+      "type": "string",
+      "description": "The identifier of the primary datastore used by the cluster."
+    }
+  }
+}

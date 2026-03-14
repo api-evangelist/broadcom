@@ -1,0 +1,97 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/api-evangelist/broadcom/blob/main/json-schema/broadcom-alert-schema.json",
+  "title": "Broadcom Alert",
+  "description": "An Alert represents a configurable monitoring rule in Operations for Applications that evaluates metric conditions and triggers notifications when thresholds are breached.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The unique identifier of the alert."
+    },
+    "name": {
+      "type": "string",
+      "description": "The display name of the alert."
+    },
+    "condition": {
+      "type": "string",
+      "description": "The query expression that defines the alert condition."
+    },
+    "displayExpression": {
+      "type": "string",
+      "description": "The query expression used for display purposes in notifications."
+    },
+    "minutes": {
+      "type": "integer",
+      "description": "The number of minutes the condition must be met before the alert fires."
+    },
+    "resolveAfterMinutes": {
+      "type": "integer",
+      "description": "The number of minutes after which the alert auto-resolves if the condition clears."
+    },
+    "severity": {
+      "type": "string",
+      "enum": [
+        "INFO",
+        "SMOKE",
+        "WARN",
+        "SEVERE"
+      ],
+      "description": "The severity level of the alert."
+    },
+    "status": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "CHECKING",
+          "FIRING",
+          "NO_DATA",
+          "SNOOZED",
+          "TRASH",
+          "IN_MAINTENANCE"
+        ]
+      },
+      "description": "The current statuses of the alert."
+    },
+    "tags": {
+      "type": "object",
+      "properties": {
+        "customerTags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "User-defined tags for the alert."
+        }
+      },
+      "description": "Tags associated with the alert."
+    },
+    "targets": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "description": "Notification targets keyed by severity level."
+    },
+    "creatorId": {
+      "type": "string",
+      "description": "The identifier of the user who created the alert."
+    },
+    "updaterId": {
+      "type": "string",
+      "description": "The identifier of the user who last updated the alert."
+    },
+    "createdEpochMillis": {
+      "type": "integer",
+      "description": "The creation timestamp in epoch milliseconds."
+    },
+    "updatedEpochMillis": {
+      "type": "integer",
+      "description": "The last update timestamp in epoch milliseconds."
+    }
+  }
+}

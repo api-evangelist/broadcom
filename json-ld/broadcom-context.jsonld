@@ -1,0 +1,83 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "broadcom": "https://developer.broadcom.com/",
+    "vm": {
+      "@id": "broadcom:vm",
+      "@type": "xsd:string"
+    },
+    "power_state": {
+      "@id": "broadcom:power_state",
+      "@type": "xsd:string"
+    },
+    "cpu_count": {
+      "@id": "broadcom:cpu_count",
+      "@type": "xsd:integer"
+    },
+    "memory_size_MiB": {
+      "@id": "broadcom:memory_size_MiB",
+      "@type": "xsd:integer"
+    },
+    "guest_OS": {
+      "@id": "broadcom:guest_OS",
+      "@type": "xsd:string"
+    },
+    "fqdn": {
+      "@id": "broadcom:fqdn",
+      "@type": "xsd:string"
+    },
+    "connection_state": {
+      "@id": "broadcom:connection_state",
+      "@type": "xsd:string"
+    },
+    "ha_enabled": {
+      "@id": "broadcom:ha_enabled",
+      "@type": "xsd:boolean"
+    },
+    "drs_enabled": {
+      "@id": "broadcom:drs_enabled",
+      "@type": "xsd:boolean"
+    },
+    "vsan_enabled": {
+      "@id": "broadcom:vsan_enabled",
+      "@type": "xsd:boolean"
+    },
+    "severity": {
+      "@id": "broadcom:severity",
+      "@type": "xsd:string"
+    },
+    "condition": {
+      "@id": "broadcom:condition",
+      "@type": "xsd:string"
+    },
+    "creatorId": {
+      "@id": "broadcom:creatorId",
+      "@type": "xsd:string"
+    },
+    "workloadDomainType": {
+      "@id": "broadcom:workloadDomainType",
+      "@type": "xsd:string"
+    },
+    "isCancellable": {
+      "@id": "broadcom:isCancellable",
+      "@type": "xsd:boolean"
+    },
+    "isRetryable": {
+      "@id": "broadcom:isRetryable",
+      "@type": "xsd:boolean"
+    },
+    "creationTimestamp": {
+      "@id": "broadcom:creationTimestamp",
+      "@type": "xsd:dateTime"
+    },
+    "completionTimestamp": {
+      "@id": "broadcom:completionTimestamp",
+      "@type": "xsd:dateTime"
+    },
+    "name": "schema:name",
+    "description": "schema:description",
+    "status": "schema:status",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "schema": "https://schema.org/"
+  }
+}

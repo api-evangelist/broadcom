@@ -1,0 +1,138 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/api-evangelist/broadcom/blob/main/json-schema/broadcom-virtual-machine-schema.json",
+  "title": "Broadcom Virtual Machine",
+  "description": "A Virtual Machine represents a software-based compute instance running on a vSphere host, with configurable CPU, memory, storage, and network resources.",
+  "type": "object",
+  "properties": {
+    "vm": {
+      "type": "string",
+      "description": "The unique identifier of the virtual machine."
+    },
+    "name": {
+      "type": "string",
+      "description": "The display name of the virtual machine."
+    },
+    "power_state": {
+      "type": "string",
+      "enum": [
+        "POWERED_ON",
+        "POWERED_OFF",
+        "SUSPENDED"
+      ],
+      "description": "The current power state of the virtual machine."
+    },
+    "cpu_count": {
+      "type": "integer",
+      "description": "The number of virtual CPUs allocated to the virtual machine."
+    },
+    "memory_size_MiB": {
+      "type": "integer",
+      "description": "The memory size in mebibytes allocated to the virtual machine."
+    },
+    "guest_OS": {
+      "type": "string",
+      "description": "The guest operating system identifier."
+    },
+    "hardware": {
+      "type": "object",
+      "description": "Hardware configuration of the virtual machine.",
+      "properties": {
+        "version": {
+          "type": "string",
+          "description": "The virtual hardware version."
+        },
+        "upgrade_policy": {
+          "type": "string",
+          "enum": [
+            "NEVER",
+            "AFTER_CLEAN_SHUTDOWN",
+            "ALWAYS"
+          ],
+          "description": "The upgrade policy for virtual hardware."
+        }
+      }
+    },
+    "disks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "description": "The identifier of the virtual disk."
+          },
+          "capacity": {
+            "type": "integer",
+            "description": "The capacity of the disk in bytes."
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "SCSI",
+              "SATA",
+              "IDE",
+              "NVME"
+            ],
+            "description": "The type of host bus adapter the disk is connected to."
+          }
+        }
+      },
+      "description": "The list of virtual disks attached to the virtual machine."
+    },
+    "nics": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "description": "The identifier of the virtual NIC."
+          },
+          "mac_address": {
+            "type": "string",
+            "description": "The MAC address of the NIC."
+          },
+          "backing_type": {
+            "type": "string",
+            "description": "The backing type for the virtual NIC."
+          },
+          "state": {
+            "type": "string",
+            "enum": [
+              "CONNECTED",
+              "NOT_CONNECTED"
+            ],
+            "description": "The connection state of the NIC."
+          }
+        }
+      },
+      "description": "The list of virtual network interfaces."
+    },
+    "boot": {
+      "type": "object",
+      "description": "Boot configuration for the virtual machine.",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "BIOS",
+            "EFI"
+          ],
+          "description": "The firmware type used for booting."
+        },
+        "delay": {
+          "type": "integer",
+          "description": "Boot delay in milliseconds."
+        }
+      }
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Tags associated with the virtual machine."
+    }
+  }
+}
