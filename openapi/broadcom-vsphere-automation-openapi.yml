@@ -1,0 +1,574 @@
+openapi: 3.1.0
+info:
+  title: Broadcom vSphere Automation API
+  description: >-
+    The vSphere Automation API provides a unified programmatic interface for
+    managing VMware vSphere environments. It enables automation of virtual
+    machine lifecycle management, host and cluster configuration, content
+    library management, tagging, and other vSphere infrastructure operations.
+    This RESTful API replaces many legacy SOAP-based interfaces and supports
+    JSON request and response payloads over HTTPS.
+  version: 8.0.0
+  contact:
+    name: Broadcom Developer Support
+    url: https://developer.broadcom.com
+  license:
+    name: Proprietary
+    url: https://www.broadcom.com/company/legal/licensing
+externalDocs:
+  description: vSphere Automation API Reference
+  url: https://developer.broadcom.com/xapis/vsphere-automation-api/latest/
+servers:
+  - url: https://{vcenter}/api
+    description: vCenter Server instance
+    variables:
+      vcenter:
+        default: vcenter.example.com
+        description: The hostname or IP address of the vCenter Server
+security:
+  - sessionAuth: []
+paths:
+  /vcenter/vm:
+    get:
+      summary: List virtual machines
+      description: Returns information about all virtual machines matching the specified filters.
+      operationId: listVMs
+      tags:
+        - Virtual Machines
+      parameters:
+        - name: filter.vms
+          in: query
+          description: Identifiers of virtual machines to filter
+          schema:
+            type: array
+            items:
+              type: string
+        - name: filter.names
+          in: query
+          description: Names of virtual machines to filter
+          schema:
+            type: array
+            items:
+              type: string
+        - name: filter.power_states
+          in: query
+          description: Power states to filter
+          schema:
+            type: array
+            items:
+              type: string
+              enum:
+                - POWERED_ON
+                - POWERED_OFF
+                - SUSPENDED
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/VMSummary'
+        '401':
+          description: Unauthorized
+    post:
+      summary: Create a virtual machine
+      description: Creates a virtual machine with the specified configuration.
+      operationId: createVM
+      tags:
+        - Virtual Machines
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VMCreateSpec'
+      responses:
+        '201':
+          description: Virtual machine created
+          content:
+            application/json:
+              schema:
+                type: string
+                description: Identifier of the created VM
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+  /vcenter/vm/{vm}:
+    get:
+      summary: Get virtual machine details
+      description: Returns detailed information about the specified virtual machine.
+      operationId: getVM
+      tags:
+        - Virtual Machines
+      parameters:
+        - name: vm
+          in: path
+          required: true
+          description: Virtual machine identifier
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VMInfo'
+        '401':
+          description: Unauthorized
+        '404':
+          description: VM not found
+    delete:
+      summary: Delete a virtual machine
+      description: Deletes the specified virtual machine.
+      operationId: deleteVM
+      tags:
+        - Virtual Machines
+      parameters:
+        - name: vm
+          in: path
+          required: true
+          description: Virtual machine identifier
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Virtual machine deleted
+        '401':
+          description: Unauthorized
+        '404':
+          description: VM not found
+  /vcenter/vm/{vm}/power:
+    get:
+      summary: Get VM power state
+      description: Returns the power state of the specified virtual machine.
+      operationId: getVMPowerState
+      tags:
+        - Virtual Machines
+      parameters:
+        - name: vm
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PowerInfo'
+  /vcenter/vm/{vm}/power?action=start:
+    post:
+      summary: Power on a virtual machine
+      description: Powers on the specified virtual machine.
+      operationId: powerOnVM
+      tags:
+        - Virtual Machines
+      parameters:
+        - name: vm
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: VM powered on
+        '401':
+          description: Unauthorized
+        '404':
+          description: VM not found
+  /vcenter/vm/{vm}/power?action=stop:
+    post:
+      summary: Power off a virtual machine
+      description: Powers off the specified virtual machine.
+      operationId: powerOffVM
+      tags:
+        - Virtual Machines
+      parameters:
+        - name: vm
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: VM powered off
+        '401':
+          description: Unauthorized
+        '404':
+          description: VM not found
+  /vcenter/host:
+    get:
+      summary: List hosts
+      description: Returns information about hosts in the vCenter Server.
+      operationId: listHosts
+      tags:
+        - Hosts
+      parameters:
+        - name: filter.names
+          in: query
+          schema:
+            type: array
+            items:
+              type: string
+        - name: filter.connection_states
+          in: query
+          schema:
+            type: array
+            items:
+              type: string
+              enum:
+                - CONNECTED
+                - DISCONNECTED
+                - NOT_RESPONDING
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/HostSummary'
+  /vcenter/cluster:
+    get:
+      summary: List clusters
+      description: Returns information about clusters in the vCenter Server.
+      operationId: listClusters
+      tags:
+        - Clusters
+      parameters:
+        - name: filter.names
+          in: query
+          schema:
+            type: array
+            items:
+              type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ClusterSummary'
+  /vcenter/datastore:
+    get:
+      summary: List datastores
+      description: Returns information about datastores in the vCenter Server.
+      operationId: listDatastores
+      tags:
+        - Datastores
+      parameters:
+        - name: filter.names
+          in: query
+          schema:
+            type: array
+            items:
+              type: string
+        - name: filter.types
+          in: query
+          schema:
+            type: array
+            items:
+              type: string
+              enum:
+                - VMFS
+                - NFS
+                - NFS41
+                - CIFS
+                - VSAN
+                - VFFS
+                - VVOL
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DatastoreSummary'
+  /vcenter/network:
+    get:
+      summary: List networks
+      description: Returns information about networks in the vCenter Server.
+      operationId: listNetworks
+      tags:
+        - Networks
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NetworkSummary'
+  /cis/session:
+    post:
+      summary: Create a session
+      description: Creates a session with the API using username and password credentials.
+      operationId: createSession
+      tags:
+        - Session
+      security:
+        - basicAuth: []
+      responses:
+        '201':
+          description: Session created
+          content:
+            application/json:
+              schema:
+                type: string
+                description: Session token
+        '401':
+          description: Invalid credentials
+    delete:
+      summary: Delete a session
+      description: Terminates the current session.
+      operationId: deleteSession
+      tags:
+        - Session
+      responses:
+        '204':
+          description: Session terminated
+  /content/library:
+    get:
+      summary: List content libraries
+      description: Returns the identifiers of all content libraries in the system.
+      operationId: listContentLibraries
+      tags:
+        - Content Library
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+  /vcenter/tag/association:
+    post:
+      summary: Attach tag to object
+      description: Attaches a tag to an object.
+      operationId: attachTag
+      tags:
+        - Tagging
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TagAssociationSpec'
+      responses:
+        '204':
+          description: Tag attached
+        '401':
+          description: Unauthorized
+components:
+  securitySchemes:
+    sessionAuth:
+      type: apiKey
+      in: header
+      name: vmware-api-session-id
+      description: Session token obtained via POST /cis/session
+    basicAuth:
+      type: http
+      scheme: basic
+      description: Username and password for session creation
+  schemas:
+    VMSummary:
+      type: object
+      properties:
+        vm:
+          type: string
+          description: Virtual machine identifier
+        name:
+          type: string
+          description: Virtual machine name
+        power_state:
+          type: string
+          enum:
+            - POWERED_ON
+            - POWERED_OFF
+            - SUSPENDED
+        cpu_count:
+          type: integer
+        memory_size_MiB:
+          type: integer
+    VMCreateSpec:
+      type: object
+      required:
+        - name
+        - guest_OS
+        - placement
+      properties:
+        name:
+          type: string
+        guest_OS:
+          type: string
+        placement:
+          type: object
+          properties:
+            folder:
+              type: string
+            host:
+              type: string
+            cluster:
+              type: string
+            datastore:
+              type: string
+        memory:
+          type: object
+          properties:
+            size_MiB:
+              type: integer
+        cpu:
+          type: object
+          properties:
+            count:
+              type: integer
+    VMInfo:
+      type: object
+      properties:
+        name:
+          type: string
+        power_state:
+          type: string
+          enum:
+            - POWERED_ON
+            - POWERED_OFF
+            - SUSPENDED
+        cpu:
+          type: object
+          properties:
+            count:
+              type: integer
+            cores_per_socket:
+              type: integer
+        memory:
+          type: object
+          properties:
+            size_MiB:
+              type: integer
+        guest_OS:
+          type: string
+        hardware:
+          type: object
+          properties:
+            version:
+              type: string
+    PowerInfo:
+      type: object
+      properties:
+        state:
+          type: string
+          enum:
+            - POWERED_ON
+            - POWERED_OFF
+            - SUSPENDED
+    HostSummary:
+      type: object
+      properties:
+        host:
+          type: string
+        name:
+          type: string
+        connection_state:
+          type: string
+          enum:
+            - CONNECTED
+            - DISCONNECTED
+            - NOT_RESPONDING
+        power_state:
+          type: string
+          enum:
+            - POWERED_ON
+            - POWERED_OFF
+            - STANDBY
+    ClusterSummary:
+      type: object
+      properties:
+        cluster:
+          type: string
+        name:
+          type: string
+        ha_enabled:
+          type: boolean
+        drs_enabled:
+          type: boolean
+    DatastoreSummary:
+      type: object
+      properties:
+        datastore:
+          type: string
+        name:
+          type: string
+        type:
+          type: string
+          enum:
+            - VMFS
+            - NFS
+            - NFS41
+            - CIFS
+            - VSAN
+            - VFFS
+            - VVOL
+        capacity:
+          type: integer
+          format: int64
+        free_space:
+          type: integer
+          format: int64
+    NetworkSummary:
+      type: object
+      properties:
+        network:
+          type: string
+        name:
+          type: string
+        type:
+          type: string
+          enum:
+            - STANDARD_PORTGROUP
+            - DISTRIBUTED_PORTGROUP
+            - OPAQUE_NETWORK
+    TagAssociationSpec:
+      type: object
+      required:
+        - tag_id
+        - object_id
+      properties:
+        tag_id:
+          type: string
+        object_id:
+          type: object
+          properties:
+            id:
+              type: string
+            type:
+              type: string
+tags:
+  - name: Virtual Machines
+    description: Operations for managing virtual machines
+  - name: Hosts
+    description: Operations for managing ESXi hosts
+  - name: Clusters
+    description: Operations for managing clusters
+  - name: Datastores
+    description: Operations for managing datastores
+  - name: Networks
+    description: Operations for managing networks
+  - name: Session
+    description: Session management operations
+  - name: Content Library
+    description: Content library management
+  - name: Tagging
+    description: Tag management and association operations

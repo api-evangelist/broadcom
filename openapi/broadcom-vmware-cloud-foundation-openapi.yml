@@ -1,0 +1,582 @@
+openapi: 3.1.0
+info:
+  title: Broadcom VMware Cloud Foundation API
+  description: >-
+    The VMware Cloud Foundation API provides RESTful endpoints for managing
+    SDDC (Software-Defined Data Center) infrastructure through the SDDC Manager.
+    It enables automation of host commissioning, cluster management, workload
+    domain lifecycle, network pool configuration, task monitoring, and
+    VCF management component deployments. The API supports both Basic and
+    Bearer token authentication over HTTPS with JSON payloads.
+  version: 9.0.0
+  contact:
+    name: Broadcom Developer Support
+    url: https://developer.broadcom.com
+  license:
+    name: Proprietary
+    url: https://www.broadcom.com/company/legal/licensing
+externalDocs:
+  description: VMware Cloud Foundation API Reference
+  url: https://developer.broadcom.com/xapis/sddc-manager-api/latest/
+servers:
+  - url: https://{sddc-manager}/v1
+    description: SDDC Manager instance
+    variables:
+      sddc-manager:
+        default: sddc-manager.example.com
+        description: The hostname of the SDDC Manager
+security:
+  - bearerAuth: []
+paths:
+  /tokens:
+    post:
+      summary: Get access token
+      description: Generates an access token for API authentication.
+      operationId: getToken
+      tags:
+        - Authentication
+      security:
+        - basicAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - username
+                - password
+              properties:
+                username:
+                  type: string
+                password:
+                  type: string
+      responses:
+        '200':
+          description: Token generated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenResponse'
+        '401':
+          description: Invalid credentials
+  /hosts:
+    get:
+      summary: List hosts
+      description: Returns all commissioned hosts.
+      operationId: listHosts
+      tags:
+        - Hosts
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HostList'
+    post:
+      summary: Commission hosts
+      description: Commissions one or more hosts for use in VCF.
+      operationId: commissionHosts
+      tags:
+        - Hosts
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/HostCommissionSpec'
+      responses:
+        '202':
+          description: Host commissioning started
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Task'
+  /hosts/{id}:
+    get:
+      summary: Get host details
+      description: Returns details of the specified host.
+      operationId: getHost
+      tags:
+        - Hosts
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Host'
+        '404':
+          description: Host not found
+  /clusters:
+    get:
+      summary: List clusters
+      description: Returns all clusters.
+      operationId: listClusters
+      tags:
+        - Clusters
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClusterList'
+  /clusters/{id}:
+    get:
+      summary: Get cluster details
+      description: Returns details of the specified cluster.
+      operationId: getCluster
+      tags:
+        - Clusters
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cluster'
+    patch:
+      summary: Update a cluster
+      description: >-
+        Updates the specified cluster configuration, such as expanding
+        or shrinking.
+      operationId: updateCluster
+      tags:
+        - Clusters
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ClusterUpdateSpec'
+      responses:
+        '202':
+          description: Cluster update started
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Task'
+  /domains:
+    get:
+      summary: List workload domains
+      description: Returns all workload domains.
+      operationId: listDomains
+      tags:
+        - Workload Domains
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DomainList'
+    post:
+      summary: Create a workload domain
+      description: Creates a new workload domain.
+      operationId: createDomain
+      tags:
+        - Workload Domains
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DomainCreateSpec'
+      responses:
+        '202':
+          description: Domain creation started
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Task'
+  /domains/{id}:
+    get:
+      summary: Get workload domain details
+      description: Returns details of the specified workload domain.
+      operationId: getDomain
+      tags:
+        - Workload Domains
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Domain'
+    delete:
+      summary: Delete a workload domain
+      description: Deletes the specified workload domain.
+      operationId: deleteDomain
+      tags:
+        - Workload Domains
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '202':
+          description: Domain deletion started
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Task'
+  /network-pools:
+    get:
+      summary: List network pools
+      description: Returns all network pools.
+      operationId: listNetworkPools
+      tags:
+        - Network Pools
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NetworkPoolList'
+    post:
+      summary: Create a network pool
+      description: Creates a new network pool.
+      operationId: createNetworkPool
+      tags:
+        - Network Pools
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NetworkPool'
+      responses:
+        '201':
+          description: Network pool created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NetworkPool'
+  /tasks:
+    get:
+      summary: List tasks
+      description: Returns all tasks.
+      operationId: listTasks
+      tags:
+        - Tasks
+      parameters:
+        - name: status
+          in: query
+          schema:
+            type: string
+            enum:
+              - IN_PROGRESS
+              - SUCCESSFUL
+              - FAILED
+              - CANCELLED
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskList'
+  /tasks/{id}:
+    get:
+      summary: Get task details
+      description: Returns details of the specified task.
+      operationId: getTask
+      tags:
+        - Tasks
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Task'
+  /upgrades:
+    get:
+      summary: List available upgrades
+      description: Returns all available upgrades for the VCF system.
+      operationId: listUpgrades
+      tags:
+        - Upgrades
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpgradeList'
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Access token obtained via POST /tokens
+    basicAuth:
+      type: http
+      scheme: basic
+  schemas:
+    TokenResponse:
+      type: object
+      properties:
+        accessToken:
+          type: string
+        tokenType:
+          type: string
+    HostList:
+      type: object
+      properties:
+        elements:
+          type: array
+          items:
+            $ref: '#/components/schemas/Host'
+    Host:
+      type: object
+      properties:
+        id:
+          type: string
+        fqdn:
+          type: string
+        ipAddress:
+          type: string
+        status:
+          type: string
+          enum:
+            - ASSIGNED
+            - UNASSIGNED
+            - DECOMMISSIONED
+        domain:
+          type: object
+          properties:
+            id:
+              type: string
+        cluster:
+          type: object
+          properties:
+            id:
+              type: string
+    HostCommissionSpec:
+      type: object
+      required:
+        - fqdn
+        - username
+        - password
+        - networkPoolId
+        - storageType
+      properties:
+        fqdn:
+          type: string
+        username:
+          type: string
+        password:
+          type: string
+        networkPoolId:
+          type: string
+        storageType:
+          type: string
+          enum:
+            - VSAN
+            - NFS
+            - VMFS_FC
+    ClusterList:
+      type: object
+      properties:
+        elements:
+          type: array
+          items:
+            $ref: '#/components/schemas/Cluster'
+    Cluster:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        primaryDatastoreType:
+          type: string
+        isDefault:
+          type: boolean
+        isStretched:
+          type: boolean
+        hosts:
+          type: array
+          items:
+            $ref: '#/components/schemas/Host'
+    ClusterUpdateSpec:
+      type: object
+      properties:
+        hostSpecs:
+          type: array
+          items:
+            $ref: '#/components/schemas/HostCommissionSpec'
+        clusterExpansionSpec:
+          type: object
+    DomainList:
+      type: object
+      properties:
+        elements:
+          type: array
+          items:
+            $ref: '#/components/schemas/Domain'
+    Domain:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        type:
+          type: string
+          enum:
+            - MANAGEMENT
+            - VI
+        status:
+          type: string
+        clusters:
+          type: array
+          items:
+            $ref: '#/components/schemas/Cluster'
+    DomainCreateSpec:
+      type: object
+      required:
+        - domainName
+        - vcenterSpec
+        - computeSpec
+      properties:
+        domainName:
+          type: string
+        vcenterSpec:
+          type: object
+        computeSpec:
+          type: object
+        nsxTSpec:
+          type: object
+    NetworkPoolList:
+      type: object
+      properties:
+        elements:
+          type: array
+          items:
+            $ref: '#/components/schemas/NetworkPool'
+    NetworkPool:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        networks:
+          type: array
+          items:
+            type: object
+            properties:
+              type:
+                type: string
+              vlanId:
+                type: integer
+              subnet:
+                type: string
+              gateway:
+                type: string
+    TaskList:
+      type: object
+      properties:
+        elements:
+          type: array
+          items:
+            $ref: '#/components/schemas/Task'
+    Task:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        status:
+          type: string
+          enum:
+            - IN_PROGRESS
+            - SUCCESSFUL
+            - FAILED
+            - CANCELLED
+        type:
+          type: string
+        creationTimestamp:
+          type: string
+          format: date-time
+        completionTimestamp:
+          type: string
+          format: date-time
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              message:
+                type: string
+    UpgradeList:
+      type: object
+      properties:
+        elements:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+              description:
+                type: string
+              status:
+                type: string
+              releaseVersion:
+                type: string
+tags:
+  - name: Authentication
+    description: Token-based authentication
+  - name: Hosts
+    description: ESXi host management
+  - name: Clusters
+    description: Cluster management
+  - name: Workload Domains
+    description: Workload domain lifecycle management
+  - name: Network Pools
+    description: Network pool management
+  - name: Tasks
+    description: Asynchronous task monitoring
+  - name: Upgrades
+    description: System upgrade management

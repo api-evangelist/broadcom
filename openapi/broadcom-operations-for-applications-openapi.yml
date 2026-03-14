@@ -1,0 +1,657 @@
+openapi: 3.1.0
+info:
+  title: Broadcom Operations for Applications REST API
+  description: >-
+    The VMware Aria Operations for Applications REST API (formerly Tanzu
+    Observability by Wavefront) enables programmatic interaction with the
+    observability service. It supports querying metrics, managing dashboards,
+    alerts, events, sources, user accounts, API tokens, and ingesting data
+    directly. The API uses JSON payloads over HTTPS and supports both API
+    token and session-based authentication.
+  version: 2.0.0
+  contact:
+    name: Broadcom Developer Support
+    url: https://developer.broadcom.com
+  license:
+    name: Proprietary
+    url: https://www.broadcom.com/company/legal/licensing
+externalDocs:
+  description: Operations for Applications REST API Documentation
+  url: https://developer.broadcom.com/xapis/operations-for-applications-rest-api/latest/
+servers:
+  - url: https://{instance}.wavefront.com/api/v2
+    description: Operations for Applications instance
+    variables:
+      instance:
+        default: example
+        description: Your Operations for Applications instance name
+security:
+  - bearerAuth: []
+paths:
+  /query:
+    get:
+      summary: Execute a query
+      description: Performs a query against the metrics data store and returns the results.
+      operationId: queryMetrics
+      tags:
+        - Query
+      parameters:
+        - name: q
+          in: query
+          required: true
+          description: The query expression
+          schema:
+            type: string
+        - name: s
+          in: query
+          required: true
+          description: Start time in epoch seconds or ms
+          schema:
+            type: string
+        - name: e
+          in: query
+          description: End time in epoch seconds or ms
+          schema:
+            type: string
+        - name: g
+          in: query
+          description: Granularity (s, m, h, d)
+          schema:
+            type: string
+            enum:
+              - s
+              - m
+              - h
+              - d
+      responses:
+        '200':
+          description: Query results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QueryResult'
+        '401':
+          description: Unauthorized
+  /dashboard:
+    get:
+      summary: List dashboards
+      description: Returns all dashboards accessible to the user.
+      operationId: listDashboards
+      tags:
+        - Dashboards
+      parameters:
+        - name: offset
+          in: query
+          schema:
+            type: integer
+            default: 0
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            default: 100
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DashboardList'
+    post:
+      summary: Create a dashboard
+      description: Creates a new dashboard.
+      operationId: createDashboard
+      tags:
+        - Dashboards
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Dashboard'
+      responses:
+        '200':
+          description: Dashboard created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Dashboard'
+        '401':
+          description: Unauthorized
+  /dashboard/{id}:
+    get:
+      summary: Get a dashboard
+      description: Returns the specified dashboard.
+      operationId: getDashboard
+      tags:
+        - Dashboards
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Dashboard'
+        '404':
+          description: Dashboard not found
+    put:
+      summary: Update a dashboard
+      description: Updates the specified dashboard.
+      operationId: updateDashboard
+      tags:
+        - Dashboards
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Dashboard'
+      responses:
+        '200':
+          description: Dashboard updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Dashboard'
+    delete:
+      summary: Delete a dashboard
+      description: Deletes the specified dashboard.
+      operationId: deleteDashboard
+      tags:
+        - Dashboards
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Dashboard deleted
+  /alert:
+    get:
+      summary: List alerts
+      description: Returns all alerts.
+      operationId: listAlerts
+      tags:
+        - Alerts
+      parameters:
+        - name: offset
+          in: query
+          schema:
+            type: integer
+        - name: limit
+          in: query
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AlertList'
+    post:
+      summary: Create an alert
+      description: Creates a new alert.
+      operationId: createAlert
+      tags:
+        - Alerts
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Alert'
+      responses:
+        '200':
+          description: Alert created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Alert'
+  /alert/{id}:
+    get:
+      summary: Get an alert
+      description: Returns the specified alert.
+      operationId: getAlert
+      tags:
+        - Alerts
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Alert'
+    put:
+      summary: Update an alert
+      description: Updates the specified alert.
+      operationId: updateAlert
+      tags:
+        - Alerts
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Alert'
+      responses:
+        '200':
+          description: Alert updated
+    delete:
+      summary: Delete an alert
+      description: Deletes the specified alert.
+      operationId: deleteAlert
+      tags:
+        - Alerts
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Alert deleted
+  /event:
+    get:
+      summary: List events
+      description: Returns events matching the specified filters.
+      operationId: listEvents
+      tags:
+        - Events
+      parameters:
+        - name: earliestStartTimeEpochMillis
+          in: query
+          schema:
+            type: integer
+            format: int64
+        - name: latestStartTimeEpochMillis
+          in: query
+          schema:
+            type: integer
+            format: int64
+        - name: limit
+          in: query
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventList'
+    post:
+      summary: Create an event
+      description: Creates a new event.
+      operationId: createEvent
+      tags:
+        - Events
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Event'
+      responses:
+        '200':
+          description: Event created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Event'
+  /source:
+    get:
+      summary: List sources
+      description: Returns all sources.
+      operationId: listSources
+      tags:
+        - Sources
+      parameters:
+        - name: limit
+          in: query
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SourceList'
+  /source/{id}:
+    get:
+      summary: Get a source
+      description: Returns the specified source.
+      operationId: getSource
+      tags:
+        - Sources
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Source'
+  /proxy:
+    get:
+      summary: List proxies
+      description: Returns all registered proxies.
+      operationId: listProxies
+      tags:
+        - Proxies
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProxyList'
+  /proxy/{id}:
+    get:
+      summary: Get a proxy
+      description: Returns details of the specified proxy.
+      operationId: getProxy
+      tags:
+        - Proxies
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Proxy'
+    delete:
+      summary: Delete a proxy
+      description: Deletes the specified proxy.
+      operationId: deleteProxy
+      tags:
+        - Proxies
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Proxy deleted
+  /api-token:
+    get:
+      summary: List API tokens
+      description: Returns all API tokens for the authenticated user.
+      operationId: listApiTokens
+      tags:
+        - API Tokens
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ApiToken'
+    post:
+      summary: Create an API token
+      description: Creates a new API token for the authenticated user.
+      operationId: createApiToken
+      tags:
+        - API Tokens
+      responses:
+        '200':
+          description: Token created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiToken'
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: API token for authentication
+  schemas:
+    QueryResult:
+      type: object
+      properties:
+        timeseries:
+          type: array
+          items:
+            type: object
+            properties:
+              label:
+                type: string
+              data:
+                type: array
+                items:
+                  type: array
+                  items:
+                    type: number
+        query:
+          type: string
+        granularity:
+          type: integer
+    DashboardList:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Dashboard'
+        offset:
+          type: integer
+        limit:
+          type: integer
+        totalItems:
+          type: integer
+    Dashboard:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        url:
+          type: string
+        sections:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              rows:
+                type: array
+                items:
+                  type: object
+        tags:
+          type: object
+          properties:
+            customerTags:
+              type: array
+              items:
+                type: string
+        creatorId:
+          type: string
+        updaterId:
+          type: string
+    AlertList:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Alert'
+        offset:
+          type: integer
+        limit:
+          type: integer
+        totalItems:
+          type: integer
+    Alert:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        condition:
+          type: string
+        minutes:
+          type: integer
+        severity:
+          type: string
+          enum:
+            - INFO
+            - SMOKE
+            - WARN
+            - SEVERE
+        target:
+          type: string
+        tags:
+          type: object
+          properties:
+            customerTags:
+              type: array
+              items:
+                type: string
+    EventList:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Event'
+    Event:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        startTime:
+          type: integer
+          format: int64
+        endTime:
+          type: integer
+          format: int64
+        annotations:
+          type: object
+          additionalProperties:
+            type: string
+        tags:
+          type: array
+          items:
+            type: string
+    SourceList:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Source'
+    Source:
+      type: object
+      properties:
+        id:
+          type: string
+        sourceName:
+          type: string
+        tags:
+          type: object
+          additionalProperties:
+            type: string
+        description:
+          type: string
+    ProxyList:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Proxy'
+    Proxy:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        hostname:
+          type: string
+        version:
+          type: string
+        status:
+          type: string
+          enum:
+            - ACTIVE
+            - INACTIVE
+        lastCheckInTime:
+          type: integer
+          format: int64
+    ApiToken:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        createdEpochMillis:
+          type: integer
+          format: int64
+tags:
+  - name: Query
+    description: Query metrics data
+  - name: Dashboards
+    description: Dashboard management
+  - name: Alerts
+    description: Alert management
+  - name: Events
+    description: Event management
+  - name: Sources
+    description: Source management
+  - name: Proxies
+    description: Proxy management
+  - name: API Tokens
+    description: API token management
