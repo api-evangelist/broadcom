@@ -8,7 +8,8 @@ apis:
       - Virtualization
       - Infrastructure
       - Data Center
-    humanURL: https://developer.broadcom.com/xapis/vsphere-automation-api/latest/
+    humanURL: 
+      https://developer.broadcom.com/xapis/vsphere-automation-api/latest/
     properties:
       - url: https://developer.broadcom.com/xapis/vsphere-automation-api/latest/
         type: Documentation
@@ -33,9 +34,11 @@ apis:
       - Observability
       - Monitoring
       - Metrics
-    humanURL: https://developer.broadcom.com/xapis/operations-for-applications-rest-api/latest/
+    humanURL: 
+      https://developer.broadcom.com/xapis/operations-for-applications-rest-api/latest/
     properties:
-      - url: https://developer.broadcom.com/xapis/operations-for-applications-rest-api/latest/
+      - url: 
+          https://developer.broadcom.com/xapis/operations-for-applications-rest-api/latest/
         type: Documentation
       - url: openapi/broadcom-operations-for-applications-openapi.yml
         type: OpenAPI
@@ -90,16 +93,11 @@ created: '2025-01-14'
 modified: '2026-03-14'
 position: Consumer
 description: >-
-  Broadcom is a global technology company that specializes in the design and
-  manufacturing of semiconductors and other hardware components for a wide range
-  of industries. They provide a diverse portfolio of products for the
-  enterprise, data center, networking, telecommunications, and consumer
-  electronics markets. Broadcom's technology is used in a variety of devices
-  such as smartphones, tablets, routers, and smart TVs. They are known for their
-  innovative solutions in areas like wireless connectivity, data storage, and
-  broadband access. With a focus on cutting-edge research and development,
-  Broadcom continues to lead the way in providing advanced technology solutions
-  for the digital age.
+  Broadcom is a global technology company that specializes in the design and manufacturing
+  of semiconductors and other hardware components for a wide range of industries.
+  They provide a diverse portfolio of products for the enterprise, data center, networking,
+  telecommunications, and consumer electronics markets. Broadcom's technology is used
+  in a variety of devices such as smartphones, tablets, routers, and smart TVs.
 maintainers:
   - FN: Kin Lane
     email: info@apievangelist.com

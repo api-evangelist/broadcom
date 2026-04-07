@@ -30,7 +30,7 @@ security:
 paths:
   /query:
     get:
-      summary: Execute a query
+      summary: Broadcom Execute a query
       description: Performs a query against the metrics data store and returns the results.
       operationId: queryMetrics
       tags:
@@ -74,7 +74,7 @@ paths:
           description: Unauthorized
   /dashboard:
     get:
-      summary: List dashboards
+      summary: Broadcom List dashboards
       description: Returns all dashboards accessible to the user.
       operationId: listDashboards
       tags:
@@ -98,7 +98,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/DashboardList'
     post:
-      summary: Create a dashboard
+      summary: Broadcom Create a dashboard
       description: Creates a new dashboard.
       operationId: createDashboard
       tags:
@@ -120,7 +120,7 @@ paths:
           description: Unauthorized
   /dashboard/{id}:
     get:
-      summary: Get a dashboard
+      summary: Broadcom Get a dashboard
       description: Returns the specified dashboard.
       operationId: getDashboard
       tags:
@@ -141,7 +141,7 @@ paths:
         '404':
           description: Dashboard not found
     put:
-      summary: Update a dashboard
+      summary: Broadcom Update a dashboard
       description: Updates the specified dashboard.
       operationId: updateDashboard
       tags:
@@ -166,7 +166,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Dashboard'
     delete:
-      summary: Delete a dashboard
+      summary: Broadcom Delete a dashboard
       description: Deletes the specified dashboard.
       operationId: deleteDashboard
       tags:
@@ -182,7 +182,7 @@ paths:
           description: Dashboard deleted
   /alert:
     get:
-      summary: List alerts
+      summary: Broadcom List alerts
       description: Returns all alerts.
       operationId: listAlerts
       tags:
@@ -204,7 +204,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/AlertList'
     post:
-      summary: Create an alert
+      summary: Broadcom Create an alert
       description: Creates a new alert.
       operationId: createAlert
       tags:
@@ -224,7 +224,7 @@ paths:
                 $ref: '#/components/schemas/Alert'
   /alert/{id}:
     get:
-      summary: Get an alert
+      summary: Broadcom Get an alert
       description: Returns the specified alert.
       operationId: getAlert
       tags:
@@ -243,7 +243,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Alert'
     put:
-      summary: Update an alert
+      summary: Broadcom Update an alert
       description: Updates the specified alert.
       operationId: updateAlert
       tags:
@@ -264,7 +264,7 @@ paths:
         '200':
           description: Alert updated
     delete:
-      summary: Delete an alert
+      summary: Broadcom Delete an alert
       description: Deletes the specified alert.
       operationId: deleteAlert
       tags:
@@ -280,7 +280,7 @@ paths:
           description: Alert deleted
   /event:
     get:
-      summary: List events
+      summary: Broadcom List events
       description: Returns events matching the specified filters.
       operationId: listEvents
       tags:
@@ -308,7 +308,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/EventList'
     post:
-      summary: Create an event
+      summary: Broadcom Create an event
       description: Creates a new event.
       operationId: createEvent
       tags:
@@ -328,7 +328,7 @@ paths:
                 $ref: '#/components/schemas/Event'
   /source:
     get:
-      summary: List sources
+      summary: Broadcom List sources
       description: Returns all sources.
       operationId: listSources
       tags:
@@ -347,7 +347,7 @@ paths:
                 $ref: '#/components/schemas/SourceList'
   /source/{id}:
     get:
-      summary: Get a source
+      summary: Broadcom Get a source
       description: Returns the specified source.
       operationId: getSource
       tags:
@@ -367,7 +367,7 @@ paths:
                 $ref: '#/components/schemas/Source'
   /proxy:
     get:
-      summary: List proxies
+      summary: Broadcom List proxies
       description: Returns all registered proxies.
       operationId: listProxies
       tags:
@@ -381,7 +381,7 @@ paths:
                 $ref: '#/components/schemas/ProxyList'
   /proxy/{id}:
     get:
-      summary: Get a proxy
+      summary: Broadcom Get a proxy
       description: Returns details of the specified proxy.
       operationId: getProxy
       tags:
@@ -400,7 +400,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Proxy'
     delete:
-      summary: Delete a proxy
+      summary: Broadcom Delete a proxy
       description: Deletes the specified proxy.
       operationId: deleteProxy
       tags:
@@ -416,7 +416,7 @@ paths:
           description: Proxy deleted
   /api-token:
     get:
-      summary: List API tokens
+      summary: Broadcom List API tokens
       description: Returns all API tokens for the authenticated user.
       operationId: listApiTokens
       tags:
@@ -431,7 +431,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/ApiToken'
     post:
-      summary: Create an API token
+      summary: Broadcom Create an API token
       description: Creates a new API token for the authenticated user.
       operationId: createApiToken
       tags:
