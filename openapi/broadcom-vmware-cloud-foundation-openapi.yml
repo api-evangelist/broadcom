@@ -568,15 +568,15 @@ components:
 tags:
   - name: Authentication
     description: Token-based authentication
-  - name: Hosts
-    description: ESXi host management
   - name: Clusters
     description: Cluster management
-  - name: Workload Domains
-    description: Workload domain lifecycle management
+  - name: Hosts
+    description: ESXi host management
   - name: Network Pools
     description: Network pool management
   - name: Tasks
     description: Asynchronous task monitoring
   - name: Upgrades
     description: System upgrade management
+  - name: Workload Domains
+    description: Workload domain lifecycle management

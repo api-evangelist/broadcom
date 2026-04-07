@@ -5,11 +5,10 @@ apis:
   - aid: broadcom:vsphere-automation
     name: Broadcom vSphere Automation API
     tags:
-      - Virtualization
-      - Infrastructure
       - Data Center
-    humanURL: 
-      https://developer.broadcom.com/xapis/vsphere-automation-api/latest/
+      - Infrastructure
+      - Virtualization
+    humanURL: https://developer.broadcom.com/xapis/vsphere-automation-api/latest/
     properties:
       - url: https://developer.broadcom.com/xapis/vsphere-automation-api/latest/
         type: Documentation
@@ -31,14 +30,12 @@ apis:
   - aid: broadcom:operations-for-applications
     name: Broadcom Operations for Applications REST API
     tags:
-      - Observability
-      - Monitoring
       - Metrics
-    humanURL: 
-      https://developer.broadcom.com/xapis/operations-for-applications-rest-api/latest/
+      - Monitoring
+      - Observability
+    humanURL: https://developer.broadcom.com/xapis/operations-for-applications-rest-api/latest/
     properties:
-      - url: 
-          https://developer.broadcom.com/xapis/operations-for-applications-rest-api/latest/
+      - url: https://developer.broadcom.com/xapis/operations-for-applications-rest-api/latest/
         type: Documentation
       - url: openapi/broadcom-operations-for-applications-openapi.yml
         type: OpenAPI
@@ -57,9 +54,9 @@ apis:
   - aid: broadcom:vmware-cloud-foundation
     name: Broadcom VMware Cloud Foundation API
     tags:
-      - SDDC
       - Cloud Infrastructure
       - Data Center
+      - SDDC
     humanURL: https://developer.broadcom.com/xapis/sddc-manager-api/latest/
     properties:
       - url: https://developer.broadcom.com/xapis/sddc-manager-api/latest/
@@ -80,12 +77,12 @@ apis:
       and VCF management component deployments.
 name: Broadcom
 tags:
+  - Cloud Infrastructure
   - Gateways
   - Management
   - Networks
-  - Virtualization
   - Observability
-  - Cloud Infrastructure
+  - Virtualization
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 access: 3rd-Party

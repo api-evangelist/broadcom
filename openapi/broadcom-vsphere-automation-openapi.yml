@@ -556,19 +556,19 @@ components:
             type:
               type: string
 tags:
-  - name: Virtual Machines
-    description: Operations for managing virtual machines
-  - name: Hosts
-    description: Operations for managing ESXi hosts
   - name: Clusters
     description: Operations for managing clusters
+  - name: Content Library
+    description: Content library management
   - name: Datastores
     description: Operations for managing datastores
+  - name: Hosts
+    description: Operations for managing ESXi hosts
   - name: Networks
     description: Operations for managing networks
   - name: Session
     description: Session management operations
-  - name: Content Library
-    description: Content library management
   - name: Tagging
     description: Tag management and association operations
+  - name: Virtual Machines
+    description: Operations for managing virtual machines

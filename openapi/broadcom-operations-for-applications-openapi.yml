@@ -641,17 +641,17 @@ components:
           type: integer
           format: int64
 tags:
-  - name: Query
-    description: Query metrics data
-  - name: Dashboards
-    description: Dashboard management
   - name: Alerts
     description: Alert management
-  - name: Events
-    description: Event management
-  - name: Sources
-    description: Source management
-  - name: Proxies
-    description: Proxy management
   - name: API Tokens
     description: API token management
+  - name: Dashboards
+    description: Dashboard management
+  - name: Events
+    description: Event management
+  - name: Proxies
+    description: Proxy management
+  - name: Query
+    description: Query metrics data
+  - name: Sources
+    description: Source management
