@@ -1,0 +1,864 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Broadcom Operations for Applications REST API
+  description: The VMware Aria Operations for Applications REST API (formerly Tanzu Observability by Wavefront) enables programmatic
+    interaction with the observability service. It supports querying metrics, managing dashboards, alerts, events, sources,
+    user accounts, API tokens, and ingesting data directly. The API uses JSON payloads over HTTPS and supports both API token
+    and session-based authentication.
+  tags:
+  - Broadcom
+  - API
+  created: '2026-05-06'
+  modified: '2026-05-06'
+capability:
+  consumes:
+  - type: http
+    namespace: broadcom
+    baseUri: https://example.wavefront.com/api/v2
+    description: Broadcom Operations for Applications REST API HTTP API.
+    authentication:
+      type: bearer
+      token: '{{BROADCOM_TOKEN}}'
+    resources:
+    - name: query
+      path: /query
+      operations:
+      - name: querymetrics
+        method: GET
+        description: Broadcom Execute a query
+        inputParameters:
+        - name: q
+          in: query
+          type: string
+          required: true
+          description: The query expression
+        - name: s
+          in: query
+          type: string
+          required: true
+          description: Start time in epoch seconds or ms
+        - name: e
+          in: query
+          type: string
+          description: End time in epoch seconds or ms
+        - name: g
+          in: query
+          type: string
+          description: Granularity (s, m, h, d)
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: dashboard
+      path: /dashboard
+      operations:
+      - name: listdashboards
+        method: GET
+        description: Broadcom List dashboards
+        inputParameters:
+        - name: offset
+          in: query
+          type: integer
+        - name: limit
+          in: query
+          type: integer
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createdashboard
+        method: POST
+        description: Broadcom Create a dashboard
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: dashboard-id
+      path: /dashboard/{id}
+      operations:
+      - name: getdashboard
+        method: GET
+        description: Broadcom Get a dashboard
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updatedashboard
+        method: PUT
+        description: Broadcom Update a dashboard
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: deletedashboard
+        method: DELETE
+        description: Broadcom Delete a dashboard
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: alert
+      path: /alert
+      operations:
+      - name: listalerts
+        method: GET
+        description: Broadcom List alerts
+        inputParameters:
+        - name: offset
+          in: query
+          type: integer
+        - name: limit
+          in: query
+          type: integer
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createalert
+        method: POST
+        description: Broadcom Create an alert
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: alert-id
+      path: /alert/{id}
+      operations:
+      - name: getalert
+        method: GET
+        description: Broadcom Get an alert
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updatealert
+        method: PUT
+        description: Broadcom Update an alert
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: deletealert
+        method: DELETE
+        description: Broadcom Delete an alert
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: event
+      path: /event
+      operations:
+      - name: listevents
+        method: GET
+        description: Broadcom List events
+        inputParameters:
+        - name: earliestStartTimeEpochMillis
+          in: query
+          type: integer
+        - name: latestStartTimeEpochMillis
+          in: query
+          type: integer
+        - name: limit
+          in: query
+          type: integer
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createevent
+        method: POST
+        description: Broadcom Create an event
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: source
+      path: /source
+      operations:
+      - name: listsources
+        method: GET
+        description: Broadcom List sources
+        inputParameters:
+        - name: limit
+          in: query
+          type: integer
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: source-id
+      path: /source/{id}
+      operations:
+      - name: getsource
+        method: GET
+        description: Broadcom Get a source
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: proxy
+      path: /proxy
+      operations:
+      - name: listproxies
+        method: GET
+        description: Broadcom List proxies
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: proxy-id
+      path: /proxy/{id}
+      operations:
+      - name: getproxy
+        method: GET
+        description: Broadcom Get a proxy
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: deleteproxy
+        method: DELETE
+        description: Broadcom Delete a proxy
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-token
+      path: /api-token
+      operations:
+      - name: listapitokens
+        method: GET
+        description: Broadcom List API tokens
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createapitoken
+        method: POST
+        description: Broadcom Create an API token
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    port: 8080
+    namespace: broadcom-rest
+    description: REST adapter for Broadcom Operations for Applications REST API.
+    resources:
+    - path: /query
+      name: querymetrics
+      operations:
+      - method: GET
+        name: querymetrics
+        description: Broadcom Execute a query
+        call: broadcom.querymetrics
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /dashboard
+      name: listdashboards
+      operations:
+      - method: GET
+        name: listdashboards
+        description: Broadcom List dashboards
+        call: broadcom.listdashboards
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /dashboard
+      name: createdashboard
+      operations:
+      - method: POST
+        name: createdashboard
+        description: Broadcom Create a dashboard
+        call: broadcom.createdashboard
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /dashboard/{id}
+      name: getdashboard
+      operations:
+      - method: GET
+        name: getdashboard
+        description: Broadcom Get a dashboard
+        call: broadcom.getdashboard
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /dashboard/{id}
+      name: updatedashboard
+      operations:
+      - method: PUT
+        name: updatedashboard
+        description: Broadcom Update a dashboard
+        call: broadcom.updatedashboard
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /dashboard/{id}
+      name: deletedashboard
+      operations:
+      - method: DELETE
+        name: deletedashboard
+        description: Broadcom Delete a dashboard
+        call: broadcom.deletedashboard
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /alert
+      name: listalerts
+      operations:
+      - method: GET
+        name: listalerts
+        description: Broadcom List alerts
+        call: broadcom.listalerts
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /alert
+      name: createalert
+      operations:
+      - method: POST
+        name: createalert
+        description: Broadcom Create an alert
+        call: broadcom.createalert
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /alert/{id}
+      name: getalert
+      operations:
+      - method: GET
+        name: getalert
+        description: Broadcom Get an alert
+        call: broadcom.getalert
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /alert/{id}
+      name: updatealert
+      operations:
+      - method: PUT
+        name: updatealert
+        description: Broadcom Update an alert
+        call: broadcom.updatealert
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /alert/{id}
+      name: deletealert
+      operations:
+      - method: DELETE
+        name: deletealert
+        description: Broadcom Delete an alert
+        call: broadcom.deletealert
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /event
+      name: listevents
+      operations:
+      - method: GET
+        name: listevents
+        description: Broadcom List events
+        call: broadcom.listevents
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /event
+      name: createevent
+      operations:
+      - method: POST
+        name: createevent
+        description: Broadcom Create an event
+        call: broadcom.createevent
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /source
+      name: listsources
+      operations:
+      - method: GET
+        name: listsources
+        description: Broadcom List sources
+        call: broadcom.listsources
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /source/{id}
+      name: getsource
+      operations:
+      - method: GET
+        name: getsource
+        description: Broadcom Get a source
+        call: broadcom.getsource
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /proxy
+      name: listproxies
+      operations:
+      - method: GET
+        name: listproxies
+        description: Broadcom List proxies
+        call: broadcom.listproxies
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /proxy/{id}
+      name: getproxy
+      operations:
+      - method: GET
+        name: getproxy
+        description: Broadcom Get a proxy
+        call: broadcom.getproxy
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /proxy/{id}
+      name: deleteproxy
+      operations:
+      - method: DELETE
+        name: deleteproxy
+        description: Broadcom Delete a proxy
+        call: broadcom.deleteproxy
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /api-token
+      name: listapitokens
+      operations:
+      - method: GET
+        name: listapitokens
+        description: Broadcom List API tokens
+        call: broadcom.listapitokens
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /api-token
+      name: createapitoken
+      operations:
+      - method: POST
+        name: createapitoken
+        description: Broadcom Create an API token
+        call: broadcom.createapitoken
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    port: 9090
+    namespace: broadcom-mcp
+    transport: http
+    description: MCP adapter for Broadcom Operations for Applications REST API for AI agent use.
+    tools:
+    - name: querymetrics
+      description: Broadcom Execute a query
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: broadcom.querymetrics
+      with:
+        q: tools.q
+        s: tools.s
+        e: tools.e
+        g: tools.g
+      inputParameters:
+      - name: q
+        type: string
+        description: The query expression
+        required: true
+      - name: s
+        type: string
+        description: Start time in epoch seconds or ms
+        required: true
+      - name: e
+        type: string
+        description: End time in epoch seconds or ms
+      - name: g
+        type: string
+        description: Granularity (s, m, h, d)
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listdashboards
+      description: Broadcom List dashboards
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: broadcom.listdashboards
+      with:
+        offset: tools.offset
+        limit: tools.limit
+      inputParameters:
+      - name: offset
+        type: integer
+        description: offset
+      - name: limit
+        type: integer
+        description: limit
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createdashboard
+      description: Broadcom Create a dashboard
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: broadcom.createdashboard
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getdashboard
+      description: Broadcom Get a dashboard
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: broadcom.getdashboard
+      with:
+        id: tools.id
+      inputParameters:
+      - name: id
+        type: string
+        description: id
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: updatedashboard
+      description: Broadcom Update a dashboard
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: broadcom.updatedashboard
+      with:
+        id: tools.id
+      inputParameters:
+      - name: id
+        type: string
+        description: id
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deletedashboard
+      description: Broadcom Delete a dashboard
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: broadcom.deletedashboard
+      with:
+        id: tools.id
+      inputParameters:
+      - name: id
+        type: string
+        description: id
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listalerts
+      description: Broadcom List alerts
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: broadcom.listalerts
+      with:
+        offset: tools.offset
+        limit: tools.limit
+      inputParameters:
+      - name: offset
+        type: integer
+        description: offset
+      - name: limit
+        type: integer
+        description: limit
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createalert
+      description: Broadcom Create an alert
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: broadcom.createalert
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getalert
+      description: Broadcom Get an alert
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: broadcom.getalert
+      with:
+        id: tools.id
+      inputParameters:
+      - name: id
+        type: string
+        description: id
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: updatealert
+      description: Broadcom Update an alert
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: broadcom.updatealert
+      with:
+        id: tools.id
+      inputParameters:
+      - name: id
+        type: string
+        description: id
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deletealert
+      description: Broadcom Delete an alert
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: broadcom.deletealert
+      with:
+        id: tools.id
+      inputParameters:
+      - name: id
+        type: string
+        description: id
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listevents
+      description: Broadcom List events
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: broadcom.listevents
+      with:
+        earliestStartTimeEpochMillis: tools.earliestStartTimeEpochMillis
+        latestStartTimeEpochMillis: tools.latestStartTimeEpochMillis
+        limit: tools.limit
+      inputParameters:
+      - name: earliestStartTimeEpochMillis
+        type: integer
+        description: earliestStartTimeEpochMillis
+      - name: latestStartTimeEpochMillis
+        type: integer
+        description: latestStartTimeEpochMillis
+      - name: limit
+        type: integer
+        description: limit
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createevent
+      description: Broadcom Create an event
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: broadcom.createevent
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listsources
+      description: Broadcom List sources
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: broadcom.listsources
+      with:
+        limit: tools.limit
+      inputParameters:
+      - name: limit
+        type: integer
+        description: limit
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getsource
+      description: Broadcom Get a source
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: broadcom.getsource
+      with:
+        id: tools.id
+      inputParameters:
+      - name: id
+        type: string
+        description: id
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listproxies
+      description: Broadcom List proxies
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: broadcom.listproxies
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getproxy
+      description: Broadcom Get a proxy
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: broadcom.getproxy
+      with:
+        id: tools.id
+      inputParameters:
+      - name: id
+        type: string
+        description: id
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deleteproxy
+      description: Broadcom Delete a proxy
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: broadcom.deleteproxy
+      with:
+        id: tools.id
+      inputParameters:
+      - name: id
+        type: string
+        description: id
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listapitokens
+      description: Broadcom List API tokens
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: broadcom.listapitokens
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createapitoken
+      description: Broadcom Create an API token
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: broadcom.createapitoken
+      outputParameters:
+      - type: object
+        mapping: $.
+binds:
+- namespace: env
+  keys:
+    BROADCOM_TOKEN: BROADCOM_TOKEN
