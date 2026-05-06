@@ -1,5 +1,6 @@
 specification: FinOps Framework
 specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
 alignedWith:
   framework: FinOps Foundation Framework
   frameworkUrl: https://www.finops.org/framework/
@@ -8,142 +9,87 @@ alignedWith:
   dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
 provider: Broadcom
 providerId: broadcom
-publisherName: Broadcom
-serviceCategory: API
+publisherName: Broadcom Inc.
+serviceCategory: Enterprise Software & Infrastructure
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-05-05'
+reconciled: false
 tags:
   - Cloud Infrastructure
-  - Gateways
-  - Management
-  - Networks
-  - Observability
   - Virtualization
+  - Observability
+  - Mainframe
   - FinOps
-  - Cost Management
   - FOCUS
-description: FinOps framework definition for the Broadcom API surface. Provides a FOCUS-aligned mapping
-  for cost allocation, usage measurement, and unit-economics reporting across the provider's APIs.
-principles:
-  - name: Visibility
-    description: Make API consumption costs visible to engineering, product, and finance teams in near
-      real-time.
-  - name: Allocation
-    description: Tag every chargeable API call with the consuming team, environment, application, and
-      feature so cost can be allocated.
-  - name: Optimization
-    description: Continuously evaluate request patterns, caching, batching, and tier selection to reduce
-      cost per useful unit of work.
-  - name: Accountability
-    description: Establish budget owners and chargeback or showback flows for each consuming team.
-domains:
-  - name: Understand Usage and Cost
-    capabilities:
-      - Data Ingestion
-      - Allocation
-      - Reporting and Analytics
-      - Anomaly Management
-  - name: Quantify Business Value
-    capabilities:
-      - Planning and Estimating
-      - Forecasting
-      - Budgeting
-      - Benchmarking
-      - Unit Economics
-  - name: Optimize Usage and Cost
-    capabilities:
-      - Architecting for Cloud
-      - Rate Optimization
-      - Workload Optimization
-      - Cloud Sustainability
-      - Licensing and SaaS
-  - name: Manage the FinOps Practice
-    capabilities:
-      - FinOps Practice Operations
-      - FinOps Education and Enablement
-      - Invoicing and Chargeback
-      - Onboarding Workloads
-      - Intersecting Disciplines
+description: 'FOCUS-aligned FinOps for Broadcom: enterprise license agreements covering VMware Cloud
+  Foundation, vSphere, Aria Operations, Symantec, and Mainframe products. Pricing is core / CPU / socket
+  / seat based and contracted per agreement; APIs ship with the underlying product license rather than
+  being separately metered.'
+sources:
+  - https://developer.broadcom.com/
+  - https://www.broadcom.com/products/software
+notes: Broadcom is not metered per API call; cost is governed by the enterprise license agreement.
 billingModel:
-  pricingCategory: Usage-Based
-  billingFrequency: Monthly
+  pricingCategory: Enterprise License
+  billingFrequency: Annual
   billingCurrency: USD
   chargeCategories:
-    - Usage
     - Purchase
     - Tax
-    - Credit
     - Adjustment
-  chargeFrequency: Recurring
 focusColumns:
   ServiceName: Broadcom
-  ServiceCategory: Developer Tools / API
+  ServiceCategory: Enterprise Software
   ProviderName: Broadcom
-  PublisherName: Broadcom
-  InvoiceIssuerName: Broadcom
-  PricingCategory: Usage-Based
-  PricingUnit: request
+  PublisherName: Broadcom Inc.
+  InvoiceIssuerName: Broadcom Inc.
   BillingCurrency: USD
-  ChargeCategory: Usage
+  PricingCategory: Standard
+  PricingUnit: license-year
 meters:
-  - name: api_requests
-    description: Count of billable API requests
-    unit: request
-    aggregation: sum
+  - name: license_cores
+    description: Per-core licensing for VCF / vSphere subscription editions.
+    unit: core
+    aggregation: max
     dimensions:
-      - api
-      - endpoint
-      - tier
-      - region
-      - consumer
-  - name: data_egress
-    description: Bytes returned over the network in API responses
-    unit: GB
-    aggregation: sum
+      - product
+      - edition
+      - cluster
+  - name: license_hosts
+    description: Per-host licensing where applicable.
+    unit: host
+    aggregation: max
     dimensions:
-      - api
-      - region
-      - consumer
-  - name: compute_seconds
-    description: Server-side compute consumed by the request, where applicable
-    unit: second
-    aggregation: sum
+      - product
+      - cluster
+  - name: aria_operations_pps
+    description: Aria Operations for Applications metered by points-per-second / data-point ingestion.
+    unit: point-per-second
+    aggregation: max
     dimensions:
-      - api
-      - endpoint
-      - tier
-apis:
-  - name: Broadcom vSphere Automation API
-    baseURL: ''
-    tags:
-      - Data Center
-      - Infrastructure
-      - Virtualization
-    serviceName: Broadcom vSphere Automation API
-    serviceCategory: API
-  - name: Broadcom Operations for Applications REST API
-    baseURL: ''
-    tags:
-      - Metrics
-      - Monitoring
-      - Observability
-    serviceName: Broadcom Operations for Applications REST API
-    serviceCategory: API
-  - name: Broadcom VMware Cloud Foundation API
-    baseURL: ''
-    tags:
-      - Cloud Infrastructure
-      - Data Center
-      - SDDC
-    serviceName: Broadcom VMware Cloud Foundation API
-    serviceCategory: API
-unitEconomics:
-  - name: Cost per 1K Requests
-    metric: billed_cost / (api_requests / 1000)
-    target: TBD
-  - name: Cost per Active Consumer
-    metric: billed_cost / active_consumers
-    target: TBD
+      - tenant
+      - source
+  - name: support_subscription
+    description: Annual support subscription tied to the product license.
+    unit: year
+    aggregation: max
+    dimensions:
+      - product
+      - support_tier
+principles:
+  - name: Visibility
+    description: Pull license entitlements from the Broadcom Support Portal, ingestion / query usage
+      from Aria Operations dashboards, and reconcile against the contracted license counts and SaaS
+      ceilings.
+  - name: Allocation
+    description: Allocate VCF / vSphere license cost to hosting infrastructure cost centers; allocate
+      Aria Operations ingestion to the consuming application teams.
+  - name: Optimization
+    description: Right-size cluster core counts before renewal, retire idle observability sources to
+      lower points-per-second, consolidate SDDC instances, and time license true-ups with capacity reviews.
+  - name: Accountability
+    description: Designate a Broadcom license owner per product line; review entitlement vs deployed
+      usage on a quarterly cadence and forecast renewals against infrastructure roadmaps.
 maintainers:
   - FN: Kin Lane
     email: info@apievangelist.com

@@ -4,97 +4,54 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: Broadcom
 providerId: broadcom
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-05-05'
+reconciled: false
 tags:
   - Cloud Infrastructure
-  - Gateways
-  - Management
-  - Networks
-  - Observability
   - Virtualization
+  - Observability
   - Rate Limiting
-  - Quotas
-  - Throttling
-description: Machine-readable rate limit definitions for the Broadcom API surface. Captures per-tier quotas,
-  burst behavior, response signaling, and recovery semantics. Defaults are scaffold values to be replaced
-  with published provider limits.
-headers:
-  limit: X-RateLimit-Limit
-  remaining: X-RateLimit-Remaining
-  reset: X-RateLimit-Reset
-  retryAfter: Retry-After
-  policy: RateLimit-Policy
+description: Broadcom does not publish unified API rate limits across its software portfolio. Most management
+  APIs (vSphere Automation, VMware Cloud Foundation, Aria Operations for Applications) run within the
+  customer's own SDDC or SaaS instance, where capacity is bounded by the deployed infrastructure rather
+  than a vendor-imposed per-second cap. Aria Operations for Applications enforces ingestion and query
+  limits documented per-tenant. Consumers should consult the per-product reference for service-specific
+  limits.
+sources:
+  - https://developer.broadcom.com/
+notes: Per-product limits vary; not consolidated on a public page. Reconcile against the relevant product
+  documentation.
 responseCodes:
   throttled: 429
-  quotaExceeded: 429
   serviceUnavailable: 503
 limits:
-  - tier: free
-    name: Free Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 10
-    burst: 20
-    timeFrame: minute
-    applies:
-      - Broadcom vSphere Automation API
-      - Broadcom Operations for Applications REST API
-      - Broadcom VMware Cloud Foundation API
-  - tier: free
-    name: Free Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 1000
-    timeFrame: month
-    applies:
-      - Broadcom vSphere Automation API
-      - Broadcom Operations for Applications REST API
-      - Broadcom VMware Cloud Foundation API
-  - tier: professional
-    name: Professional Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 100
-    burst: 200
-    timeFrame: minute
-    applies:
-      - Broadcom vSphere Automation API
-      - Broadcom Operations for Applications REST API
-      - Broadcom VMware Cloud Foundation API
-  - tier: professional
-    name: Professional Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 100000
-    timeFrame: month
-    applies:
-      - Broadcom vSphere Automation API
-      - Broadcom Operations for Applications REST API
-      - Broadcom VMware Cloud Foundation API
-  - tier: enterprise
-    name: Enterprise Negotiated Limit
-    scope: contract
-    metric: requests_per_minute
-    limit: 1000
-    burst: 5000
-    timeFrame: minute
-    applies:
-      - Broadcom vSphere Automation API
-      - Broadcom Operations for Applications REST API
-      - Broadcom VMware Cloud Foundation API
+  - name: vSphere Automation API
+    scope: vCenter / SDDC instance
+    metric: varies
+    limit: 'bounded by customer-deployed infrastructure'
+    notes: API throughput is bounded by the customer's vCenter / VCF deployment, not a vendor cap.
+  - name: VMware Cloud Foundation (SDDC Manager) API
+    scope: SDDC Manager instance
+    metric: varies
+    limit: 'bounded by customer-deployed infrastructure'
+  - name: Aria Operations for Applications REST API
+    scope: tenant
+    metric: varies
+    limit: 'see tenant-specific documentation'
+    notes: Tanzu Observability / Wavefront enforces ingestion and query rate limits documented per-tenant.
 policies:
   - name: Backoff Strategy
-    description: Clients should implement exponential backoff with jitter, honoring the Retry-After header
-      when present.
-  - name: Burst Handling
-    description: Short bursts above the steady-state limit are tolerated up to the documented burst ceiling
-      before throttling engages.
-  - name: Quota Reset
-    description: Monthly quotas reset at the start of each calendar month in UTC. Per-minute and per-second
-      windows reset on a sliding-window basis.
-  - name: Fair Use
-    description: Even on uncapped enterprise tiers, sustained usage that materially impacts shared infrastructure
-      may be subject to fair-use throttling.
+    description: Apply exponential backoff with jitter on 429 / 503 responses; honor Retry-After when
+      present.
+  - name: Customer-Managed Capacity
+    description: For self-managed Broadcom products (vSphere, VCF), API capacity scales with the customer's
+      own deployment - sizing the management plane is part of capacity planning.
+  - name: SaaS Tenant Limits
+    description: For SaaS products (Aria Operations for Applications), ingestion and query limits are
+      tenant-specific and documented per service.
+  - name: Capacity Increase
+    description: Higher SaaS-tenant capacity is negotiated through Broadcom support / sales as part of
+      the license agreement.
 maintainers:
   - FN: Kin Lane
     email: info@apievangelist.com
