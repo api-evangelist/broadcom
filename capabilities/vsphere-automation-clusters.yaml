@@ -1,0 +1,80 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Broadcom vSphere Automation API — Clusters
+  description: 'Broadcom vSphere Automation API — Clusters. 1 operations. Lead operation: Broadcom List clusters. Self-contained
+    Naftiko capability covering one Broadcom business surface.'
+  tags:
+  - Broadcom
+  - Clusters
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    BROADCOM_API_KEY: BROADCOM_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: vsphere-automation-clusters
+    baseUri: https://{vcenter}/api
+    description: Broadcom vSphere Automation API — Clusters business capability. Self-contained, no shared references.
+    resources:
+    - name: vcenter-cluster
+      path: /vcenter/cluster
+      operations:
+      - name: listclusters
+        method: GET
+        description: Broadcom List clusters
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: filter.names
+          in: query
+          type: array
+    authentication:
+      type: apikey
+      key: vmware-api-session-id
+      value: '{{env.BROADCOM_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: vsphere-automation-clusters-rest
+    port: 8080
+    description: REST adapter for Broadcom vSphere Automation API — Clusters. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/vcenter/cluster
+      name: vcenter-cluster
+      description: REST surface for vcenter-cluster.
+      operations:
+      - method: GET
+        name: listclusters
+        description: Broadcom List clusters
+        call: vsphere-automation-clusters.listclusters
+        with:
+          filter.names: rest.filter.names
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: vsphere-automation-clusters-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Broadcom vSphere Automation API — Clusters. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: broadcom-list-clusters
+      description: Broadcom List clusters
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: vsphere-automation-clusters.listclusters
+      with:
+        filter.names: tools.filter.names
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,180 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Broadcom VMware Cloud Foundation API — Workload Domains
+  description: 'Broadcom VMware Cloud Foundation API — Workload Domains. 4 operations. Lead operation: Broadcom List workload
+    domains. Self-contained Naftiko capability covering one Broadcom business surface.'
+  tags:
+  - Broadcom
+  - Workload Domains
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    BROADCOM_API_KEY: BROADCOM_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: vmware-cloud-foundation-workload-domains
+    baseUri: https://{sddc-manager}/v1
+    description: Broadcom VMware Cloud Foundation API — Workload Domains business capability. Self-contained, no shared references.
+    resources:
+    - name: domains
+      path: /domains
+      operations:
+      - name: listdomains
+        method: GET
+        description: Broadcom List workload domains
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createdomain
+        method: POST
+        description: Broadcom Create a workload domain
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: domains-id
+      path: /domains/{id}
+      operations:
+      - name: getdomain
+        method: GET
+        description: Broadcom Get workload domain details
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+      - name: deletedomain
+        method: DELETE
+        description: Broadcom Delete a workload domain
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.BROADCOM_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: vmware-cloud-foundation-workload-domains-rest
+    port: 8080
+    description: REST adapter for Broadcom VMware Cloud Foundation API — Workload Domains. One Spectral-compliant resource
+      per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/domains
+      name: domains
+      description: REST surface for domains.
+      operations:
+      - method: GET
+        name: listdomains
+        description: Broadcom List workload domains
+        call: vmware-cloud-foundation-workload-domains.listdomains
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createdomain
+        description: Broadcom Create a workload domain
+        call: vmware-cloud-foundation-workload-domains.createdomain
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/domains/{id}
+      name: domains-id
+      description: REST surface for domains-id.
+      operations:
+      - method: GET
+        name: getdomain
+        description: Broadcom Get workload domain details
+        call: vmware-cloud-foundation-workload-domains.getdomain
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletedomain
+        description: Broadcom Delete a workload domain
+        call: vmware-cloud-foundation-workload-domains.deletedomain
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: vmware-cloud-foundation-workload-domains-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Broadcom VMware Cloud Foundation API — Workload Domains. One tool per consumed operation,
+      routed inline through this capability's consumes block.
+    tools:
+    - name: broadcom-list-workload-domains
+      description: Broadcom List workload domains
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: vmware-cloud-foundation-workload-domains.listdomains
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: broadcom-create-workload-domain
+      description: Broadcom Create a workload domain
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: vmware-cloud-foundation-workload-domains.createdomain
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: broadcom-get-workload-domain-details
+      description: Broadcom Get workload domain details
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: vmware-cloud-foundation-workload-domains.getdomain
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: broadcom-delete-workload-domain
+      description: Broadcom Delete a workload domain
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: vmware-cloud-foundation-workload-domains.deletedomain
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.

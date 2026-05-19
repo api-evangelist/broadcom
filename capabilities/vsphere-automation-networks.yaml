@@ -1,0 +1,72 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Broadcom vSphere Automation API — Networks
+  description: 'Broadcom vSphere Automation API — Networks. 1 operations. Lead operation: Broadcom List networks. Self-contained
+    Naftiko capability covering one Broadcom business surface.'
+  tags:
+  - Broadcom
+  - Networks
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    BROADCOM_API_KEY: BROADCOM_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: vsphere-automation-networks
+    baseUri: https://{vcenter}/api
+    description: Broadcom vSphere Automation API — Networks business capability. Self-contained, no shared references.
+    resources:
+    - name: vcenter-network
+      path: /vcenter/network
+      operations:
+      - name: listnetworks
+        method: GET
+        description: Broadcom List networks
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: apikey
+      key: vmware-api-session-id
+      value: '{{env.BROADCOM_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: vsphere-automation-networks-rest
+    port: 8080
+    description: REST adapter for Broadcom vSphere Automation API — Networks. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/vcenter/network
+      name: vcenter-network
+      description: REST surface for vcenter-network.
+      operations:
+      - method: GET
+        name: listnetworks
+        description: Broadcom List networks
+        call: vsphere-automation-networks.listnetworks
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: vsphere-automation-networks-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Broadcom vSphere Automation API — Networks. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: broadcom-list-networks
+      description: Broadcom List networks
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: vsphere-automation-networks.listnetworks
+      outputParameters:
+      - type: object
+        mapping: $.

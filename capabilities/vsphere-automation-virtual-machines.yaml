@@ -1,0 +1,328 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Broadcom vSphere Automation API — Virtual Machines
+  description: 'Broadcom vSphere Automation API — Virtual Machines. 7 operations. Lead operation: Broadcom List virtual machines.
+    Self-contained Naftiko capability covering one Broadcom business surface.'
+  tags:
+  - Broadcom
+  - Virtual Machines
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    BROADCOM_API_KEY: BROADCOM_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: vsphere-automation-virtual-machines
+    baseUri: https://{vcenter}/api
+    description: Broadcom vSphere Automation API — Virtual Machines business capability. Self-contained, no shared references.
+    resources:
+    - name: vcenter-vm
+      path: /vcenter/vm
+      operations:
+      - name: listvms
+        method: GET
+        description: Broadcom List virtual machines
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: filter.vms
+          in: query
+          type: array
+          description: Identifiers of virtual machines to filter
+        - name: filter.names
+          in: query
+          type: array
+          description: Names of virtual machines to filter
+        - name: filter.power_states
+          in: query
+          type: array
+          description: Power states to filter
+      - name: createvm
+        method: POST
+        description: Broadcom Create a virtual machine
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: vcenter-vm-vm
+      path: /vcenter/vm/{vm}
+      operations:
+      - name: getvm
+        method: GET
+        description: Broadcom Get virtual machine details
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: vm
+          in: path
+          type: string
+          description: Virtual machine identifier
+          required: true
+      - name: deletevm
+        method: DELETE
+        description: Broadcom Delete a virtual machine
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: vm
+          in: path
+          type: string
+          description: Virtual machine identifier
+          required: true
+    - name: vcenter-vm-vm-power
+      path: /vcenter/vm/{vm}/power
+      operations:
+      - name: getvmpowerstate
+        method: GET
+        description: Broadcom Get VM power state
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: vm
+          in: path
+          type: string
+          required: true
+    - name: vcenter-vm-vm-power?action=start
+      path: /vcenter/vm/{vm}/power?action=start
+      operations:
+      - name: poweronvm
+        method: POST
+        description: Broadcom Power on a virtual machine
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: vm
+          in: path
+          type: string
+          required: true
+    - name: vcenter-vm-vm-power?action=stop
+      path: /vcenter/vm/{vm}/power?action=stop
+      operations:
+      - name: poweroffvm
+        method: POST
+        description: Broadcom Power off a virtual machine
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: vm
+          in: path
+          type: string
+          required: true
+    authentication:
+      type: apikey
+      key: vmware-api-session-id
+      value: '{{env.BROADCOM_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: vsphere-automation-virtual-machines-rest
+    port: 8080
+    description: REST adapter for Broadcom vSphere Automation API — Virtual Machines. One Spectral-compliant resource per
+      consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/vcenter/vm
+      name: vcenter-vm
+      description: REST surface for vcenter-vm.
+      operations:
+      - method: GET
+        name: listvms
+        description: Broadcom List virtual machines
+        call: vsphere-automation-virtual-machines.listvms
+        with:
+          filter.vms: rest.filter.vms
+          filter.names: rest.filter.names
+          filter.power_states: rest.filter.power_states
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createvm
+        description: Broadcom Create a virtual machine
+        call: vsphere-automation-virtual-machines.createvm
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/vcenter/vm/{vm}
+      name: vcenter-vm-vm
+      description: REST surface for vcenter-vm-vm.
+      operations:
+      - method: GET
+        name: getvm
+        description: Broadcom Get virtual machine details
+        call: vsphere-automation-virtual-machines.getvm
+        with:
+          vm: rest.vm
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletevm
+        description: Broadcom Delete a virtual machine
+        call: vsphere-automation-virtual-machines.deletevm
+        with:
+          vm: rest.vm
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/vcenter/vm/{vm}/power
+      name: vcenter-vm-vm-power
+      description: REST surface for vcenter-vm-vm-power.
+      operations:
+      - method: GET
+        name: getvmpowerstate
+        description: Broadcom Get VM power state
+        call: vsphere-automation-virtual-machines.getvmpowerstate
+        with:
+          vm: rest.vm
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/vcenter/vm/{vm}/power-action-start
+      name: vcenter-vm-vm-power-action-start
+      description: REST surface for vcenter-vm-vm-power?action=start.
+      operations:
+      - method: POST
+        name: poweronvm
+        description: Broadcom Power on a virtual machine
+        call: vsphere-automation-virtual-machines.poweronvm
+        with:
+          vm: rest.vm
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/vcenter/vm/{vm}/power-action-stop
+      name: vcenter-vm-vm-power-action-stop
+      description: REST surface for vcenter-vm-vm-power?action=stop.
+      operations:
+      - method: POST
+        name: poweroffvm
+        description: Broadcom Power off a virtual machine
+        call: vsphere-automation-virtual-machines.poweroffvm
+        with:
+          vm: rest.vm
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: vsphere-automation-virtual-machines-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Broadcom vSphere Automation API — Virtual Machines. One tool per consumed operation, routed
+      inline through this capability's consumes block.
+    tools:
+    - name: broadcom-list-virtual-machines
+      description: Broadcom List virtual machines
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: vsphere-automation-virtual-machines.listvms
+      with:
+        filter.vms: tools.filter.vms
+        filter.names: tools.filter.names
+        filter.power_states: tools.filter.power_states
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: broadcom-create-virtual-machine
+      description: Broadcom Create a virtual machine
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: vsphere-automation-virtual-machines.createvm
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: broadcom-get-virtual-machine-details
+      description: Broadcom Get virtual machine details
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: vsphere-automation-virtual-machines.getvm
+      with:
+        vm: tools.vm
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: broadcom-delete-virtual-machine
+      description: Broadcom Delete a virtual machine
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: vsphere-automation-virtual-machines.deletevm
+      with:
+        vm: tools.vm
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: broadcom-get-vm-power-state
+      description: Broadcom Get VM power state
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: vsphere-automation-virtual-machines.getvmpowerstate
+      with:
+        vm: tools.vm
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: broadcom-power-virtual-machine
+      description: Broadcom Power on a virtual machine
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: vsphere-automation-virtual-machines.poweronvm
+      with:
+        vm: tools.vm
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: broadcom-power-off-virtual-machine
+      description: Broadcom Power off a virtual machine
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: vsphere-automation-virtual-machines.poweroffvm
+      with:
+        vm: tools.vm
+      outputParameters:
+      - type: object
+        mapping: $.

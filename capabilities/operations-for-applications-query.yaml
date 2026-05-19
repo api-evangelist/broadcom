@@ -1,0 +1,99 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Broadcom Operations for Applications REST API — Query
+  description: 'Broadcom Operations for Applications REST API — Query. 1 operations. Lead operation: Broadcom Execute a query.
+    Self-contained Naftiko capability covering one Broadcom business surface.'
+  tags:
+  - Broadcom
+  - Query
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    BROADCOM_API_KEY: BROADCOM_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: operations-for-applications-query
+    baseUri: https://{instance}.wavefront.com/api/v2
+    description: Broadcom Operations for Applications REST API — Query business capability. Self-contained, no shared references.
+    resources:
+    - name: query
+      path: /query
+      operations:
+      - name: querymetrics
+        method: GET
+        description: Broadcom Execute a query
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: q
+          in: query
+          type: string
+          description: The query expression
+          required: true
+        - name: s
+          in: query
+          type: string
+          description: Start time in epoch seconds or ms
+          required: true
+        - name: e
+          in: query
+          type: string
+          description: End time in epoch seconds or ms
+        - name: g
+          in: query
+          type: string
+          description: Granularity (s, m, h, d)
+    authentication:
+      type: bearer
+      token: '{{env.BROADCOM_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: operations-for-applications-query-rest
+    port: 8080
+    description: REST adapter for Broadcom Operations for Applications REST API — Query. One Spectral-compliant resource per
+      consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/query
+      name: query
+      description: REST surface for query.
+      operations:
+      - method: GET
+        name: querymetrics
+        description: Broadcom Execute a query
+        call: operations-for-applications-query.querymetrics
+        with:
+          q: rest.q
+          s: rest.s
+          e: rest.e
+          g: rest.g
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: operations-for-applications-query-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Broadcom Operations for Applications REST API — Query. One tool per consumed operation, routed
+      inline through this capability's consumes block.
+    tools:
+    - name: broadcom-execute-query
+      description: Broadcom Execute a query
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: operations-for-applications-query.querymetrics
+      with:
+        q: tools.q
+        s: tools.s
+        e: tools.e
+        g: tools.g
+      outputParameters:
+      - type: object
+        mapping: $.

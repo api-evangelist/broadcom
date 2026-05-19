@@ -1,0 +1,96 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Broadcom Operations for Applications REST API — API Tokens
+  description: 'Broadcom Operations for Applications REST API — API Tokens. 2 operations. Lead operation: Broadcom List API
+    tokens. Self-contained Naftiko capability covering one Broadcom business surface.'
+  tags:
+  - Broadcom
+  - API Tokens
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    BROADCOM_API_KEY: BROADCOM_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: operations-for-applications-api-tokens
+    baseUri: https://{instance}.wavefront.com/api/v2
+    description: Broadcom Operations for Applications REST API — API Tokens business capability. Self-contained, no shared
+      references.
+    resources:
+    - name: api-token
+      path: /api-token
+      operations:
+      - name: listapitokens
+        method: GET
+        description: Broadcom List API tokens
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createapitoken
+        method: POST
+        description: Broadcom Create an API token
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.BROADCOM_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: operations-for-applications-api-tokens-rest
+    port: 8080
+    description: REST adapter for Broadcom Operations for Applications REST API — API Tokens. One Spectral-compliant resource
+      per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/api-token
+      name: api-token
+      description: REST surface for api-token.
+      operations:
+      - method: GET
+        name: listapitokens
+        description: Broadcom List API tokens
+        call: operations-for-applications-api-tokens.listapitokens
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createapitoken
+        description: Broadcom Create an API token
+        call: operations-for-applications-api-tokens.createapitoken
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: operations-for-applications-api-tokens-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Broadcom Operations for Applications REST API — API Tokens. One tool per consumed operation,
+      routed inline through this capability's consumes block.
+    tools:
+    - name: broadcom-list-api-tokens
+      description: Broadcom List API tokens
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: operations-for-applications-api-tokens.listapitokens
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: broadcom-create-api-token
+      description: Broadcom Create an API token
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: operations-for-applications-api-tokens.createapitoken
+      outputParameters:
+      - type: object
+        mapping: $.

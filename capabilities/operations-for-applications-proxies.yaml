@@ -1,0 +1,145 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Broadcom Operations for Applications REST API — Proxies
+  description: 'Broadcom Operations for Applications REST API — Proxies. 3 operations. Lead operation: Broadcom List proxies.
+    Self-contained Naftiko capability covering one Broadcom business surface.'
+  tags:
+  - Broadcom
+  - Proxies
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    BROADCOM_API_KEY: BROADCOM_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: operations-for-applications-proxies
+    baseUri: https://{instance}.wavefront.com/api/v2
+    description: Broadcom Operations for Applications REST API — Proxies business capability. Self-contained, no shared references.
+    resources:
+    - name: proxy
+      path: /proxy
+      operations:
+      - name: listproxies
+        method: GET
+        description: Broadcom List proxies
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: proxy-id
+      path: /proxy/{id}
+      operations:
+      - name: getproxy
+        method: GET
+        description: Broadcom Get a proxy
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+      - name: deleteproxy
+        method: DELETE
+        description: Broadcom Delete a proxy
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.BROADCOM_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: operations-for-applications-proxies-rest
+    port: 8080
+    description: REST adapter for Broadcom Operations for Applications REST API — Proxies. One Spectral-compliant resource
+      per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/proxy
+      name: proxy
+      description: REST surface for proxy.
+      operations:
+      - method: GET
+        name: listproxies
+        description: Broadcom List proxies
+        call: operations-for-applications-proxies.listproxies
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/proxy/{id}
+      name: proxy-id
+      description: REST surface for proxy-id.
+      operations:
+      - method: GET
+        name: getproxy
+        description: Broadcom Get a proxy
+        call: operations-for-applications-proxies.getproxy
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteproxy
+        description: Broadcom Delete a proxy
+        call: operations-for-applications-proxies.deleteproxy
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: operations-for-applications-proxies-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Broadcom Operations for Applications REST API — Proxies. One tool per consumed operation,
+      routed inline through this capability's consumes block.
+    tools:
+    - name: broadcom-list-proxies
+      description: Broadcom List proxies
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: operations-for-applications-proxies.listproxies
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: broadcom-get-proxy
+      description: Broadcom Get a proxy
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: operations-for-applications-proxies.getproxy
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: broadcom-delete-proxy
+      description: Broadcom Delete a proxy
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: operations-for-applications-proxies.deleteproxy
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.

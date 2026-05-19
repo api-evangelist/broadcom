@@ -1,0 +1,85 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Broadcom vSphere Automation API — Datastores
+  description: 'Broadcom vSphere Automation API — Datastores. 1 operations. Lead operation: Broadcom List datastores. Self-contained
+    Naftiko capability covering one Broadcom business surface.'
+  tags:
+  - Broadcom
+  - Datastores
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    BROADCOM_API_KEY: BROADCOM_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: vsphere-automation-datastores
+    baseUri: https://{vcenter}/api
+    description: Broadcom vSphere Automation API — Datastores business capability. Self-contained, no shared references.
+    resources:
+    - name: vcenter-datastore
+      path: /vcenter/datastore
+      operations:
+      - name: listdatastores
+        method: GET
+        description: Broadcom List datastores
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: filter.names
+          in: query
+          type: array
+        - name: filter.types
+          in: query
+          type: array
+    authentication:
+      type: apikey
+      key: vmware-api-session-id
+      value: '{{env.BROADCOM_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: vsphere-automation-datastores-rest
+    port: 8080
+    description: REST adapter for Broadcom vSphere Automation API — Datastores. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/vcenter/datastore
+      name: vcenter-datastore
+      description: REST surface for vcenter-datastore.
+      operations:
+      - method: GET
+        name: listdatastores
+        description: Broadcom List datastores
+        call: vsphere-automation-datastores.listdatastores
+        with:
+          filter.names: rest.filter.names
+          filter.types: rest.filter.types
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: vsphere-automation-datastores-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Broadcom vSphere Automation API — Datastores. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: broadcom-list-datastores
+      description: Broadcom List datastores
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: vsphere-automation-datastores.listdatastores
+      with:
+        filter.names: tools.filter.names
+        filter.types: tools.filter.types
+      outputParameters:
+      - type: object
+        mapping: $.

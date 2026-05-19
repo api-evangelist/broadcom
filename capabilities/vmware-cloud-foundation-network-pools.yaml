@@ -1,0 +1,105 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Broadcom VMware Cloud Foundation API — Network Pools
+  description: 'Broadcom VMware Cloud Foundation API — Network Pools. 2 operations. Lead operation: Broadcom List network
+    pools. Self-contained Naftiko capability covering one Broadcom business surface.'
+  tags:
+  - Broadcom
+  - Network Pools
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    BROADCOM_API_KEY: BROADCOM_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: vmware-cloud-foundation-network-pools
+    baseUri: https://{sddc-manager}/v1
+    description: Broadcom VMware Cloud Foundation API — Network Pools business capability. Self-contained, no shared references.
+    resources:
+    - name: network-pools
+      path: /network-pools
+      operations:
+      - name: listnetworkpools
+        method: GET
+        description: Broadcom List network pools
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createnetworkpool
+        method: POST
+        description: Broadcom Create a network pool
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.BROADCOM_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: vmware-cloud-foundation-network-pools-rest
+    port: 8080
+    description: REST adapter for Broadcom VMware Cloud Foundation API — Network Pools. One Spectral-compliant resource per
+      consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/network-pools
+      name: network-pools
+      description: REST surface for network-pools.
+      operations:
+      - method: GET
+        name: listnetworkpools
+        description: Broadcom List network pools
+        call: vmware-cloud-foundation-network-pools.listnetworkpools
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createnetworkpool
+        description: Broadcom Create a network pool
+        call: vmware-cloud-foundation-network-pools.createnetworkpool
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: vmware-cloud-foundation-network-pools-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Broadcom VMware Cloud Foundation API — Network Pools. One tool per consumed operation, routed
+      inline through this capability's consumes block.
+    tools:
+    - name: broadcom-list-network-pools
+      description: Broadcom List network pools
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: vmware-cloud-foundation-network-pools.listnetworkpools
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: broadcom-create-network-pool
+      description: Broadcom Create a network pool
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: vmware-cloud-foundation-network-pools.createnetworkpool
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
