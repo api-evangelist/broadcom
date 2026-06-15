@@ -1,0 +1,1920 @@
+{
+  "item": [
+    {
+      "id": "e7b97bf3-63fa-4009-ad5b-a27553944305",
+      "name": "Authentication",
+      "description": {
+        "content": "Token-based authentication",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "570df4eb-87e4-4ced-8526-949ae7b51efd",
+          "name": "Broadcom Get access token",
+          "request": {
+            "name": "Broadcom Get access token",
+            "description": {
+              "content": "Generates an access token for API authentication.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "tokens"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "The hostname of the SDDC Manager",
+                  "type": "any",
+                  "value": "{{sddc-manager}}",
+                  "key": "sddc-manager"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"<string>\",\n  \"password\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0ca6808e-9f0f-4d25-aef5-b40441c8f877",
+              "name": "Token generated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tokens"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The hostname of the SDDC Manager",
+                      "type": "any",
+                      "value": "{{sddc-manager}}",
+                      "key": "sddc-manager"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"username\": \"<string>\",\n  \"password\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"accessToken\": \"string\",\n  \"tokenType\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "33b211f6-49c8-4b56-b39b-ccbdfb8aae41",
+              "name": "Invalid credentials",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tokens"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The hostname of the SDDC Manager",
+                      "type": "any",
+                      "value": "{{sddc-manager}}",
+                      "key": "sddc-manager"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"username\": \"<string>\",\n  \"password\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "70ea7166-5f02-46b0-800d-2fd5a6006120",
+      "name": "Clusters",
+      "description": {
+        "content": "Cluster management",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b398aa32-e20d-4fe0-a6e4-904d6174b8ec",
+          "name": "Broadcom List clusters",
+          "request": {
+            "name": "Broadcom List clusters",
+            "description": {
+              "content": "Returns all clusters.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "clusters"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "The hostname of the SDDC Manager",
+                  "type": "any",
+                  "value": "{{sddc-manager}}",
+                  "key": "sddc-manager"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d3d01a72-41f8-4f7c-b55a-c557768ea743",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "clusters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The hostname of the SDDC Manager",
+                      "type": "any",
+                      "value": "{{sddc-manager}}",
+                      "key": "sddc-manager"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"elements\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"primaryDatastoreType\": \"string\",\n      \"isDefault\": true,\n      \"isStretched\": true,\n      \"hosts\": [\n        {\n          \"id\": \"string\",\n          \"fqdn\": \"string\",\n          \"ipAddress\": \"string\",\n          \"status\": \"DECOMMISSIONED\",\n          \"domain\": {\n            \"id\": \"string\"\n          },\n          \"cluster\": {\n            \"id\": \"string\"\n          }\n        },\n        {\n          \"id\": \"string\",\n          \"fqdn\": \"string\",\n          \"ipAddress\": \"string\",\n          \"status\": \"DECOMMISSIONED\",\n          \"domain\": {\n            \"id\": \"string\"\n          },\n          \"cluster\": {\n            \"id\": \"string\"\n          }\n        }\n      ]\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"primaryDatastoreType\": \"string\",\n      \"isDefault\": true,\n      \"isStretched\": false,\n      \"hosts\": [\n        {\n          \"id\": \"string\",\n          \"fqdn\": \"string\",\n          \"ipAddress\": \"string\",\n          \"status\": \"ASSIGNED\",\n          \"domain\": {\n            \"id\": \"string\"\n          },\n          \"cluster\": {\n            \"id\": \"string\"\n          }\n        },\n        {\n          \"id\": \"string\",\n          \"fqdn\": \"string\",\n          \"ipAddress\": \"string\",\n          \"status\": \"ASSIGNED\",\n          \"domain\": {\n            \"id\": \"string\"\n          },\n          \"cluster\": {\n            \"id\": \"string\"\n          }\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "45453d23-5c15-4682-94a8-3379d0edbf57",
+          "name": "Broadcom Get cluster details",
+          "request": {
+            "name": "Broadcom Get cluster details",
+            "description": {
+              "content": "Returns details of the specified cluster.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "clusters",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "The hostname of the SDDC Manager",
+                  "type": "any",
+                  "value": "{{sddc-manager}}",
+                  "key": "sddc-manager"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "491dcfa5-c6f0-4d34-89e6-136c42d54b43",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "clusters",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "The hostname of the SDDC Manager",
+                      "type": "any",
+                      "value": "{{sddc-manager}}",
+                      "key": "sddc-manager"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"primaryDatastoreType\": \"string\",\n  \"isDefault\": true,\n  \"isStretched\": true,\n  \"hosts\": [\n    {\n      \"id\": \"string\",\n      \"fqdn\": \"string\",\n      \"ipAddress\": \"string\",\n      \"status\": \"DECOMMISSIONED\",\n      \"domain\": {\n        \"id\": \"string\"\n      },\n      \"cluster\": {\n        \"id\": \"string\"\n      }\n    },\n    {\n      \"id\": \"string\",\n      \"fqdn\": \"string\",\n      \"ipAddress\": \"string\",\n      \"status\": \"ASSIGNED\",\n      \"domain\": {\n        \"id\": \"string\"\n      },\n      \"cluster\": {\n        \"id\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8b05499f-6201-4572-88b4-a1a889c27a22",
+          "name": "Broadcom Update a cluster",
+          "request": {
+            "name": "Broadcom Update a cluster",
+            "description": {
+              "content": "Updates the specified cluster configuration, such as expanding or shrinking.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "clusters",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "The hostname of the SDDC Manager",
+                  "type": "any",
+                  "value": "{{sddc-manager}}",
+                  "key": "sddc-manager"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"hostSpecs\": [\n    {\n      \"fqdn\": \"<string>\",\n      \"username\": \"<string>\",\n      \"password\": \"<string>\",\n      \"networkPoolId\": \"<string>\",\n      \"storageType\": \"<string>\"\n    },\n    {\n      \"fqdn\": \"<string>\",\n      \"username\": \"<string>\",\n      \"password\": \"<string>\",\n      \"networkPoolId\": \"<string>\",\n      \"storageType\": \"<string>\"\n    }\n  ],\n  \"clusterExpansionSpec\": \"<object>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0bd56d78-1668-4edc-9164-f358b8575a92",
+              "name": "Cluster update started",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "clusters",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "The hostname of the SDDC Manager",
+                      "type": "any",
+                      "value": "{{sddc-manager}}",
+                      "key": "sddc-manager"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"hostSpecs\": [\n    {\n      \"fqdn\": \"string\",\n      \"username\": \"string\",\n      \"password\": \"string\",\n      \"networkPoolId\": \"string\",\n      \"storageType\": \"VMFS_FC\"\n    },\n    {\n      \"fqdn\": \"string\",\n      \"username\": \"string\",\n      \"password\": \"string\",\n      \"networkPoolId\": \"string\",\n      \"storageType\": \"VMFS_FC\"\n    }\n  ],\n  \"clusterExpansionSpec\": \"<object>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"status\": \"CANCELLED\",\n  \"type\": \"string\",\n  \"creationTimestamp\": \"2001-05-31T21:47:37.996Z\",\n  \"completionTimestamp\": \"1978-01-06T15:28:40.689Z\",\n  \"errors\": [\n    {\n      \"message\": \"string\"\n    },\n    {\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "2c3a66ee-8346-407e-9c53-0c69733e8edf",
+      "name": "Hosts",
+      "description": {
+        "content": "ESXi host management",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1b9d4800-8bf2-46f2-bd36-4e607a41cd36",
+          "name": "Broadcom List hosts",
+          "request": {
+            "name": "Broadcom List hosts",
+            "description": {
+              "content": "Returns all commissioned hosts.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "hosts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "The hostname of the SDDC Manager",
+                  "type": "any",
+                  "value": "{{sddc-manager}}",
+                  "key": "sddc-manager"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a142e632-5a56-4a65-a5d1-03bf5c10605e",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hosts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The hostname of the SDDC Manager",
+                      "type": "any",
+                      "value": "{{sddc-manager}}",
+                      "key": "sddc-manager"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"elements\": [\n    {\n      \"id\": \"string\",\n      \"fqdn\": \"string\",\n      \"ipAddress\": \"string\",\n      \"status\": \"ASSIGNED\",\n      \"domain\": {\n        \"id\": \"string\"\n      },\n      \"cluster\": {\n        \"id\": \"string\"\n      }\n    },\n    {\n      \"id\": \"string\",\n      \"fqdn\": \"string\",\n      \"ipAddress\": \"string\",\n      \"status\": \"UNASSIGNED\",\n      \"domain\": {\n        \"id\": \"string\"\n      },\n      \"cluster\": {\n        \"id\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "234d9da9-92c5-4f2f-b9ad-eede3546d146",
+          "name": "Broadcom Commission hosts",
+          "request": {
+            "name": "Broadcom Commission hosts",
+            "description": {
+              "content": "Commissions one or more hosts for use in VCF.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "hosts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "The hostname of the SDDC Manager",
+                  "type": "any",
+                  "value": "{{sddc-manager}}",
+                  "key": "sddc-manager"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  {\n    \"fqdn\": \"<string>\",\n    \"username\": \"<string>\",\n    \"password\": \"<string>\",\n    \"networkPoolId\": \"<string>\",\n    \"storageType\": \"<string>\"\n  },\n  {\n    \"fqdn\": \"<string>\",\n    \"username\": \"<string>\",\n    \"password\": \"<string>\",\n    \"networkPoolId\": \"<string>\",\n    \"storageType\": \"<string>\"\n  }\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0f4f36cb-a8cc-4b6d-8126-f9fabac05d98",
+              "name": "Host commissioning started",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hosts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The hostname of the SDDC Manager",
+                      "type": "any",
+                      "value": "{{sddc-manager}}",
+                      "key": "sddc-manager"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"fqdn\": \"string\",\n    \"username\": \"string\",\n    \"password\": \"string\",\n    \"networkPoolId\": \"string\",\n    \"storageType\": \"NFS\"\n  },\n  {\n    \"fqdn\": \"string\",\n    \"username\": \"string\",\n    \"password\": \"string\",\n    \"networkPoolId\": \"string\",\n    \"storageType\": \"VSAN\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"status\": \"CANCELLED\",\n  \"type\": \"string\",\n  \"creationTimestamp\": \"2001-05-31T21:47:37.996Z\",\n  \"completionTimestamp\": \"1978-01-06T15:28:40.689Z\",\n  \"errors\": [\n    {\n      \"message\": \"string\"\n    },\n    {\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e50a2dfb-e51d-43d1-8c19-823cb1578dbf",
+          "name": "Broadcom Get host details",
+          "request": {
+            "name": "Broadcom Get host details",
+            "description": {
+              "content": "Returns details of the specified host.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "hosts",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "The hostname of the SDDC Manager",
+                  "type": "any",
+                  "value": "{{sddc-manager}}",
+                  "key": "sddc-manager"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d83ef02a-3f34-402c-ae40-1a229a1e2d74",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hosts",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "The hostname of the SDDC Manager",
+                      "type": "any",
+                      "value": "{{sddc-manager}}",
+                      "key": "sddc-manager"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"fqdn\": \"string\",\n  \"ipAddress\": \"string\",\n  \"status\": \"DECOMMISSIONED\",\n  \"domain\": {\n    \"id\": \"string\"\n  },\n  \"cluster\": {\n    \"id\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e1c787b6-deab-479f-8f6b-3bbe575aa95b",
+              "name": "Host not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hosts",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "The hostname of the SDDC Manager",
+                      "type": "any",
+                      "value": "{{sddc-manager}}",
+                      "key": "sddc-manager"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "bb015508-c9d7-43dd-90a8-c041aa234aec",
+      "name": "Network Pools",
+      "description": {
+        "content": "Network pool management",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4afa2fef-0cea-4c99-978a-b998ff998d7e",
+          "name": "Broadcom List network pools",
+          "request": {
+            "name": "Broadcom List network pools",
+            "description": {
+              "content": "Returns all network pools.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "network-pools"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "The hostname of the SDDC Manager",
+                  "type": "any",
+                  "value": "{{sddc-manager}}",
+                  "key": "sddc-manager"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "715fbcca-a735-47a9-be64-3efa51b3e0ab",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "network-pools"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The hostname of the SDDC Manager",
+                      "type": "any",
+                      "value": "{{sddc-manager}}",
+                      "key": "sddc-manager"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"elements\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"networks\": [\n        {\n          \"type\": \"string\",\n          \"vlanId\": 2711,\n          \"subnet\": \"string\",\n          \"gateway\": \"string\"\n        },\n        {\n          \"type\": \"string\",\n          \"vlanId\": 3754,\n          \"subnet\": \"string\",\n          \"gateway\": \"string\"\n        }\n      ]\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"networks\": [\n        {\n          \"type\": \"string\",\n          \"vlanId\": 5971,\n          \"subnet\": \"string\",\n          \"gateway\": \"string\"\n        },\n        {\n          \"type\": \"string\",\n          \"vlanId\": 3790,\n          \"subnet\": \"string\",\n          \"gateway\": \"string\"\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "37693c19-e9ed-43f0-94ec-b89cb1361578",
+          "name": "Broadcom Create a network pool",
+          "request": {
+            "name": "Broadcom Create a network pool",
+            "description": {
+              "content": "Creates a new network pool.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "network-pools"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "The hostname of the SDDC Manager",
+                  "type": "any",
+                  "value": "{{sddc-manager}}",
+                  "key": "sddc-manager"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"networks\": [\n    {\n      \"type\": \"<string>\",\n      \"vlanId\": \"<integer>\",\n      \"subnet\": \"<string>\",\n      \"gateway\": \"<string>\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"vlanId\": \"<integer>\",\n      \"subnet\": \"<string>\",\n      \"gateway\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8bb26a02-a58a-4d09-bcfa-9462b1694010",
+              "name": "Network pool created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "network-pools"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The hostname of the SDDC Manager",
+                      "type": "any",
+                      "value": "{{sddc-manager}}",
+                      "key": "sddc-manager"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"networks\": [\n    {\n      \"type\": \"<string>\",\n      \"vlanId\": \"<integer>\",\n      \"subnet\": \"<string>\",\n      \"gateway\": \"<string>\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"vlanId\": \"<integer>\",\n      \"subnet\": \"<string>\",\n      \"gateway\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"networks\": [\n    {\n      \"type\": \"string\",\n      \"vlanId\": 3170,\n      \"subnet\": \"string\",\n      \"gateway\": \"string\"\n    },\n    {\n      \"type\": \"string\",\n      \"vlanId\": 5911,\n      \"subnet\": \"string\",\n      \"gateway\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "636f2093-4bfb-4700-8f8c-7c765e9246d5",
+      "name": "Tasks",
+      "description": {
+        "content": "Asynchronous task monitoring",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b3e1c5c7-7acd-4922-b219-ad697d7f6fbd",
+          "name": "Broadcom List tasks",
+          "request": {
+            "name": "Broadcom List tasks",
+            "description": {
+              "content": "Returns all tasks.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "tasks"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "The hostname of the SDDC Manager",
+                  "type": "any",
+                  "value": "{{sddc-manager}}",
+                  "key": "sddc-manager"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "779194fe-1aa9-487a-8af9-68cdf37e5abf",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tasks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The hostname of the SDDC Manager",
+                      "type": "any",
+                      "value": "{{sddc-manager}}",
+                      "key": "sddc-manager"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"elements\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"status\": \"FAILED\",\n      \"type\": \"string\",\n      \"creationTimestamp\": \"1949-08-06T05:46:36.604Z\",\n      \"completionTimestamp\": \"1982-09-28T04:37:57.460Z\",\n      \"errors\": [\n        {\n          \"message\": \"string\"\n        },\n        {\n          \"message\": \"string\"\n        }\n      ]\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"status\": \"SUCCESSFUL\",\n      \"type\": \"string\",\n      \"creationTimestamp\": \"2013-06-06T05:28:35.136Z\",\n      \"completionTimestamp\": \"1952-04-07T00:29:37.169Z\",\n      \"errors\": [\n        {\n          \"message\": \"string\"\n        },\n        {\n          \"message\": \"string\"\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "73c38e4f-f5ba-41f7-9af9-ba0b118d968f",
+          "name": "Broadcom Get task details",
+          "request": {
+            "name": "Broadcom Get task details",
+            "description": {
+              "content": "Returns details of the specified task.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "tasks",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "The hostname of the SDDC Manager",
+                  "type": "any",
+                  "value": "{{sddc-manager}}",
+                  "key": "sddc-manager"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e4c8cc87-c48f-4037-bb41-f4df295ab76d",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tasks",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "The hostname of the SDDC Manager",
+                      "type": "any",
+                      "value": "{{sddc-manager}}",
+                      "key": "sddc-manager"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"status\": \"CANCELLED\",\n  \"type\": \"string\",\n  \"creationTimestamp\": \"2001-05-31T21:47:37.996Z\",\n  \"completionTimestamp\": \"1978-01-06T15:28:40.689Z\",\n  \"errors\": [\n    {\n      \"message\": \"string\"\n    },\n    {\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "1994665d-3d99-45eb-83f2-6287adf19823",
+      "name": "Upgrades",
+      "description": {
+        "content": "System upgrade management",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "fb967ead-88a8-4447-8d02-44493a4a754e",
+          "name": "Broadcom List available upgrades",
+          "request": {
+            "name": "Broadcom List available upgrades",
+            "description": {
+              "content": "Returns all available upgrades for the VCF system.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "upgrades"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "The hostname of the SDDC Manager",
+                  "type": "any",
+                  "value": "{{sddc-manager}}",
+                  "key": "sddc-manager"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1afff28b-478d-480f-a3c2-be3a6e5391ad",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "upgrades"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The hostname of the SDDC Manager",
+                      "type": "any",
+                      "value": "{{sddc-manager}}",
+                      "key": "sddc-manager"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"elements\": [\n    {\n      \"id\": \"string\",\n      \"description\": \"string\",\n      \"status\": \"string\",\n      \"releaseVersion\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"description\": \"string\",\n      \"status\": \"string\",\n      \"releaseVersion\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "c998bc4c-67a7-4ea1-bf7f-bc4bb543f60e",
+      "name": "Workload Domains",
+      "description": {
+        "content": "Workload domain lifecycle management",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "86c797fd-26a9-43a6-984d-5e3e30afd0c1",
+          "name": "Broadcom List workload domains",
+          "request": {
+            "name": "Broadcom List workload domains",
+            "description": {
+              "content": "Returns all workload domains.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "domains"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "The hostname of the SDDC Manager",
+                  "type": "any",
+                  "value": "{{sddc-manager}}",
+                  "key": "sddc-manager"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4cefde35-e05e-4171-b024-bae4bdf60aa3",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "domains"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The hostname of the SDDC Manager",
+                      "type": "any",
+                      "value": "{{sddc-manager}}",
+                      "key": "sddc-manager"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"elements\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"VI\",\n      \"status\": \"string\",\n      \"clusters\": [\n        {\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"primaryDatastoreType\": \"string\",\n          \"isDefault\": false,\n          \"isStretched\": true,\n          \"hosts\": [\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"fqdn\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"ipAddress\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"status\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"domain\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"cluster\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"fqdn\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"ipAddress\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"status\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"domain\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"cluster\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        {\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"primaryDatastoreType\": \"string\",\n          \"isDefault\": false,\n          \"isStretched\": false,\n          \"hosts\": [\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"fqdn\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"ipAddress\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"status\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"domain\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"cluster\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"fqdn\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"ipAddress\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"status\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"domain\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"cluster\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"VI\",\n      \"status\": \"string\",\n      \"clusters\": [\n        {\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"primaryDatastoreType\": \"string\",\n          \"isDefault\": false,\n          \"isStretched\": false,\n          \"hosts\": [\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"fqdn\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"ipAddress\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"status\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"domain\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"cluster\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"fqdn\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"ipAddress\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"status\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"domain\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"cluster\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        {\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"primaryDatastoreType\": \"string\",\n          \"isDefault\": true,\n          \"isStretched\": true,\n          \"hosts\": [\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"fqdn\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"ipAddress\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"status\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"domain\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"cluster\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"fqdn\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"ipAddress\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"status\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"domain\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"cluster\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a3f4357c-459a-4df7-beb7-6990d65f58ac",
+          "name": "Broadcom Create a workload domain",
+          "request": {
+            "name": "Broadcom Create a workload domain",
+            "description": {
+              "content": "Creates a new workload domain.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "domains"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "The hostname of the SDDC Manager",
+                  "type": "any",
+                  "value": "{{sddc-manager}}",
+                  "key": "sddc-manager"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"domainName\": \"<string>\",\n  \"vcenterSpec\": \"<object>\",\n  \"computeSpec\": \"<object>\",\n  \"nsxTSpec\": \"<object>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c27fb0d3-b65c-4a37-859c-d68c60a2a0f8",
+              "name": "Domain creation started",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "domains"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The hostname of the SDDC Manager",
+                      "type": "any",
+                      "value": "{{sddc-manager}}",
+                      "key": "sddc-manager"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"domainName\": \"<string>\",\n  \"vcenterSpec\": \"<object>\",\n  \"computeSpec\": \"<object>\",\n  \"nsxTSpec\": \"<object>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"status\": \"CANCELLED\",\n  \"type\": \"string\",\n  \"creationTimestamp\": \"2001-05-31T21:47:37.996Z\",\n  \"completionTimestamp\": \"1978-01-06T15:28:40.689Z\",\n  \"errors\": [\n    {\n      \"message\": \"string\"\n    },\n    {\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f4e5a4fa-66a7-48ed-acf7-2a219af87eb9",
+          "name": "Broadcom Get workload domain details",
+          "request": {
+            "name": "Broadcom Get workload domain details",
+            "description": {
+              "content": "Returns details of the specified workload domain.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "domains",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "The hostname of the SDDC Manager",
+                  "type": "any",
+                  "value": "{{sddc-manager}}",
+                  "key": "sddc-manager"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "42b12e93-7b29-4440-a1fa-e9fdd23d2ae8",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "domains",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "The hostname of the SDDC Manager",
+                      "type": "any",
+                      "value": "{{sddc-manager}}",
+                      "key": "sddc-manager"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"type\": \"VI\",\n  \"status\": \"string\",\n  \"clusters\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"primaryDatastoreType\": \"string\",\n      \"isDefault\": true,\n      \"isStretched\": false,\n      \"hosts\": [\n        {\n          \"id\": \"string\",\n          \"fqdn\": \"string\",\n          \"ipAddress\": \"string\",\n          \"status\": \"DECOMMISSIONED\",\n          \"domain\": {\n            \"id\": \"string\"\n          },\n          \"cluster\": {\n            \"id\": \"string\"\n          }\n        },\n        {\n          \"id\": \"string\",\n          \"fqdn\": \"string\",\n          \"ipAddress\": \"string\",\n          \"status\": \"DECOMMISSIONED\",\n          \"domain\": {\n            \"id\": \"string\"\n          },\n          \"cluster\": {\n            \"id\": \"string\"\n          }\n        }\n      ]\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"primaryDatastoreType\": \"string\",\n      \"isDefault\": true,\n      \"isStretched\": false,\n      \"hosts\": [\n        {\n          \"id\": \"string\",\n          \"fqdn\": \"string\",\n          \"ipAddress\": \"string\",\n          \"status\": \"UNASSIGNED\",\n          \"domain\": {\n            \"id\": \"string\"\n          },\n          \"cluster\": {\n            \"id\": \"string\"\n          }\n        },\n        {\n          \"id\": \"string\",\n          \"fqdn\": \"string\",\n          \"ipAddress\": \"string\",\n          \"status\": \"DECOMMISSIONED\",\n          \"domain\": {\n            \"id\": \"string\"\n          },\n          \"cluster\": {\n            \"id\": \"string\"\n          }\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "540cab92-9198-40f8-a33a-ea7c88c9973a",
+          "name": "Broadcom Delete a workload domain",
+          "request": {
+            "name": "Broadcom Delete a workload domain",
+            "description": {
+              "content": "Deletes the specified workload domain.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "domains",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "The hostname of the SDDC Manager",
+                  "type": "any",
+                  "value": "{{sddc-manager}}",
+                  "key": "sddc-manager"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4f0fc2f4-00bc-4cae-a1e7-1c2fd13b44f3",
+              "name": "Domain deletion started",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "domains",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "The hostname of the SDDC Manager",
+                      "type": "any",
+                      "value": "{{sddc-manager}}",
+                      "key": "sddc-manager"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"status\": \"CANCELLED\",\n  \"type\": \"string\",\n  \"creationTimestamp\": \"2001-05-31T21:47:37.996Z\",\n  \"completionTimestamp\": \"1978-01-06T15:28:40.689Z\",\n  \"errors\": [\n    {\n      \"message\": \"string\"\n    },\n    {\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "The hostname of the SDDC Manager",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "sddc-manager.example.com",
+      "key": "sddc-manager"
+    },
+    {
+      "type": "string",
+      "value": "https://{{sddc-manager}}/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "b2c24074-5dd0-4607-92d0-a2860cf4daa9",
+    "name": "Broadcom VMware Cloud Foundation API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The VMware Cloud Foundation API provides RESTful endpoints for managing SDDC (Software-Defined Data Center) infrastructure through the SDDC Manager. It enables automation of host commissioning, cluster management, workload domain lifecycle, network pool configuration, task monitoring, and VCF management component deployments. The API supports both Basic and Bearer token authentication over HTTPS with JSON payloads.\n\nContact Support:\n Name: Broadcom Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

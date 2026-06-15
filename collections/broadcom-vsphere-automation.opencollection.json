@@ -1,0 +1,348 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Broadcom vSphere Automation API",
+    "version": "8.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "vmware-api-session-id",
+      "value": "{{vmware-api-session-id}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Virtual Machines",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Broadcom List virtual machines",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{vcenter}/api/vcenter/vm",
+            "params": [
+              {
+                "name": "filter.vms",
+                "value": "",
+                "type": "query",
+                "description": "Identifiers of virtual machines to filter"
+              },
+              {
+                "name": "filter.names",
+                "value": "",
+                "type": "query",
+                "description": "Names of virtual machines to filter"
+              },
+              {
+                "name": "filter.power_states",
+                "value": "",
+                "type": "query",
+                "description": "Power states to filter"
+              }
+            ]
+          },
+          "docs": "Returns information about all virtual machines matching the specified filters."
+        },
+        {
+          "info": {
+            "name": "Broadcom Create a virtual machine",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{vcenter}/api/vcenter/vm",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a virtual machine with the specified configuration."
+        },
+        {
+          "info": {
+            "name": "Broadcom Get virtual machine details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{vcenter}/api/vcenter/vm/:vm",
+            "params": [
+              {
+                "name": "vm",
+                "value": "",
+                "type": "path",
+                "description": "Virtual machine identifier"
+              }
+            ]
+          },
+          "docs": "Returns detailed information about the specified virtual machine."
+        },
+        {
+          "info": {
+            "name": "Broadcom Delete a virtual machine",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{vcenter}/api/vcenter/vm/:vm",
+            "params": [
+              {
+                "name": "vm",
+                "value": "",
+                "type": "path",
+                "description": "Virtual machine identifier"
+              }
+            ]
+          },
+          "docs": "Deletes the specified virtual machine."
+        },
+        {
+          "info": {
+            "name": "Broadcom Get VM power state",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{vcenter}/api/vcenter/vm/:vm/power",
+            "params": [
+              {
+                "name": "vm",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns the power state of the specified virtual machine."
+        },
+        {
+          "info": {
+            "name": "Broadcom Power on a virtual machine",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{vcenter}/api/vcenter/vm/:vm/power?action=start",
+            "params": [
+              {
+                "name": "vm",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Powers on the specified virtual machine."
+        },
+        {
+          "info": {
+            "name": "Broadcom Power off a virtual machine",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{vcenter}/api/vcenter/vm/:vm/power?action=stop",
+            "params": [
+              {
+                "name": "vm",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Powers off the specified virtual machine."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Hosts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Broadcom List hosts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{vcenter}/api/vcenter/host",
+            "params": [
+              {
+                "name": "filter.names",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter.connection_states",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns information about hosts in the vCenter Server."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Clusters",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Broadcom List clusters",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{vcenter}/api/vcenter/cluster",
+            "params": [
+              {
+                "name": "filter.names",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns information about clusters in the vCenter Server."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Datastores",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Broadcom List datastores",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{vcenter}/api/vcenter/datastore",
+            "params": [
+              {
+                "name": "filter.names",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter.types",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns information about datastores in the vCenter Server."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Networks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Broadcom List networks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{vcenter}/api/vcenter/network"
+          },
+          "docs": "Returns information about networks in the vCenter Server."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Session",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Broadcom Create a session",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{vcenter}/api/cis/session",
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Creates a session with the API using username and password credentials."
+        },
+        {
+          "info": {
+            "name": "Broadcom Delete a session",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{vcenter}/api/cis/session"
+          },
+          "docs": "Terminates the current session."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Content Library",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Broadcom List content libraries",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{vcenter}/api/content/library"
+          },
+          "docs": "Returns the identifiers of all content libraries in the system."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Tagging",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Broadcom Attach tag to object",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{vcenter}/api/vcenter/tag/association",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Attaches a tag to an object."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

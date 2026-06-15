@@ -1,0 +1,322 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Broadcom VMware Cloud Foundation API",
+    "version": "9.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Authentication",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Broadcom Get access token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{sddc-manager}/v1/tokens",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Generates an access token for API authentication."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Hosts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Broadcom List hosts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{sddc-manager}/v1/hosts"
+          },
+          "docs": "Returns all commissioned hosts."
+        },
+        {
+          "info": {
+            "name": "Broadcom Commission hosts",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{sddc-manager}/v1/hosts",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Commissions one or more hosts for use in VCF."
+        },
+        {
+          "info": {
+            "name": "Broadcom Get host details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{sddc-manager}/v1/hosts/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns details of the specified host."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Clusters",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Broadcom List clusters",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{sddc-manager}/v1/clusters"
+          },
+          "docs": "Returns all clusters."
+        },
+        {
+          "info": {
+            "name": "Broadcom Get cluster details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{sddc-manager}/v1/clusters/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns details of the specified cluster."
+        },
+        {
+          "info": {
+            "name": "Broadcom Update a cluster",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{sddc-manager}/v1/clusters/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the specified cluster configuration, such as expanding or shrinking."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Workload Domains",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Broadcom List workload domains",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{sddc-manager}/v1/domains"
+          },
+          "docs": "Returns all workload domains."
+        },
+        {
+          "info": {
+            "name": "Broadcom Create a workload domain",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{sddc-manager}/v1/domains",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new workload domain."
+        },
+        {
+          "info": {
+            "name": "Broadcom Get workload domain details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{sddc-manager}/v1/domains/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns details of the specified workload domain."
+        },
+        {
+          "info": {
+            "name": "Broadcom Delete a workload domain",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{sddc-manager}/v1/domains/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Deletes the specified workload domain."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Network Pools",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Broadcom List network pools",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{sddc-manager}/v1/network-pools"
+          },
+          "docs": "Returns all network pools."
+        },
+        {
+          "info": {
+            "name": "Broadcom Create a network pool",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{sddc-manager}/v1/network-pools",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new network pool."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Tasks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Broadcom List tasks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{sddc-manager}/v1/tasks",
+            "params": [
+              {
+                "name": "status",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns all tasks."
+        },
+        {
+          "info": {
+            "name": "Broadcom Get task details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{sddc-manager}/v1/tasks/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns details of the specified task."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Upgrades",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Broadcom List available upgrades",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{sddc-manager}/v1/upgrades"
+          },
+          "docs": "Returns all available upgrades for the VCF system."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
