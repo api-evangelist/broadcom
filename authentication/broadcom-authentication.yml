@@ -1,0 +1,31 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/broadcom-operations-for-applications-openapi.yml, openapi/broadcom-vmware-cloud-foundation-openapi.yml,
+  openapi/broadcom-vsphere-automation-openapi.yml
+summary:
+  types:
+  - apiKey
+  - http
+  api_key_in:
+  - header
+schemes:
+- name: bearerAuth
+  type: http
+  scheme: bearer
+  description: API token for authentication
+  sources:
+  - openapi/broadcom-operations-for-applications-openapi.yml
+  - openapi/broadcom-vmware-cloud-foundation-openapi.yml
+- name: basicAuth
+  type: http
+  scheme: basic
+  sources:
+  - openapi/broadcom-vmware-cloud-foundation-openapi.yml
+  - openapi/broadcom-vsphere-automation-openapi.yml
+- name: sessionAuth
+  type: apiKey
+  in: header
+  parameter: vmware-api-session-id
+  description: Session token obtained via POST /cis/session
+  sources:
+  - openapi/broadcom-vsphere-automation-openapi.yml
