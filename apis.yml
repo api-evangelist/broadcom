@@ -1,6 +1,8 @@
 aid: broadcom
 url: https://raw.githubusercontent.com/api-evangelist/broadcom/refs/heads/main/apis.yml
 common:
+  - type: AgenticAccess
+    url: agentic-access/broadcom-agentic-access.yml
   - type: DomainSecurity
     url: security/broadcom-domain-security.yml
   - type: Authentication
