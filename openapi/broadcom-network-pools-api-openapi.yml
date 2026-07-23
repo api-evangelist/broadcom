@@ -1,0 +1,94 @@
+openapi: 3.1.0
+info:
+  title: Broadcom Operations for Applications REST Alerts Network Pools API
+  description: The VMware Aria Operations for Applications REST API (formerly Tanzu Observability by Wavefront) enables programmatic interaction with the observability service. It supports querying metrics, managing dashboards, alerts, events, sources, user accounts, API tokens, and ingesting data directly. The API uses JSON payloads over HTTPS and supports both API token and session-based authentication.
+  version: 2.0.0
+  contact:
+    name: Broadcom Developer Support
+    url: https://developer.broadcom.com
+  license:
+    name: Proprietary
+    url: https://www.broadcom.com/company/legal/licensing
+servers:
+- url: https://{instance}.wavefront.com/api/v2
+  description: Operations for Applications instance
+  variables:
+    instance:
+      default: example
+      description: Your Operations for Applications instance name
+security:
+- bearerAuth: []
+tags:
+- name: Network Pools
+  description: Network pool management
+paths:
+  /network-pools:
+    get:
+      summary: Broadcom List network pools
+      description: Returns all network pools.
+      operationId: listNetworkPools
+      tags:
+      - Network Pools
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NetworkPoolList'
+    post:
+      summary: Broadcom Create a network pool
+      description: Creates a new network pool.
+      operationId: createNetworkPool
+      tags:
+      - Network Pools
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NetworkPool'
+      responses:
+        '201':
+          description: Network pool created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NetworkPool'
+components:
+  schemas:
+    NetworkPool:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        networks:
+          type: array
+          items:
+            type: object
+            properties:
+              type:
+                type: string
+              vlanId:
+                type: integer
+              subnet:
+                type: string
+              gateway:
+                type: string
+    NetworkPoolList:
+      type: object
+      properties:
+        elements:
+          type: array
+          items:
+            $ref: '#/components/schemas/NetworkPool'
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: API token for authentication
+externalDocs:
+  description: Operations for Applications REST API Documentation
+  url: https://developer.broadcom.com/xapis/operations-for-applications-rest-api/latest/

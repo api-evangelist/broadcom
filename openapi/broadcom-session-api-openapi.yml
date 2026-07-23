@@ -1,0 +1,61 @@
+openapi: 3.1.0
+info:
+  title: Broadcom Operations for Applications REST Alerts Session API
+  description: The VMware Aria Operations for Applications REST API (formerly Tanzu Observability by Wavefront) enables programmatic interaction with the observability service. It supports querying metrics, managing dashboards, alerts, events, sources, user accounts, API tokens, and ingesting data directly. The API uses JSON payloads over HTTPS and supports both API token and session-based authentication.
+  version: 2.0.0
+  contact:
+    name: Broadcom Developer Support
+    url: https://developer.broadcom.com
+  license:
+    name: Proprietary
+    url: https://www.broadcom.com/company/legal/licensing
+servers:
+- url: https://{instance}.wavefront.com/api/v2
+  description: Operations for Applications instance
+  variables:
+    instance:
+      default: example
+      description: Your Operations for Applications instance name
+security:
+- bearerAuth: []
+tags:
+- name: Session
+  description: Session management operations
+paths:
+  /cis/session:
+    post:
+      summary: Broadcom Create a session
+      description: Creates a session with the API using username and password credentials.
+      operationId: createSession
+      tags:
+      - Session
+      security:
+      - basicAuth: []
+      responses:
+        '201':
+          description: Session created
+          content:
+            application/json:
+              schema:
+                type: string
+                description: Session token
+        '401':
+          description: Invalid credentials
+    delete:
+      summary: Broadcom Delete a session
+      description: Terminates the current session.
+      operationId: deleteSession
+      tags:
+      - Session
+      responses:
+        '204':
+          description: Session terminated
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: API token for authentication
+externalDocs:
+  description: Operations for Applications REST API Documentation
+  url: https://developer.broadcom.com/xapis/operations-for-applications-rest-api/latest/

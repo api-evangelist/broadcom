@@ -1,0 +1,227 @@
+openapi: 3.1.0
+info:
+  title: Broadcom Operations for Applications REST Alerts Hosts API
+  description: The VMware Aria Operations for Applications REST API (formerly Tanzu Observability by Wavefront) enables programmatic interaction with the observability service. It supports querying metrics, managing dashboards, alerts, events, sources, user accounts, API tokens, and ingesting data directly. The API uses JSON payloads over HTTPS and supports both API token and session-based authentication.
+  version: 2.0.0
+  contact:
+    name: Broadcom Developer Support
+    url: https://developer.broadcom.com
+  license:
+    name: Proprietary
+    url: https://www.broadcom.com/company/legal/licensing
+servers:
+- url: https://{instance}.wavefront.com/api/v2
+  description: Operations for Applications instance
+  variables:
+    instance:
+      default: example
+      description: Your Operations for Applications instance name
+security:
+- bearerAuth: []
+tags:
+- name: Hosts
+  description: ESXi host management
+paths:
+  /hosts:
+    get:
+      summary: Broadcom List hosts
+      description: Returns all commissioned hosts.
+      operationId: listHosts
+      tags:
+      - Hosts
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HostList'
+    post:
+      summary: Broadcom Commission hosts
+      description: Commissions one or more hosts for use in VCF.
+      operationId: commissionHosts
+      tags:
+      - Hosts
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/HostCommissionSpec'
+      responses:
+        '202':
+          description: Host commissioning started
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Task'
+  /hosts/{id}:
+    get:
+      summary: Broadcom Get host details
+      description: Returns details of the specified host.
+      operationId: getHost
+      tags:
+      - Hosts
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Host'
+        '404':
+          description: Host not found
+  /vcenter/host:
+    get:
+      summary: Broadcom List hosts
+      description: Returns information about hosts in the vCenter Server.
+      operationId: listHosts
+      tags:
+      - Hosts
+      parameters:
+      - name: filter.names
+        in: query
+        schema:
+          type: array
+          items:
+            type: string
+      - name: filter.connection_states
+        in: query
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - CONNECTED
+            - DISCONNECTED
+            - NOT_RESPONDING
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/HostSummary'
+components:
+  schemas:
+    HostSummary:
+      type: object
+      properties:
+        host:
+          type: string
+        name:
+          type: string
+        connection_state:
+          type: string
+          enum:
+          - CONNECTED
+          - DISCONNECTED
+          - NOT_RESPONDING
+        power_state:
+          type: string
+          enum:
+          - POWERED_ON
+          - POWERED_OFF
+          - STANDBY
+    HostList:
+      type: object
+      properties:
+        elements:
+          type: array
+          items:
+            $ref: '#/components/schemas/Host'
+    HostCommissionSpec:
+      type: object
+      required:
+      - fqdn
+      - username
+      - password
+      - networkPoolId
+      - storageType
+      properties:
+        fqdn:
+          type: string
+        username:
+          type: string
+        password:
+          type: string
+        networkPoolId:
+          type: string
+        storageType:
+          type: string
+          enum:
+          - VSAN
+          - NFS
+          - VMFS_FC
+    Host:
+      type: object
+      properties:
+        id:
+          type: string
+        fqdn:
+          type: string
+        ipAddress:
+          type: string
+        status:
+          type: string
+          enum:
+          - ASSIGNED
+          - UNASSIGNED
+          - DECOMMISSIONED
+        domain:
+          type: object
+          properties:
+            id:
+              type: string
+        cluster:
+          type: object
+          properties:
+            id:
+              type: string
+    Task:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        status:
+          type: string
+          enum:
+          - IN_PROGRESS
+          - SUCCESSFUL
+          - FAILED
+          - CANCELLED
+        type:
+          type: string
+        creationTimestamp:
+          type: string
+          format: date-time
+        completionTimestamp:
+          type: string
+          format: date-time
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              message:
+                type: string
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: API token for authentication
+externalDocs:
+  description: Operations for Applications REST API Documentation
+  url: https://developer.broadcom.com/xapis/operations-for-applications-rest-api/latest/

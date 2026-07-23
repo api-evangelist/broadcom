@@ -1,0 +1,172 @@
+openapi: 3.1.0
+info:
+  title: Broadcom Operations for Applications REST Alerts API
+  description: The VMware Aria Operations for Applications REST API (formerly Tanzu Observability by Wavefront) enables programmatic interaction with the observability service. It supports querying metrics, managing dashboards, alerts, events, sources, user accounts, API tokens, and ingesting data directly. The API uses JSON payloads over HTTPS and supports both API token and session-based authentication.
+  version: 2.0.0
+  contact:
+    name: Broadcom Developer Support
+    url: https://developer.broadcom.com
+  license:
+    name: Proprietary
+    url: https://www.broadcom.com/company/legal/licensing
+servers:
+- url: https://{instance}.wavefront.com/api/v2
+  description: Operations for Applications instance
+  variables:
+    instance:
+      default: example
+      description: Your Operations for Applications instance name
+security:
+- bearerAuth: []
+tags:
+- name: Alerts
+  description: Alert management
+paths:
+  /alert:
+    get:
+      summary: Broadcom List alerts
+      description: Returns all alerts.
+      operationId: listAlerts
+      tags:
+      - Alerts
+      parameters:
+      - name: offset
+        in: query
+        schema:
+          type: integer
+      - name: limit
+        in: query
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AlertList'
+    post:
+      summary: Broadcom Create an alert
+      description: Creates a new alert.
+      operationId: createAlert
+      tags:
+      - Alerts
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Alert'
+      responses:
+        '200':
+          description: Alert created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Alert'
+  /alert/{id}:
+    get:
+      summary: Broadcom Get an alert
+      description: Returns the specified alert.
+      operationId: getAlert
+      tags:
+      - Alerts
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Alert'
+    put:
+      summary: Broadcom Update an alert
+      description: Updates the specified alert.
+      operationId: updateAlert
+      tags:
+      - Alerts
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Alert'
+      responses:
+        '200':
+          description: Alert updated
+    delete:
+      summary: Broadcom Delete an alert
+      description: Deletes the specified alert.
+      operationId: deleteAlert
+      tags:
+      - Alerts
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Alert deleted
+components:
+  schemas:
+    AlertList:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Alert'
+        offset:
+          type: integer
+        limit:
+          type: integer
+        totalItems:
+          type: integer
+    Alert:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        condition:
+          type: string
+        minutes:
+          type: integer
+        severity:
+          type: string
+          enum:
+          - INFO
+          - SMOKE
+          - WARN
+          - SEVERE
+        target:
+          type: string
+        tags:
+          type: object
+          properties:
+            customerTags:
+              type: array
+              items:
+                type: string
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: API token for authentication
+externalDocs:
+  description: Operations for Applications REST API Documentation
+  url: https://developer.broadcom.com/xapis/operations-for-applications-rest-api/latest/

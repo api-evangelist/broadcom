@@ -1,0 +1,64 @@
+openapi: 3.1.0
+info:
+  title: Broadcom Operations for Applications REST Alerts Upgrades API
+  description: The VMware Aria Operations for Applications REST API (formerly Tanzu Observability by Wavefront) enables programmatic interaction with the observability service. It supports querying metrics, managing dashboards, alerts, events, sources, user accounts, API tokens, and ingesting data directly. The API uses JSON payloads over HTTPS and supports both API token and session-based authentication.
+  version: 2.0.0
+  contact:
+    name: Broadcom Developer Support
+    url: https://developer.broadcom.com
+  license:
+    name: Proprietary
+    url: https://www.broadcom.com/company/legal/licensing
+servers:
+- url: https://{instance}.wavefront.com/api/v2
+  description: Operations for Applications instance
+  variables:
+    instance:
+      default: example
+      description: Your Operations for Applications instance name
+security:
+- bearerAuth: []
+tags:
+- name: Upgrades
+  description: System upgrade management
+paths:
+  /upgrades:
+    get:
+      summary: Broadcom List available upgrades
+      description: Returns all available upgrades for the VCF system.
+      operationId: listUpgrades
+      tags:
+      - Upgrades
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpgradeList'
+components:
+  schemas:
+    UpgradeList:
+      type: object
+      properties:
+        elements:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+              description:
+                type: string
+              status:
+                type: string
+              releaseVersion:
+                type: string
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: API token for authentication
+externalDocs:
+  description: Operations for Applications REST API Documentation
+  url: https://developer.broadcom.com/xapis/operations-for-applications-rest-api/latest/

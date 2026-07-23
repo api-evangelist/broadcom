@@ -1,0 +1,297 @@
+openapi: 3.1.0
+info:
+  title: Broadcom Operations for Applications REST Alerts Virtual Machines API
+  description: The VMware Aria Operations for Applications REST API (formerly Tanzu Observability by Wavefront) enables programmatic interaction with the observability service. It supports querying metrics, managing dashboards, alerts, events, sources, user accounts, API tokens, and ingesting data directly. The API uses JSON payloads over HTTPS and supports both API token and session-based authentication.
+  version: 2.0.0
+  contact:
+    name: Broadcom Developer Support
+    url: https://developer.broadcom.com
+  license:
+    name: Proprietary
+    url: https://www.broadcom.com/company/legal/licensing
+servers:
+- url: https://{instance}.wavefront.com/api/v2
+  description: Operations for Applications instance
+  variables:
+    instance:
+      default: example
+      description: Your Operations for Applications instance name
+security:
+- bearerAuth: []
+tags:
+- name: Virtual Machines
+  description: Operations for managing virtual machines
+paths:
+  /vcenter/vm:
+    get:
+      summary: Broadcom List virtual machines
+      description: Returns information about all virtual machines matching the specified filters.
+      operationId: listVMs
+      tags:
+      - Virtual Machines
+      parameters:
+      - name: filter.vms
+        in: query
+        description: Identifiers of virtual machines to filter
+        schema:
+          type: array
+          items:
+            type: string
+      - name: filter.names
+        in: query
+        description: Names of virtual machines to filter
+        schema:
+          type: array
+          items:
+            type: string
+      - name: filter.power_states
+        in: query
+        description: Power states to filter
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - POWERED_ON
+            - POWERED_OFF
+            - SUSPENDED
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/VMSummary'
+        '401':
+          description: Unauthorized
+    post:
+      summary: Broadcom Create a virtual machine
+      description: Creates a virtual machine with the specified configuration.
+      operationId: createVM
+      tags:
+      - Virtual Machines
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VMCreateSpec'
+      responses:
+        '201':
+          description: Virtual machine created
+          content:
+            application/json:
+              schema:
+                type: string
+                description: Identifier of the created VM
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+  /vcenter/vm/{vm}:
+    get:
+      summary: Broadcom Get virtual machine details
+      description: Returns detailed information about the specified virtual machine.
+      operationId: getVM
+      tags:
+      - Virtual Machines
+      parameters:
+      - name: vm
+        in: path
+        required: true
+        description: Virtual machine identifier
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VMInfo'
+        '401':
+          description: Unauthorized
+        '404':
+          description: VM not found
+    delete:
+      summary: Broadcom Delete a virtual machine
+      description: Deletes the specified virtual machine.
+      operationId: deleteVM
+      tags:
+      - Virtual Machines
+      parameters:
+      - name: vm
+        in: path
+        required: true
+        description: Virtual machine identifier
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Virtual machine deleted
+        '401':
+          description: Unauthorized
+        '404':
+          description: VM not found
+  /vcenter/vm/{vm}/power:
+    get:
+      summary: Broadcom Get VM power state
+      description: Returns the power state of the specified virtual machine.
+      operationId: getVMPowerState
+      tags:
+      - Virtual Machines
+      parameters:
+      - name: vm
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PowerInfo'
+  /vcenter/vm/{vm}/power?action=start:
+    post:
+      summary: Broadcom Power on a virtual machine
+      description: Powers on the specified virtual machine.
+      operationId: powerOnVM
+      tags:
+      - Virtual Machines
+      parameters:
+      - name: vm
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: VM powered on
+        '401':
+          description: Unauthorized
+        '404':
+          description: VM not found
+  /vcenter/vm/{vm}/power?action=stop:
+    post:
+      summary: Broadcom Power off a virtual machine
+      description: Powers off the specified virtual machine.
+      operationId: powerOffVM
+      tags:
+      - Virtual Machines
+      parameters:
+      - name: vm
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: VM powered off
+        '401':
+          description: Unauthorized
+        '404':
+          description: VM not found
+components:
+  schemas:
+    VMInfo:
+      type: object
+      properties:
+        name:
+          type: string
+        power_state:
+          type: string
+          enum:
+          - POWERED_ON
+          - POWERED_OFF
+          - SUSPENDED
+        cpu:
+          type: object
+          properties:
+            count:
+              type: integer
+            cores_per_socket:
+              type: integer
+        memory:
+          type: object
+          properties:
+            size_MiB:
+              type: integer
+        guest_OS:
+          type: string
+        hardware:
+          type: object
+          properties:
+            version:
+              type: string
+    VMCreateSpec:
+      type: object
+      required:
+      - name
+      - guest_OS
+      - placement
+      properties:
+        name:
+          type: string
+        guest_OS:
+          type: string
+        placement:
+          type: object
+          properties:
+            folder:
+              type: string
+            host:
+              type: string
+            cluster:
+              type: string
+            datastore:
+              type: string
+        memory:
+          type: object
+          properties:
+            size_MiB:
+              type: integer
+        cpu:
+          type: object
+          properties:
+            count:
+              type: integer
+    VMSummary:
+      type: object
+      properties:
+        vm:
+          type: string
+          description: Virtual machine identifier
+        name:
+          type: string
+          description: Virtual machine name
+        power_state:
+          type: string
+          enum:
+          - POWERED_ON
+          - POWERED_OFF
+          - SUSPENDED
+        cpu_count:
+          type: integer
+        memory_size_MiB:
+          type: integer
+    PowerInfo:
+      type: object
+      properties:
+        state:
+          type: string
+          enum:
+          - POWERED_ON
+          - POWERED_OFF
+          - SUSPENDED
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: API token for authentication
+externalDocs:
+  description: Operations for Applications REST API Documentation
+  url: https://developer.broadcom.com/xapis/operations-for-applications-rest-api/latest/

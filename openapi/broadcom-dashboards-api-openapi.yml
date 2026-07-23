@@ -1,0 +1,188 @@
+openapi: 3.1.0
+info:
+  title: Broadcom Operations for Applications REST Alerts Dashboards API
+  description: The VMware Aria Operations for Applications REST API (formerly Tanzu Observability by Wavefront) enables programmatic interaction with the observability service. It supports querying metrics, managing dashboards, alerts, events, sources, user accounts, API tokens, and ingesting data directly. The API uses JSON payloads over HTTPS and supports both API token and session-based authentication.
+  version: 2.0.0
+  contact:
+    name: Broadcom Developer Support
+    url: https://developer.broadcom.com
+  license:
+    name: Proprietary
+    url: https://www.broadcom.com/company/legal/licensing
+servers:
+- url: https://{instance}.wavefront.com/api/v2
+  description: Operations for Applications instance
+  variables:
+    instance:
+      default: example
+      description: Your Operations for Applications instance name
+security:
+- bearerAuth: []
+tags:
+- name: Dashboards
+  description: Dashboard management
+paths:
+  /dashboard:
+    get:
+      summary: Broadcom List dashboards
+      description: Returns all dashboards accessible to the user.
+      operationId: listDashboards
+      tags:
+      - Dashboards
+      parameters:
+      - name: offset
+        in: query
+        schema:
+          type: integer
+          default: 0
+      - name: limit
+        in: query
+        schema:
+          type: integer
+          default: 100
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DashboardList'
+    post:
+      summary: Broadcom Create a dashboard
+      description: Creates a new dashboard.
+      operationId: createDashboard
+      tags:
+      - Dashboards
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Dashboard'
+      responses:
+        '200':
+          description: Dashboard created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Dashboard'
+        '401':
+          description: Unauthorized
+  /dashboard/{id}:
+    get:
+      summary: Broadcom Get a dashboard
+      description: Returns the specified dashboard.
+      operationId: getDashboard
+      tags:
+      - Dashboards
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Dashboard'
+        '404':
+          description: Dashboard not found
+    put:
+      summary: Broadcom Update a dashboard
+      description: Updates the specified dashboard.
+      operationId: updateDashboard
+      tags:
+      - Dashboards
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Dashboard'
+      responses:
+        '200':
+          description: Dashboard updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Dashboard'
+    delete:
+      summary: Broadcom Delete a dashboard
+      description: Deletes the specified dashboard.
+      operationId: deleteDashboard
+      tags:
+      - Dashboards
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Dashboard deleted
+components:
+  schemas:
+    Dashboard:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        url:
+          type: string
+        sections:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              rows:
+                type: array
+                items:
+                  type: object
+        tags:
+          type: object
+          properties:
+            customerTags:
+              type: array
+              items:
+                type: string
+        creatorId:
+          type: string
+        updaterId:
+          type: string
+    DashboardList:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Dashboard'
+        offset:
+          type: integer
+        limit:
+          type: integer
+        totalItems:
+          type: integer
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: API token for authentication
+externalDocs:
+  description: Operations for Applications REST API Documentation
+  url: https://developer.broadcom.com/xapis/operations-for-applications-rest-api/latest/
