@@ -12,74 +12,626 @@ common:
   - type: LinkedIn
     url: https://www.linkedin.com/company/broadcom
 apis:
-  - aid: broadcom:vsphere-automation
-    name: Broadcom vSphere Automation API
-    tags:
-      - Data Center
-      - Infrastructure
-      - Virtualization
-    humanURL: https://developer.broadcom.com/xapis/vsphere-automation-api/latest/
-    properties:
-      - url: https://developer.broadcom.com/xapis/vsphere-automation-api/latest/
-        type: Documentation
-      - url: openapi/broadcom-vsphere-automation-openapi.yml
-        type: OpenAPI
-      - url: json-schema/broadcom-virtual-machine-schema.json
-        type: JSONSchema
-      - url: json-schema/broadcom-host-schema.json
-        type: JSONSchema
-      - url: json-schema/broadcom-cluster-schema.json
-        type: JSONSchema
-      - url: json-ld/broadcom-context.jsonld
-        type: JSONLD
-    description: >-
-      The vSphere Automation API provides a unified programmatic interface for managing VMware vSphere environments. It
-      enables automation of virtual machine lifecycle management, host and cluster configuration, content library
-      management, tagging, and other vSphere infrastructure operations.
-  - aid: broadcom:operations-for-applications
-    name: Broadcom Operations for Applications REST API
-    tags:
-      - Metrics
-      - Monitoring
-      - Observability
-    humanURL: https://developer.broadcom.com/xapis/operations-for-applications-rest-api/latest/
-    properties:
-      - url: https://developer.broadcom.com/xapis/operations-for-applications-rest-api/latest/
-        type: Documentation
-      - url: openapi/broadcom-operations-for-applications-openapi.yml
-        type: OpenAPI
-      - url: json-schema/broadcom-dashboard-schema.json
-        type: JSONSchema
-      - url: json-schema/broadcom-alert-schema.json
-        type: JSONSchema
-      - url: json-ld/broadcom-context.jsonld
-        type: JSONLD
-    description: >-
-      The VMware Aria Operations for Applications REST API (formerly Tanzu Observability by Wavefront) enables
-      programmatic interaction with the observability service. It supports querying metrics, managing dashboards,
-      alerts, events, sources, user accounts, API tokens, and ingesting data directly.
-  - aid: broadcom:vmware-cloud-foundation
-    name: Broadcom VMware Cloud Foundation API
-    tags:
-      - Cloud Infrastructure
-      - Data Center
-      - SDDC
-    humanURL: https://developer.broadcom.com/xapis/sddc-manager-api/latest/
-    properties:
-      - url: https://developer.broadcom.com/xapis/sddc-manager-api/latest/
-        type: Documentation
-      - url: openapi/broadcom-vmware-cloud-foundation-openapi.yml
-        type: OpenAPI
-      - url: json-schema/broadcom-workload-domain-schema.json
-        type: JSONSchema
-      - url: json-schema/broadcom-task-schema.json
-        type: JSONSchema
-      - url: json-ld/broadcom-context.jsonld
-        type: JSONLD
-    description: >-
-      The VMware Cloud Foundation API provides RESTful endpoints for managing SDDC (Software-Defined Data Center)
-      infrastructure through the SDDC Manager. It enables automation of host commissioning, cluster management, workload
-      domain lifecycle, network pool configuration, task monitoring, and VCF management component deployments.
+- aid: broadcom:broadcom-alerts-api
+  name: Broadcom Alerts API
+  description: Alert management
+  humanURL: https://developer.broadcom.com/xapis/vsphere-automation-api/latest/
+  tags:
+  - Alerts
+  properties:
+  - type: OpenAPI
+    url: openapi/broadcom-alerts-api-openapi.yml
+  - type: Documentation
+    url: https://developer.broadcom.com/xapis/vsphere-automation-api/latest/
+  - type: JSONSchema
+    url: json-schema/broadcom-virtual-machine-schema.json
+  - type: JSONSchema
+    url: json-schema/broadcom-host-schema.json
+  - type: JSONSchema
+    url: json-schema/broadcom-cluster-schema.json
+  - type: JSONLD
+    url: json-ld/broadcom-context.jsonld
+  - type: Documentation
+    url: https://developer.broadcom.com/xapis/operations-for-applications-rest-api/latest/
+  - type: JSONSchema
+    url: json-schema/broadcom-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/broadcom-alert-schema.json
+  - type: Documentation
+    url: https://developer.broadcom.com/xapis/sddc-manager-api/latest/
+  - type: JSONSchema
+    url: json-schema/broadcom-workload-domain-schema.json
+  - type: JSONSchema
+    url: json-schema/broadcom-task-schema.json
+- aid: broadcom:broadcom-api-tokens-api
+  name: Broadcom API Tokens API
+  description: API token management
+  humanURL: https://developer.broadcom.com/xapis/vsphere-automation-api/latest/
+  tags:
+  - API Tokens
+  properties:
+  - type: OpenAPI
+    url: openapi/broadcom-api-tokens-api-openapi.yml
+  - type: Documentation
+    url: https://developer.broadcom.com/xapis/vsphere-automation-api/latest/
+  - type: JSONSchema
+    url: json-schema/broadcom-virtual-machine-schema.json
+  - type: JSONSchema
+    url: json-schema/broadcom-host-schema.json
+  - type: JSONSchema
+    url: json-schema/broadcom-cluster-schema.json
+  - type: JSONLD
+    url: json-ld/broadcom-context.jsonld
+  - type: Documentation
+    url: https://developer.broadcom.com/xapis/operations-for-applications-rest-api/latest/
+  - type: JSONSchema
+    url: json-schema/broadcom-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/broadcom-alert-schema.json
+  - type: Documentation
+    url: https://developer.broadcom.com/xapis/sddc-manager-api/latest/
+  - type: JSONSchema
+    url: json-schema/broadcom-workload-domain-schema.json
+  - type: JSONSchema
+    url: json-schema/broadcom-task-schema.json
+- aid: broadcom:broadcom-authentication-api
+  name: Broadcom Authentication API
+  description: Token-based authentication
+  humanURL: https://developer.broadcom.com/xapis/vsphere-automation-api/latest/
+  tags:
+  - Authentication
+  properties:
+  - type: OpenAPI
+    url: openapi/broadcom-authentication-api-openapi.yml
+  - type: Documentation
+    url: https://developer.broadcom.com/xapis/vsphere-automation-api/latest/
+  - type: JSONSchema
+    url: json-schema/broadcom-virtual-machine-schema.json
+  - type: JSONSchema
+    url: json-schema/broadcom-host-schema.json
+  - type: JSONSchema
+    url: json-schema/broadcom-cluster-schema.json
+  - type: JSONLD
+    url: json-ld/broadcom-context.jsonld
+  - type: Documentation
+    url: https://developer.broadcom.com/xapis/operations-for-applications-rest-api/latest/
+  - type: JSONSchema
+    url: json-schema/broadcom-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/broadcom-alert-schema.json
+  - type: Documentation
+    url: https://developer.broadcom.com/xapis/sddc-manager-api/latest/
+  - type: JSONSchema
+    url: json-schema/broadcom-workload-domain-schema.json
+  - type: JSONSchema
+    url: json-schema/broadcom-task-schema.json
+- aid: broadcom:broadcom-clusters-api
+  name: Broadcom Clusters API
+  description: Cluster management
+  humanURL: https://developer.broadcom.com/xapis/vsphere-automation-api/latest/
+  tags:
+  - Clusters
+  properties:
+  - type: OpenAPI
+    url: openapi/broadcom-clusters-api-openapi.yml
+  - type: Documentation
+    url: https://developer.broadcom.com/xapis/vsphere-automation-api/latest/
+  - type: JSONSchema
+    url: json-schema/broadcom-virtual-machine-schema.json
+  - type: JSONSchema
+    url: json-schema/broadcom-host-schema.json
+  - type: JSONSchema
+    url: json-schema/broadcom-cluster-schema.json
+  - type: JSONLD
+    url: json-ld/broadcom-context.jsonld
+  - type: Documentation
+    url: https://developer.broadcom.com/xapis/operations-for-applications-rest-api/latest/
+  - type: JSONSchema
+    url: json-schema/broadcom-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/broadcom-alert-schema.json
+  - type: Documentation
+    url: https://developer.broadcom.com/xapis/sddc-manager-api/latest/
+  - type: JSONSchema
+    url: json-schema/broadcom-workload-domain-schema.json
+  - type: JSONSchema
+    url: json-schema/broadcom-task-schema.json
+- aid: broadcom:broadcom-content-library-api
+  name: Broadcom Content Library API
+  description: Content library management
+  humanURL: https://developer.broadcom.com/xapis/vsphere-automation-api/latest/
+  tags:
+  - Content Library
+  properties:
+  - type: OpenAPI
+    url: openapi/broadcom-content-library-api-openapi.yml
+  - type: Documentation
+    url: https://developer.broadcom.com/xapis/vsphere-automation-api/latest/
+  - type: JSONSchema
+    url: json-schema/broadcom-virtual-machine-schema.json
+  - type: JSONSchema
+    url: json-schema/broadcom-host-schema.json
+  - type: JSONSchema
+    url: json-schema/broadcom-cluster-schema.json
+  - type: JSONLD
+    url: json-ld/broadcom-context.jsonld
+  - type: Documentation
+    url: https://developer.broadcom.com/xapis/operations-for-applications-rest-api/latest/
+  - type: JSONSchema
+    url: json-schema/broadcom-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/broadcom-alert-schema.json
+  - type: Documentation
+    url: https://developer.broadcom.com/xapis/sddc-manager-api/latest/
+  - type: JSONSchema
+    url: json-schema/broadcom-workload-domain-schema.json
+  - type: JSONSchema
+    url: json-schema/broadcom-task-schema.json
+- aid: broadcom:broadcom-dashboards-api
+  name: Broadcom Dashboards API
+  description: Dashboard management
+  humanURL: https://developer.broadcom.com/xapis/vsphere-automation-api/latest/
+  tags:
+  - Dashboards
+  properties:
+  - type: OpenAPI
+    url: openapi/broadcom-dashboards-api-openapi.yml
+  - type: Documentation
+    url: https://developer.broadcom.com/xapis/vsphere-automation-api/latest/
+  - type: JSONSchema
+    url: json-schema/broadcom-virtual-machine-schema.json
+  - type: JSONSchema
+    url: json-schema/broadcom-host-schema.json
+  - type: JSONSchema
+    url: json-schema/broadcom-cluster-schema.json
+  - type: JSONLD
+    url: json-ld/broadcom-context.jsonld
+  - type: Documentation
+    url: https://developer.broadcom.com/xapis/operations-for-applications-rest-api/latest/
+  - type: JSONSchema
+    url: json-schema/broadcom-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/broadcom-alert-schema.json
+  - type: Documentation
+    url: https://developer.broadcom.com/xapis/sddc-manager-api/latest/
+  - type: JSONSchema
+    url: json-schema/broadcom-workload-domain-schema.json
+  - type: JSONSchema
+    url: json-schema/broadcom-task-schema.json
+- aid: broadcom:broadcom-datastores-api
+  name: Broadcom Datastores API
+  description: Operations for managing datastores
+  humanURL: https://developer.broadcom.com/xapis/vsphere-automation-api/latest/
+  tags:
+  - Datastores
+  properties:
+  - type: OpenAPI
+    url: openapi/broadcom-datastores-api-openapi.yml
+  - type: Documentation
+    url: https://developer.broadcom.com/xapis/vsphere-automation-api/latest/
+  - type: JSONSchema
+    url: json-schema/broadcom-virtual-machine-schema.json
+  - type: JSONSchema
+    url: json-schema/broadcom-host-schema.json
+  - type: JSONSchema
+    url: json-schema/broadcom-cluster-schema.json
+  - type: JSONLD
+    url: json-ld/broadcom-context.jsonld
+  - type: Documentation
+    url: https://developer.broadcom.com/xapis/operations-for-applications-rest-api/latest/
+  - type: JSONSchema
+    url: json-schema/broadcom-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/broadcom-alert-schema.json
+  - type: Documentation
+    url: https://developer.broadcom.com/xapis/sddc-manager-api/latest/
+  - type: JSONSchema
+    url: json-schema/broadcom-workload-domain-schema.json
+  - type: JSONSchema
+    url: json-schema/broadcom-task-schema.json
+- aid: broadcom:broadcom-events-api
+  name: Broadcom Events API
+  description: Event management
+  humanURL: https://developer.broadcom.com/xapis/vsphere-automation-api/latest/
+  tags:
+  - Events
+  properties:
+  - type: OpenAPI
+    url: openapi/broadcom-events-api-openapi.yml
+  - type: Documentation
+    url: https://developer.broadcom.com/xapis/vsphere-automation-api/latest/
+  - type: JSONSchema
+    url: json-schema/broadcom-virtual-machine-schema.json
+  - type: JSONSchema
+    url: json-schema/broadcom-host-schema.json
+  - type: JSONSchema
+    url: json-schema/broadcom-cluster-schema.json
+  - type: JSONLD
+    url: json-ld/broadcom-context.jsonld
+  - type: Documentation
+    url: https://developer.broadcom.com/xapis/operations-for-applications-rest-api/latest/
+  - type: JSONSchema
+    url: json-schema/broadcom-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/broadcom-alert-schema.json
+  - type: Documentation
+    url: https://developer.broadcom.com/xapis/sddc-manager-api/latest/
+  - type: JSONSchema
+    url: json-schema/broadcom-workload-domain-schema.json
+  - type: JSONSchema
+    url: json-schema/broadcom-task-schema.json
+- aid: broadcom:broadcom-hosts-api
+  name: Broadcom Hosts API
+  description: ESXi host management
+  humanURL: https://developer.broadcom.com/xapis/vsphere-automation-api/latest/
+  tags:
+  - Hosts
+  properties:
+  - type: OpenAPI
+    url: openapi/broadcom-hosts-api-openapi.yml
+  - type: Documentation
+    url: https://developer.broadcom.com/xapis/vsphere-automation-api/latest/
+  - type: JSONSchema
+    url: json-schema/broadcom-virtual-machine-schema.json
+  - type: JSONSchema
+    url: json-schema/broadcom-host-schema.json
+  - type: JSONSchema
+    url: json-schema/broadcom-cluster-schema.json
+  - type: JSONLD
+    url: json-ld/broadcom-context.jsonld
+  - type: Documentation
+    url: https://developer.broadcom.com/xapis/operations-for-applications-rest-api/latest/
+  - type: JSONSchema
+    url: json-schema/broadcom-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/broadcom-alert-schema.json
+  - type: Documentation
+    url: https://developer.broadcom.com/xapis/sddc-manager-api/latest/
+  - type: JSONSchema
+    url: json-schema/broadcom-workload-domain-schema.json
+  - type: JSONSchema
+    url: json-schema/broadcom-task-schema.json
+- aid: broadcom:broadcom-network-pools-api
+  name: Broadcom Network Pools API
+  description: Network pool management
+  humanURL: https://developer.broadcom.com/xapis/vsphere-automation-api/latest/
+  tags:
+  - Network Pools
+  properties:
+  - type: OpenAPI
+    url: openapi/broadcom-network-pools-api-openapi.yml
+  - type: Documentation
+    url: https://developer.broadcom.com/xapis/vsphere-automation-api/latest/
+  - type: JSONSchema
+    url: json-schema/broadcom-virtual-machine-schema.json
+  - type: JSONSchema
+    url: json-schema/broadcom-host-schema.json
+  - type: JSONSchema
+    url: json-schema/broadcom-cluster-schema.json
+  - type: JSONLD
+    url: json-ld/broadcom-context.jsonld
+  - type: Documentation
+    url: https://developer.broadcom.com/xapis/operations-for-applications-rest-api/latest/
+  - type: JSONSchema
+    url: json-schema/broadcom-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/broadcom-alert-schema.json
+  - type: Documentation
+    url: https://developer.broadcom.com/xapis/sddc-manager-api/latest/
+  - type: JSONSchema
+    url: json-schema/broadcom-workload-domain-schema.json
+  - type: JSONSchema
+    url: json-schema/broadcom-task-schema.json
+- aid: broadcom:broadcom-networks-api
+  name: Broadcom Networks API
+  description: Operations for managing networks
+  humanURL: https://developer.broadcom.com/xapis/vsphere-automation-api/latest/
+  tags:
+  - Networks
+  properties:
+  - type: OpenAPI
+    url: openapi/broadcom-networks-api-openapi.yml
+  - type: Documentation
+    url: https://developer.broadcom.com/xapis/vsphere-automation-api/latest/
+  - type: JSONSchema
+    url: json-schema/broadcom-virtual-machine-schema.json
+  - type: JSONSchema
+    url: json-schema/broadcom-host-schema.json
+  - type: JSONSchema
+    url: json-schema/broadcom-cluster-schema.json
+  - type: JSONLD
+    url: json-ld/broadcom-context.jsonld
+  - type: Documentation
+    url: https://developer.broadcom.com/xapis/operations-for-applications-rest-api/latest/
+  - type: JSONSchema
+    url: json-schema/broadcom-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/broadcom-alert-schema.json
+  - type: Documentation
+    url: https://developer.broadcom.com/xapis/sddc-manager-api/latest/
+  - type: JSONSchema
+    url: json-schema/broadcom-workload-domain-schema.json
+  - type: JSONSchema
+    url: json-schema/broadcom-task-schema.json
+- aid: broadcom:broadcom-proxies-api
+  name: Broadcom Proxies API
+  description: Proxy management
+  humanURL: https://developer.broadcom.com/xapis/vsphere-automation-api/latest/
+  tags:
+  - Proxies
+  properties:
+  - type: OpenAPI
+    url: openapi/broadcom-proxies-api-openapi.yml
+  - type: Documentation
+    url: https://developer.broadcom.com/xapis/vsphere-automation-api/latest/
+  - type: JSONSchema
+    url: json-schema/broadcom-virtual-machine-schema.json
+  - type: JSONSchema
+    url: json-schema/broadcom-host-schema.json
+  - type: JSONSchema
+    url: json-schema/broadcom-cluster-schema.json
+  - type: JSONLD
+    url: json-ld/broadcom-context.jsonld
+  - type: Documentation
+    url: https://developer.broadcom.com/xapis/operations-for-applications-rest-api/latest/
+  - type: JSONSchema
+    url: json-schema/broadcom-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/broadcom-alert-schema.json
+  - type: Documentation
+    url: https://developer.broadcom.com/xapis/sddc-manager-api/latest/
+  - type: JSONSchema
+    url: json-schema/broadcom-workload-domain-schema.json
+  - type: JSONSchema
+    url: json-schema/broadcom-task-schema.json
+- aid: broadcom:broadcom-query-api
+  name: Broadcom Query API
+  description: Query metrics data
+  humanURL: https://developer.broadcom.com/xapis/vsphere-automation-api/latest/
+  tags:
+  - Query
+  properties:
+  - type: OpenAPI
+    url: openapi/broadcom-query-api-openapi.yml
+  - type: Documentation
+    url: https://developer.broadcom.com/xapis/vsphere-automation-api/latest/
+  - type: JSONSchema
+    url: json-schema/broadcom-virtual-machine-schema.json
+  - type: JSONSchema
+    url: json-schema/broadcom-host-schema.json
+  - type: JSONSchema
+    url: json-schema/broadcom-cluster-schema.json
+  - type: JSONLD
+    url: json-ld/broadcom-context.jsonld
+  - type: Documentation
+    url: https://developer.broadcom.com/xapis/operations-for-applications-rest-api/latest/
+  - type: JSONSchema
+    url: json-schema/broadcom-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/broadcom-alert-schema.json
+  - type: Documentation
+    url: https://developer.broadcom.com/xapis/sddc-manager-api/latest/
+  - type: JSONSchema
+    url: json-schema/broadcom-workload-domain-schema.json
+  - type: JSONSchema
+    url: json-schema/broadcom-task-schema.json
+- aid: broadcom:broadcom-session-api
+  name: Broadcom Session API
+  description: Session management operations
+  humanURL: https://developer.broadcom.com/xapis/vsphere-automation-api/latest/
+  tags:
+  - Session
+  properties:
+  - type: OpenAPI
+    url: openapi/broadcom-session-api-openapi.yml
+  - type: Documentation
+    url: https://developer.broadcom.com/xapis/vsphere-automation-api/latest/
+  - type: JSONSchema
+    url: json-schema/broadcom-virtual-machine-schema.json
+  - type: JSONSchema
+    url: json-schema/broadcom-host-schema.json
+  - type: JSONSchema
+    url: json-schema/broadcom-cluster-schema.json
+  - type: JSONLD
+    url: json-ld/broadcom-context.jsonld
+  - type: Documentation
+    url: https://developer.broadcom.com/xapis/operations-for-applications-rest-api/latest/
+  - type: JSONSchema
+    url: json-schema/broadcom-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/broadcom-alert-schema.json
+  - type: Documentation
+    url: https://developer.broadcom.com/xapis/sddc-manager-api/latest/
+  - type: JSONSchema
+    url: json-schema/broadcom-workload-domain-schema.json
+  - type: JSONSchema
+    url: json-schema/broadcom-task-schema.json
+- aid: broadcom:broadcom-sources-api
+  name: Broadcom Sources API
+  description: Source management
+  humanURL: https://developer.broadcom.com/xapis/vsphere-automation-api/latest/
+  tags:
+  - Sources
+  properties:
+  - type: OpenAPI
+    url: openapi/broadcom-sources-api-openapi.yml
+  - type: Documentation
+    url: https://developer.broadcom.com/xapis/vsphere-automation-api/latest/
+  - type: JSONSchema
+    url: json-schema/broadcom-virtual-machine-schema.json
+  - type: JSONSchema
+    url: json-schema/broadcom-host-schema.json
+  - type: JSONSchema
+    url: json-schema/broadcom-cluster-schema.json
+  - type: JSONLD
+    url: json-ld/broadcom-context.jsonld
+  - type: Documentation
+    url: https://developer.broadcom.com/xapis/operations-for-applications-rest-api/latest/
+  - type: JSONSchema
+    url: json-schema/broadcom-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/broadcom-alert-schema.json
+  - type: Documentation
+    url: https://developer.broadcom.com/xapis/sddc-manager-api/latest/
+  - type: JSONSchema
+    url: json-schema/broadcom-workload-domain-schema.json
+  - type: JSONSchema
+    url: json-schema/broadcom-task-schema.json
+- aid: broadcom:broadcom-tagging-api
+  name: Broadcom Tagging API
+  description: Tag management and association operations
+  humanURL: https://developer.broadcom.com/xapis/vsphere-automation-api/latest/
+  tags:
+  - Tagging
+  properties:
+  - type: OpenAPI
+    url: openapi/broadcom-tagging-api-openapi.yml
+  - type: Documentation
+    url: https://developer.broadcom.com/xapis/vsphere-automation-api/latest/
+  - type: JSONSchema
+    url: json-schema/broadcom-virtual-machine-schema.json
+  - type: JSONSchema
+    url: json-schema/broadcom-host-schema.json
+  - type: JSONSchema
+    url: json-schema/broadcom-cluster-schema.json
+  - type: JSONLD
+    url: json-ld/broadcom-context.jsonld
+  - type: Documentation
+    url: https://developer.broadcom.com/xapis/operations-for-applications-rest-api/latest/
+  - type: JSONSchema
+    url: json-schema/broadcom-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/broadcom-alert-schema.json
+  - type: Documentation
+    url: https://developer.broadcom.com/xapis/sddc-manager-api/latest/
+  - type: JSONSchema
+    url: json-schema/broadcom-workload-domain-schema.json
+  - type: JSONSchema
+    url: json-schema/broadcom-task-schema.json
+- aid: broadcom:broadcom-tasks-api
+  name: Broadcom Tasks API
+  description: Asynchronous task monitoring
+  humanURL: https://developer.broadcom.com/xapis/vsphere-automation-api/latest/
+  tags:
+  - Tasks
+  properties:
+  - type: OpenAPI
+    url: openapi/broadcom-tasks-api-openapi.yml
+  - type: Documentation
+    url: https://developer.broadcom.com/xapis/vsphere-automation-api/latest/
+  - type: JSONSchema
+    url: json-schema/broadcom-virtual-machine-schema.json
+  - type: JSONSchema
+    url: json-schema/broadcom-host-schema.json
+  - type: JSONSchema
+    url: json-schema/broadcom-cluster-schema.json
+  - type: JSONLD
+    url: json-ld/broadcom-context.jsonld
+  - type: Documentation
+    url: https://developer.broadcom.com/xapis/operations-for-applications-rest-api/latest/
+  - type: JSONSchema
+    url: json-schema/broadcom-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/broadcom-alert-schema.json
+  - type: Documentation
+    url: https://developer.broadcom.com/xapis/sddc-manager-api/latest/
+  - type: JSONSchema
+    url: json-schema/broadcom-workload-domain-schema.json
+  - type: JSONSchema
+    url: json-schema/broadcom-task-schema.json
+- aid: broadcom:broadcom-upgrades-api
+  name: Broadcom Upgrades API
+  description: System upgrade management
+  humanURL: https://developer.broadcom.com/xapis/vsphere-automation-api/latest/
+  tags:
+  - Upgrades
+  properties:
+  - type: OpenAPI
+    url: openapi/broadcom-upgrades-api-openapi.yml
+  - type: Documentation
+    url: https://developer.broadcom.com/xapis/vsphere-automation-api/latest/
+  - type: JSONSchema
+    url: json-schema/broadcom-virtual-machine-schema.json
+  - type: JSONSchema
+    url: json-schema/broadcom-host-schema.json
+  - type: JSONSchema
+    url: json-schema/broadcom-cluster-schema.json
+  - type: JSONLD
+    url: json-ld/broadcom-context.jsonld
+  - type: Documentation
+    url: https://developer.broadcom.com/xapis/operations-for-applications-rest-api/latest/
+  - type: JSONSchema
+    url: json-schema/broadcom-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/broadcom-alert-schema.json
+  - type: Documentation
+    url: https://developer.broadcom.com/xapis/sddc-manager-api/latest/
+  - type: JSONSchema
+    url: json-schema/broadcom-workload-domain-schema.json
+  - type: JSONSchema
+    url: json-schema/broadcom-task-schema.json
+- aid: broadcom:broadcom-virtual-machines-api
+  name: Broadcom Virtual Machines API
+  description: Operations for managing virtual machines
+  humanURL: https://developer.broadcom.com/xapis/vsphere-automation-api/latest/
+  tags:
+  - Virtual Machines
+  properties:
+  - type: OpenAPI
+    url: openapi/broadcom-virtual-machines-api-openapi.yml
+  - type: Documentation
+    url: https://developer.broadcom.com/xapis/vsphere-automation-api/latest/
+  - type: JSONSchema
+    url: json-schema/broadcom-virtual-machine-schema.json
+  - type: JSONSchema
+    url: json-schema/broadcom-host-schema.json
+  - type: JSONSchema
+    url: json-schema/broadcom-cluster-schema.json
+  - type: JSONLD
+    url: json-ld/broadcom-context.jsonld
+  - type: Documentation
+    url: https://developer.broadcom.com/xapis/operations-for-applications-rest-api/latest/
+  - type: JSONSchema
+    url: json-schema/broadcom-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/broadcom-alert-schema.json
+  - type: Documentation
+    url: https://developer.broadcom.com/xapis/sddc-manager-api/latest/
+  - type: JSONSchema
+    url: json-schema/broadcom-workload-domain-schema.json
+  - type: JSONSchema
+    url: json-schema/broadcom-task-schema.json
+- aid: broadcom:broadcom-workload-domains-api
+  name: Broadcom Workload Domains API
+  description: Workload domain lifecycle management
+  humanURL: https://developer.broadcom.com/xapis/vsphere-automation-api/latest/
+  tags:
+  - Workload Domains
+  properties:
+  - type: OpenAPI
+    url: openapi/broadcom-workload-domains-api-openapi.yml
+  - type: Documentation
+    url: https://developer.broadcom.com/xapis/vsphere-automation-api/latest/
+  - type: JSONSchema
+    url: json-schema/broadcom-virtual-machine-schema.json
+  - type: JSONSchema
+    url: json-schema/broadcom-host-schema.json
+  - type: JSONSchema
+    url: json-schema/broadcom-cluster-schema.json
+  - type: JSONLD
+    url: json-ld/broadcom-context.jsonld
+  - type: Documentation
+    url: https://developer.broadcom.com/xapis/operations-for-applications-rest-api/latest/
+  - type: JSONSchema
+    url: json-schema/broadcom-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/broadcom-alert-schema.json
+  - type: Documentation
+    url: https://developer.broadcom.com/xapis/sddc-manager-api/latest/
+  - type: JSONSchema
+    url: json-schema/broadcom-workload-domain-schema.json
+  - type: JSONSchema
+    url: json-schema/broadcom-task-schema.json
 name: Broadcom
 tags:
   - Cloud Infrastructure
@@ -90,7 +642,20 @@ tags:
   - Virtualization
   - Fortune 500
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: enterprise
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Enterprise · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/broadcom.png
 access: 3rd-Party
 created: '2025-01-14'
 modified: '2026-05-19'
