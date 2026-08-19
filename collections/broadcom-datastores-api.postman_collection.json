@@ -1,0 +1,182 @@
+{
+  "item": [
+    {
+      "id": "bb1a8947-1e56-4a7d-a75d-5c5190a8d6ba",
+      "name": "Datastores",
+      "description": {
+        "content": "Operations for managing datastores",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b01b3a54-e9dc-41e7-916a-b6c06df5edd2",
+          "name": "Broadcom List datastores",
+          "request": {
+            "name": "Broadcom List datastores",
+            "description": {
+              "content": "Returns information about datastores in the vCenter Server.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vcenter",
+                "datastore"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "filter.names",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter.names",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter.types",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter.types",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Your Operations for Applications instance name",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "320a322b-e491-47b8-8821-9ea56c22af37",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vcenter",
+                    "datastore"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "filter.names",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter.names",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter.types",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter.types",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Your Operations for Applications instance name",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"datastore\": \"string\",\n    \"name\": \"string\",\n    \"type\": \"NFS41\",\n    \"capacity\": 442,\n    \"free_space\": 7511\n  },\n  {\n    \"datastore\": \"string\",\n    \"name\": \"string\",\n    \"type\": \"VVOL\",\n    \"capacity\": 6668,\n    \"free_space\": 5289\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Your Operations for Applications instance name",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "example",
+      "key": "instance"
+    },
+    {
+      "type": "string",
+      "value": "https://{{instance}}.wavefront.com/api/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "0f58242d-0552-43ab-ae63-688e71c30295",
+    "name": "Broadcom Operations for Applications REST Alerts Datastores API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The VMware Aria Operations for Applications REST API (formerly Tanzu Observability by Wavefront) enables programmatic interaction with the observability service. It supports querying metrics, managing dashboards, alerts, events, sources, user accounts, API tokens, and ingesting data directly. The API uses JSON payloads over HTTPS and supports both API token and session-based authentication.\n\nContact Support:\n Name: Broadcom Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

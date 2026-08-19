@@ -1,0 +1,86 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Broadcom Operations for Applications REST Alerts Workload Domains API",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Workload Domains",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Broadcom List workload domains",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.wavefront.com/api/v2/domains"
+          },
+          "docs": "Returns all workload domains."
+        },
+        {
+          "info": {
+            "name": "Broadcom Create a workload domain",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{instance}.wavefront.com/api/v2/domains",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new workload domain."
+        },
+        {
+          "info": {
+            "name": "Broadcom Get workload domain details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.wavefront.com/api/v2/domains/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns details of the specified workload domain."
+        },
+        {
+          "info": {
+            "name": "Broadcom Delete a workload domain",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{instance}.wavefront.com/api/v2/domains/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Deletes the specified workload domain."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

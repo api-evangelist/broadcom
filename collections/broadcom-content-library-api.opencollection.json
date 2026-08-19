@@ -1,0 +1,35 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Broadcom Operations for Applications REST Alerts Content Library API",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Content Library",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Broadcom List content libraries",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.wavefront.com/api/v2/content/library"
+          },
+          "docs": "Returns the identifiers of all content libraries in the system."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

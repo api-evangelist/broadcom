@@ -1,0 +1,142 @@
+{
+  "item": [
+    {
+      "id": "f95c8350-f99c-47e6-83c8-ccbd914f1ab0",
+      "name": "Upgrades",
+      "description": {
+        "content": "System upgrade management",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4eb00ea2-833a-4819-904e-beff8ffc0eec",
+          "name": "Broadcom List available upgrades",
+          "request": {
+            "name": "Broadcom List available upgrades",
+            "description": {
+              "content": "Returns all available upgrades for the VCF system.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "upgrades"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Your Operations for Applications instance name",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "96b449d2-bd8b-4a61-be92-b77ab83cf899",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "upgrades"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your Operations for Applications instance name",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"elements\": [\n    {\n      \"id\": \"string\",\n      \"description\": \"string\",\n      \"status\": \"string\",\n      \"releaseVersion\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"description\": \"string\",\n      \"status\": \"string\",\n      \"releaseVersion\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Your Operations for Applications instance name",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "example",
+      "key": "instance"
+    },
+    {
+      "type": "string",
+      "value": "https://{{instance}}.wavefront.com/api/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "454a0288-d40b-427e-bda5-7fe8b06206b0",
+    "name": "Broadcom Operations for Applications REST Alerts Upgrades API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The VMware Aria Operations for Applications REST API (formerly Tanzu Observability by Wavefront) enables programmatic interaction with the observability service. It supports querying metrics, managing dashboards, alerts, events, sources, user accounts, API tokens, and ingesting data directly. The API uses JSON payloads over HTTPS and supports both API token and session-based authentication.\n\nContact Support:\n Name: Broadcom Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

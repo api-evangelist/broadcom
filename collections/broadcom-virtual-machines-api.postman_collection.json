@@ -1,0 +1,1483 @@
+{
+  "item": [
+    {
+      "id": "3a28ca3b-d613-4660-a501-66294f4110b8",
+      "name": "Virtual Machines",
+      "description": {
+        "content": "Operations for managing virtual machines",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "49bd4d62-9adc-4115-9a11-95deb1b12280",
+          "name": "Broadcom List virtual machines",
+          "request": {
+            "name": "Broadcom List virtual machines",
+            "description": {
+              "content": "Returns information about all virtual machines matching the specified filters.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vcenter",
+                "vm"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "filter.vms",
+                  "value": "<string>",
+                  "description": "Identifiers of virtual machines to filter"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter.vms",
+                  "value": "<string>",
+                  "description": "Identifiers of virtual machines to filter"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter.names",
+                  "value": "<string>",
+                  "description": "Names of virtual machines to filter"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter.names",
+                  "value": "<string>",
+                  "description": "Names of virtual machines to filter"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter.power_states",
+                  "value": "<string>",
+                  "description": "Power states to filter"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter.power_states",
+                  "value": "<string>",
+                  "description": "Power states to filter"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Your Operations for Applications instance name",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e4af13bc-d6f3-4d60-a8ad-4dacc1d465e1",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vcenter",
+                    "vm"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "filter.vms",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter.vms",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter.names",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter.names",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter.power_states",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter.power_states",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Your Operations for Applications instance name",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"vm\": \"string\",\n    \"name\": \"string\",\n    \"power_state\": \"POWERED_OFF\",\n    \"cpu_count\": 5860,\n    \"memory_size_MiB\": 876\n  },\n  {\n    \"vm\": \"string\",\n    \"name\": \"string\",\n    \"power_state\": \"SUSPENDED\",\n    \"cpu_count\": 4122,\n    \"memory_size_MiB\": 7312\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1ee26263-03f7-4c39-a269-ea1cfaaf088b",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vcenter",
+                    "vm"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "filter.vms",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter.vms",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter.names",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter.names",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter.power_states",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter.power_states",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Your Operations for Applications instance name",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "22b4f12a-113f-411f-bf4b-032213074c46",
+          "name": "Broadcom Create a virtual machine",
+          "request": {
+            "name": "Broadcom Create a virtual machine",
+            "description": {
+              "content": "Creates a virtual machine with the specified configuration.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vcenter",
+                "vm"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Your Operations for Applications instance name",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"guest_OS\": \"<string>\",\n  \"placement\": {\n    \"folder\": \"<string>\",\n    \"host\": \"<string>\",\n    \"cluster\": \"<string>\",\n    \"datastore\": \"<string>\"\n  },\n  \"memory\": {\n    \"size_MiB\": \"<integer>\"\n  },\n  \"cpu\": {\n    \"count\": \"<integer>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c7ea0298-051d-4ce0-9621-d19ae383111e",
+              "name": "Virtual machine created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vcenter",
+                    "vm"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your Operations for Applications instance name",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"guest_OS\": \"<string>\",\n  \"placement\": {\n    \"folder\": \"<string>\",\n    \"host\": \"<string>\",\n    \"cluster\": \"<string>\",\n    \"datastore\": \"<string>\"\n  },\n  \"memory\": {\n    \"size_MiB\": \"<integer>\"\n  },\n  \"cpu\": {\n    \"count\": \"<integer>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"string\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8eb62454-0946-41a3-8a57-8cdaeff6789e",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vcenter",
+                    "vm"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your Operations for Applications instance name",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"guest_OS\": \"<string>\",\n  \"placement\": {\n    \"folder\": \"<string>\",\n    \"host\": \"<string>\",\n    \"cluster\": \"<string>\",\n    \"datastore\": \"<string>\"\n  },\n  \"memory\": {\n    \"size_MiB\": \"<integer>\"\n  },\n  \"cpu\": {\n    \"count\": \"<integer>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8782f2c5-5ee4-472b-82ec-b035020521cd",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vcenter",
+                    "vm"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your Operations for Applications instance name",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"guest_OS\": \"<string>\",\n  \"placement\": {\n    \"folder\": \"<string>\",\n    \"host\": \"<string>\",\n    \"cluster\": \"<string>\",\n    \"datastore\": \"<string>\"\n  },\n  \"memory\": {\n    \"size_MiB\": \"<integer>\"\n  },\n  \"cpu\": {\n    \"count\": \"<integer>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cde8685b-f304-4780-94b7-e75aec1fd8d2",
+          "name": "Broadcom Get virtual machine details",
+          "request": {
+            "name": "Broadcom Get virtual machine details",
+            "description": {
+              "content": "Returns detailed information about the specified virtual machine.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vcenter",
+                "vm",
+                ":vm"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "vm",
+                  "description": "(Required) Virtual machine identifier"
+                },
+                {
+                  "description": "Your Operations for Applications instance name",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "987ca59c-73bc-4edd-861a-237a45022279",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vcenter",
+                    "vm",
+                    ":vm"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vm",
+                      "description": "(Required) Virtual machine identifier"
+                    },
+                    {
+                      "description": "Your Operations for Applications instance name",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"power_state\": \"SUSPENDED\",\n  \"cpu\": {\n    \"count\": 4957,\n    \"cores_per_socket\": 9920\n  },\n  \"memory\": {\n    \"size_MiB\": 3848\n  },\n  \"guest_OS\": \"string\",\n  \"hardware\": {\n    \"version\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bf83f965-e6f7-4b4e-9a26-53750c894361",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vcenter",
+                    "vm",
+                    ":vm"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vm",
+                      "description": "(Required) Virtual machine identifier"
+                    },
+                    {
+                      "description": "Your Operations for Applications instance name",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "bc551372-7cf1-4b56-ba08-80633698072b",
+              "name": "VM not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vcenter",
+                    "vm",
+                    ":vm"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vm",
+                      "description": "(Required) Virtual machine identifier"
+                    },
+                    {
+                      "description": "Your Operations for Applications instance name",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b61efa29-7f5f-4861-b303-99d083c5c49e",
+          "name": "Broadcom Delete a virtual machine",
+          "request": {
+            "name": "Broadcom Delete a virtual machine",
+            "description": {
+              "content": "Deletes the specified virtual machine.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vcenter",
+                "vm",
+                ":vm"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "vm",
+                  "description": "(Required) Virtual machine identifier"
+                },
+                {
+                  "description": "Your Operations for Applications instance name",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "57273309-f39f-4902-8a86-60009601808a",
+              "name": "Virtual machine deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vcenter",
+                    "vm",
+                    ":vm"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vm",
+                      "description": "(Required) Virtual machine identifier"
+                    },
+                    {
+                      "description": "Your Operations for Applications instance name",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f74ea67d-6ede-4d44-826b-fd2b7009fba1",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vcenter",
+                    "vm",
+                    ":vm"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vm",
+                      "description": "(Required) Virtual machine identifier"
+                    },
+                    {
+                      "description": "Your Operations for Applications instance name",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f6fe8522-c9bb-450a-a2d9-1c5ed3664e84",
+              "name": "VM not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vcenter",
+                    "vm",
+                    ":vm"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vm",
+                      "description": "(Required) Virtual machine identifier"
+                    },
+                    {
+                      "description": "Your Operations for Applications instance name",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fc8e17ee-390d-4352-a53b-0a1d173f7a51",
+          "name": "Broadcom Get VM power state",
+          "request": {
+            "name": "Broadcom Get VM power state",
+            "description": {
+              "content": "Returns the power state of the specified virtual machine.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vcenter",
+                "vm",
+                ":vm",
+                "power"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "vm",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Your Operations for Applications instance name",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "75f150f8-9d2c-479a-9368-e08776215362",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vcenter",
+                    "vm",
+                    ":vm",
+                    "power"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vm",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Your Operations for Applications instance name",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"state\": \"SUSPENDED\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "01dc141f-7185-4e48-a234-adbd3531fd25",
+          "name": "Broadcom Power on a virtual machine",
+          "request": {
+            "name": "Broadcom Power on a virtual machine",
+            "description": {
+              "content": "Powers on the specified virtual machine.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vcenter",
+                "vm",
+                ":vm",
+                "power"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "action",
+                  "value": "start"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "vm",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Your Operations for Applications instance name",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3c4ad5f6-252c-4acc-8498-4c0b416c5fd1",
+              "name": "VM powered on",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vcenter",
+                    "vm",
+                    ":vm",
+                    "power"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vm",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Your Operations for Applications instance name",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a1be9c64-dc0a-49de-a50c-8ccf59f99d7f",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vcenter",
+                    "vm",
+                    ":vm",
+                    "power"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vm",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Your Operations for Applications instance name",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c57688b4-c8da-4753-aa35-aaf09fc7f1c8",
+              "name": "VM not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vcenter",
+                    "vm",
+                    ":vm",
+                    "power"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vm",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Your Operations for Applications instance name",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0ae701e2-b1f1-46e5-8aba-de34a91b334f",
+          "name": "Broadcom Power off a virtual machine",
+          "request": {
+            "name": "Broadcom Power off a virtual machine",
+            "description": {
+              "content": "Powers off the specified virtual machine.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vcenter",
+                "vm",
+                ":vm",
+                "power"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "action",
+                  "value": "stop"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "vm",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Your Operations for Applications instance name",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e0339a0b-deee-4049-9da8-171fd9c4dd17",
+              "name": "VM powered off",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vcenter",
+                    "vm",
+                    ":vm",
+                    "power"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vm",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Your Operations for Applications instance name",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5b3a372a-cebb-4d2d-99cf-25b78e81f26c",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vcenter",
+                    "vm",
+                    ":vm",
+                    "power"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vm",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Your Operations for Applications instance name",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "51b6cb0f-48bd-4677-9c03-8374c649818f",
+              "name": "VM not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vcenter",
+                    "vm",
+                    ":vm",
+                    "power"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vm",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Your Operations for Applications instance name",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Your Operations for Applications instance name",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "example",
+      "key": "instance"
+    },
+    {
+      "type": "string",
+      "value": "https://{{instance}}.wavefront.com/api/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "2f6f6885-95a4-4eef-b628-e7b8ea2799d9",
+    "name": "Broadcom Operations for Applications REST Alerts Virtual Machines API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The VMware Aria Operations for Applications REST API (formerly Tanzu Observability by Wavefront) enables programmatic interaction with the observability service. It supports querying metrics, managing dashboards, alerts, events, sources, user accounts, API tokens, and ingesting data directly. The API uses JSON payloads over HTTPS and supports both API token and session-based authentication.\n\nContact Support:\n Name: Broadcom Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

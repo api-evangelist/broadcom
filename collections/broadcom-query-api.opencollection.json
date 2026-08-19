@@ -1,0 +1,61 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Broadcom Operations for Applications REST Alerts Query API",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Query",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Broadcom Execute a query",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.wavefront.com/api/v2/query",
+            "params": [
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "The query expression"
+              },
+              {
+                "name": "s",
+                "value": "",
+                "type": "query",
+                "description": "Start time in epoch seconds or ms"
+              },
+              {
+                "name": "e",
+                "value": "",
+                "type": "query",
+                "description": "End time in epoch seconds or ms"
+              },
+              {
+                "name": "g",
+                "value": "",
+                "type": "query",
+                "description": "Granularity (s, m, h, d)"
+              }
+            ]
+          },
+          "docs": "Performs a query against the metrics data store and returns the results."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

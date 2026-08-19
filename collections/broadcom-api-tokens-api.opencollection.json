@@ -1,0 +1,46 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Broadcom Operations for Applications REST Alerts API Tokens API",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "API Tokens",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Broadcom List API tokens",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.wavefront.com/api/v2/api-token"
+          },
+          "docs": "Returns all API tokens for the authenticated user."
+        },
+        {
+          "info": {
+            "name": "Broadcom Create an API token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{instance}.wavefront.com/api/v2/api-token"
+          },
+          "docs": "Creates a new API token for the authenticated user."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

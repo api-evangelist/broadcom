@@ -1,0 +1,493 @@
+{
+  "item": [
+    {
+      "id": "60b93ec2-1b95-4969-8e14-9989ca43b58b",
+      "name": "Clusters",
+      "description": {
+        "content": "Cluster management",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "02b3b1f0-f53a-4a2c-b0e3-49e7793720a8",
+          "name": "Broadcom List clusters",
+          "request": {
+            "name": "Broadcom List clusters",
+            "description": {
+              "content": "Returns all clusters.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "clusters"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Your Operations for Applications instance name",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6165df42-22b5-49ab-ae21-41eeddcc7bd0",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "clusters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your Operations for Applications instance name",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"elements\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"primaryDatastoreType\": \"string\",\n      \"isDefault\": false,\n      \"isStretched\": true,\n      \"hosts\": [\n        {\n          \"id\": \"string\",\n          \"fqdn\": \"string\",\n          \"ipAddress\": \"string\",\n          \"status\": \"ASSIGNED\",\n          \"domain\": {\n            \"id\": \"string\"\n          },\n          \"cluster\": {\n            \"id\": \"string\"\n          }\n        },\n        {\n          \"id\": \"string\",\n          \"fqdn\": \"string\",\n          \"ipAddress\": \"string\",\n          \"status\": \"UNASSIGNED\",\n          \"domain\": {\n            \"id\": \"string\"\n          },\n          \"cluster\": {\n            \"id\": \"string\"\n          }\n        }\n      ]\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"primaryDatastoreType\": \"string\",\n      \"isDefault\": true,\n      \"isStretched\": false,\n      \"hosts\": [\n        {\n          \"id\": \"string\",\n          \"fqdn\": \"string\",\n          \"ipAddress\": \"string\",\n          \"status\": \"ASSIGNED\",\n          \"domain\": {\n            \"id\": \"string\"\n          },\n          \"cluster\": {\n            \"id\": \"string\"\n          }\n        },\n        {\n          \"id\": \"string\",\n          \"fqdn\": \"string\",\n          \"ipAddress\": \"string\",\n          \"status\": \"DECOMMISSIONED\",\n          \"domain\": {\n            \"id\": \"string\"\n          },\n          \"cluster\": {\n            \"id\": \"string\"\n          }\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f7e3159a-1f4d-4b7b-82ba-e016830cdf0f",
+          "name": "Broadcom Get cluster details",
+          "request": {
+            "name": "Broadcom Get cluster details",
+            "description": {
+              "content": "Returns details of the specified cluster.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "clusters",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Your Operations for Applications instance name",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "aebb550a-961d-42d2-bad3-8edb46839ec6",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "clusters",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Your Operations for Applications instance name",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"primaryDatastoreType\": \"string\",\n  \"isDefault\": true,\n  \"isStretched\": false,\n  \"hosts\": [\n    {\n      \"id\": \"string\",\n      \"fqdn\": \"string\",\n      \"ipAddress\": \"string\",\n      \"status\": \"DECOMMISSIONED\",\n      \"domain\": {\n        \"id\": \"string\"\n      },\n      \"cluster\": {\n        \"id\": \"string\"\n      }\n    },\n    {\n      \"id\": \"string\",\n      \"fqdn\": \"string\",\n      \"ipAddress\": \"string\",\n      \"status\": \"DECOMMISSIONED\",\n      \"domain\": {\n        \"id\": \"string\"\n      },\n      \"cluster\": {\n        \"id\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "26281535-bcfb-4bd3-814e-c1554050bafd",
+          "name": "Broadcom Update a cluster",
+          "request": {
+            "name": "Broadcom Update a cluster",
+            "description": {
+              "content": "Updates the specified cluster configuration, such as expanding or shrinking.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "clusters",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Your Operations for Applications instance name",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"hostSpecs\": [\n    {\n      \"fqdn\": \"<string>\",\n      \"username\": \"<string>\",\n      \"password\": \"<string>\",\n      \"networkPoolId\": \"<string>\",\n      \"storageType\": \"<string>\"\n    },\n    {\n      \"fqdn\": \"<string>\",\n      \"username\": \"<string>\",\n      \"password\": \"<string>\",\n      \"networkPoolId\": \"<string>\",\n      \"storageType\": \"<string>\"\n    }\n  ],\n  \"clusterExpansionSpec\": \"<object>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a99e3c3c-14fe-410d-8091-896cf2cc3db0",
+              "name": "Cluster update started",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "clusters",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Your Operations for Applications instance name",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"hostSpecs\": [\n    {\n      \"fqdn\": \"string\",\n      \"username\": \"string\",\n      \"password\": \"string\",\n      \"networkPoolId\": \"string\",\n      \"storageType\": \"VMFS_FC\"\n    },\n    {\n      \"fqdn\": \"string\",\n      \"username\": \"string\",\n      \"password\": \"string\",\n      \"networkPoolId\": \"string\",\n      \"storageType\": \"VSAN\"\n    }\n  ],\n  \"clusterExpansionSpec\": \"<object>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"status\": \"CANCELLED\",\n  \"type\": \"string\",\n  \"creationTimestamp\": \"2011-10-17T19:39:33.155Z\",\n  \"completionTimestamp\": \"1989-03-03T19:43:04.792Z\",\n  \"errors\": [\n    {\n      \"message\": \"string\"\n    },\n    {\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d15e6dba-e7c2-4186-8813-fcfefb3731e0",
+          "name": "Broadcom List clusters",
+          "request": {
+            "name": "Broadcom List clusters",
+            "description": {
+              "content": "Returns information about clusters in the vCenter Server.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vcenter",
+                "cluster"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "filter.names",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter.names",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Your Operations for Applications instance name",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "61af5de3-6bbb-440d-a19f-b98b838dc53f",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vcenter",
+                    "cluster"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "filter.names",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter.names",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Your Operations for Applications instance name",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"cluster\": \"string\",\n    \"name\": \"string\",\n    \"ha_enabled\": true,\n    \"drs_enabled\": false\n  },\n  {\n    \"cluster\": \"string\",\n    \"name\": \"string\",\n    \"ha_enabled\": false,\n    \"drs_enabled\": true\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Your Operations for Applications instance name",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "example",
+      "key": "instance"
+    },
+    {
+      "type": "string",
+      "value": "https://{{instance}}.wavefront.com/api/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "c51e344e-ea5d-4f33-a8fb-ed3697c94617",
+    "name": "Broadcom Operations for Applications REST Alerts Clusters API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The VMware Aria Operations for Applications REST API (formerly Tanzu Observability by Wavefront) enables programmatic interaction with the observability service. It supports querying metrics, managing dashboards, alerts, events, sources, user accounts, API tokens, and ingesting data directly. The API uses JSON payloads over HTTPS and supports both API token and session-based authentication.\n\nContact Support:\n Name: Broadcom Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

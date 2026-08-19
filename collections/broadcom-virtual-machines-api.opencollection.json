@@ -1,0 +1,162 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Broadcom Operations for Applications REST Alerts Virtual Machines API",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Virtual Machines",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Broadcom List virtual machines",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.wavefront.com/api/v2/vcenter/vm",
+            "params": [
+              {
+                "name": "filter.vms",
+                "value": "",
+                "type": "query",
+                "description": "Identifiers of virtual machines to filter"
+              },
+              {
+                "name": "filter.names",
+                "value": "",
+                "type": "query",
+                "description": "Names of virtual machines to filter"
+              },
+              {
+                "name": "filter.power_states",
+                "value": "",
+                "type": "query",
+                "description": "Power states to filter"
+              }
+            ]
+          },
+          "docs": "Returns information about all virtual machines matching the specified filters."
+        },
+        {
+          "info": {
+            "name": "Broadcom Create a virtual machine",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{instance}.wavefront.com/api/v2/vcenter/vm",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a virtual machine with the specified configuration."
+        },
+        {
+          "info": {
+            "name": "Broadcom Get virtual machine details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.wavefront.com/api/v2/vcenter/vm/:vm",
+            "params": [
+              {
+                "name": "vm",
+                "value": "",
+                "type": "path",
+                "description": "Virtual machine identifier"
+              }
+            ]
+          },
+          "docs": "Returns detailed information about the specified virtual machine."
+        },
+        {
+          "info": {
+            "name": "Broadcom Delete a virtual machine",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{instance}.wavefront.com/api/v2/vcenter/vm/:vm",
+            "params": [
+              {
+                "name": "vm",
+                "value": "",
+                "type": "path",
+                "description": "Virtual machine identifier"
+              }
+            ]
+          },
+          "docs": "Deletes the specified virtual machine."
+        },
+        {
+          "info": {
+            "name": "Broadcom Get VM power state",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.wavefront.com/api/v2/vcenter/vm/:vm/power",
+            "params": [
+              {
+                "name": "vm",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns the power state of the specified virtual machine."
+        },
+        {
+          "info": {
+            "name": "Broadcom Power on a virtual machine",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{instance}.wavefront.com/api/v2/vcenter/vm/:vm/power?action=start",
+            "params": [
+              {
+                "name": "vm",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Powers on the specified virtual machine."
+        },
+        {
+          "info": {
+            "name": "Broadcom Power off a virtual machine",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{instance}.wavefront.com/api/v2/vcenter/vm/:vm/power?action=stop",
+            "params": [
+              {
+                "name": "vm",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Powers off the specified virtual machine."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

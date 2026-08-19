@@ -1,0 +1,47 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Broadcom Operations for Applications REST Alerts Datastores API",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Datastores",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Broadcom List datastores",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.wavefront.com/api/v2/vcenter/datastore",
+            "params": [
+              {
+                "name": "filter.names",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter.types",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns information about datastores in the vCenter Server."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

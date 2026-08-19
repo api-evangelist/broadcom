@@ -1,0 +1,91 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Broadcom Operations for Applications REST Alerts Hosts API",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Hosts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Broadcom List hosts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.wavefront.com/api/v2/hosts"
+          },
+          "docs": "Returns all commissioned hosts."
+        },
+        {
+          "info": {
+            "name": "Broadcom Commission hosts",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{instance}.wavefront.com/api/v2/hosts",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Commissions one or more hosts for use in VCF."
+        },
+        {
+          "info": {
+            "name": "Broadcom Get host details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.wavefront.com/api/v2/hosts/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns details of the specified host."
+        },
+        {
+          "info": {
+            "name": "Broadcom List hosts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.wavefront.com/api/v2/vcenter/host",
+            "params": [
+              {
+                "name": "filter.names",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter.connection_states",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns information about hosts in the vCenter Server."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
