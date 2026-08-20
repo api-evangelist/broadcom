@@ -110,6 +110,8 @@ apis:
   description: Cluster management
   humanURL: https://developer.broadcom.com/xapis/vsphere-automation-api/latest/
   tags:
+  - Cluster
+  tags_raw:
   - Clusters
   properties:
   - type: OpenAPI
@@ -234,6 +236,8 @@ apis:
   description: Event management
   humanURL: https://developer.broadcom.com/xapis/vsphere-automation-api/latest/
   tags:
+  - Event
+  tags_raw:
   - Events
   properties:
   - type: OpenAPI
@@ -513,6 +517,8 @@ apis:
   description: Asynchronous task monitoring
   humanURL: https://developer.broadcom.com/xapis/vsphere-automation-api/latest/
   tags:
+  - Task
+  tags_raw:
   - Tasks
   properties:
   - type: OpenAPI
