@@ -1,16 +1,52 @@
 aid: broadcom
 url: https://raw.githubusercontent.com/api-evangelist/broadcom/refs/heads/main/apis.yml
 common:
-  - type: AgenticAccess
-    url: agentic-access/broadcom-agentic-access.yml
-  - type: DomainSecurity
-    url: security/broadcom-domain-security.yml
-  - type: Authentication
-    url: authentication/broadcom-authentication.yml
-  - type: GitHubOrganization
-    url: https://github.com/Broadcom
-  - type: LinkedIn
-    url: https://www.linkedin.com/company/broadcom
+- type: AgenticAccess
+  url: agentic-access/broadcom-agentic-access.yml
+- type: DomainSecurity
+  url: security/broadcom-domain-security.yml
+- type: Authentication
+  url: authentication/broadcom-authentication.yml
+- type: GitHubOrganization
+  url: https://github.com/Broadcom
+- type: LinkedIn
+  url: https://www.linkedin.com/company/broadcom
+- type: Subsidiary
+  url: https://apis.io/providers/appneta/
+  name: AppNeta
+  x-relationship: acquisition
+  x-generated-by: broadcom-family:2026-08-21
+  x-acquired: 2021
+- type: Subsidiary
+  url: https://apis.io/providers/brocade/
+  name: Brocade
+  x-relationship: acquisition
+  x-generated-by: broadcom-family:2026-08-21
+  x-acquired: 2017
+- type: Subsidiary
+  url: https://apis.io/providers/ca/
+  name: CA Technologies (Broadcom)
+  x-relationship: acquisition
+  x-generated-by: broadcom-family:2026-08-21
+  x-acquired: 2018
+- type: Subsidiary
+  url: https://apis.io/providers/newport-communications/
+  name: Newport Communications
+  x-relationship: acquisition
+  x-generated-by: broadcom-family:2026-08-21
+  x-acquired: 2000
+- type: Subsidiary
+  url: https://apis.io/providers/symantec/
+  name: Symantec
+  x-relationship: acquisition
+  x-generated-by: broadcom-family:2026-08-21
+  x-acquired: 2019
+- type: Subsidiary
+  url: https://apis.io/providers/vmware/
+  name: VMware
+  x-relationship: acquisition
+  x-generated-by: broadcom-family:2026-08-21
+  x-acquired: 2023
 apis:
 - aid: broadcom:broadcom-alerts-api
   name: Broadcom Alerts API
@@ -640,13 +676,13 @@ apis:
     url: json-schema/broadcom-task-schema.json
 name: Broadcom
 tags:
-  - Cloud Infrastructure
-  - Gateways
-  - Management
-  - Networks
-  - Observability
-  - Virtualization
-  - Fortune 500
+- Cloud Infrastructure
+- Gateways
+- Management
+- Networks
+- Observability
+- Virtualization
+- Fortune 500
 type: Index
 deliveryModel:
   model: unknown
@@ -675,14 +711,13 @@ accessModel:
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/broadcom.png
 access: 3rd-Party
 created: '2025-01-14'
-modified: '2026-05-19'
+modified: '2026-08-21'
 position: Consumer
-description: >-
-  Broadcom is a global technology company that specializes in the design and manufacturing of semiconductors and other
-  hardware components for a wide range of industries. They provide a diverse portfolio of products for the enterprise,
-  data center, networking, telecommunications, and consumer electronics markets. Broadcom's technology is used in a
-  variety of devices such as smartphones, tablets, routers, and smart TVs.
+description: Broadcom is a global technology company that specializes in the design and manufacturing of semiconductors
+  and other hardware components for a wide range of industries. They provide a diverse portfolio of products for
+  the enterprise, data center, networking, telecommunications, and consumer electronics markets. Broadcom's technology
+  is used in a variety of devices such as smartphones, tablets, routers, and smart TVs.
 maintainers:
-  - FN: Kin Lane
-    email: info@apievangelist.com
+- FN: Kin Lane
+  email: info@apievangelist.com
 specificationVersion: '0.23'
