@@ -1,6 +1,9 @@
 aid: broadcom
 url: https://raw.githubusercontent.com/api-evangelist/broadcom/refs/heads/main/apis.yml
 common:
+- type: CapabilityMap
+  url: capabilities/broadcom-capability-edges.yml
+  name: Broadcom Business Capability Map
 - type: AgenticAccess
   url: agentic-access/broadcom-agentic-access.yml
 - type: DomainSecurity
@@ -693,7 +696,7 @@ deliveryModel:
   confidence: low
   source:
   - openapi
-  generated: '2026-08-11'
+  generated: '2026-08-28'
   method: derived
 accessModel:
   pricing: enterprise
