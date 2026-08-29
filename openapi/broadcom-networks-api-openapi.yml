@@ -1,8 +1,8 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Broadcom Operations for Applications REST Alerts Networks API
-  description: The VMware Aria Operations for Applications REST API (formerly Tanzu Observability by Wavefront) enables programmatic interaction with the observability service. It supports querying metrics, managing dashboards, alerts, events, sources, user accounts, API tokens, and ingesting data directly. The API uses JSON payloads over HTTPS and supports both API token and session-based authentication.
-  version: 2.0.0
+  title: Broadcom vSphere Automation Networks API
+  description: The vSphere Automation API provides a unified programmatic interface for managing VMware vSphere environments. It enables automation of virtual machine lifecycle management, host and cluster configuration, content library management, tagging, and other vSphere infrastructure operations. This RESTful API replaces many legacy SOAP-based interfaces and supports JSON request and response payloads over HTTPS.
+  version: 8.0.0
   contact:
     name: Broadcom Developer Support
     url: https://developer.broadcom.com
@@ -10,14 +10,14 @@ info:
     name: Proprietary
     url: https://www.broadcom.com/company/legal/licensing
 servers:
-- url: https://{instance}.wavefront.com/api/v2
-  description: Operations for Applications instance
+- url: https://{vcenter}/api
+  description: vCenter Server instance
   variables:
-    instance:
-      default: example
-      description: Your Operations for Applications instance name
+    vcenter:
+      default: vcenter.example.com
+      description: The hostname or IP address of the vCenter Server
 security:
-- bearerAuth: []
+- sessionAuth: []
 tags:
 - name: Networks
   description: Operations for managing networks
@@ -54,10 +54,15 @@ components:
           - DISTRIBUTED_PORTGROUP
           - OPAQUE_NETWORK
   securitySchemes:
-    bearerAuth:
+    sessionAuth:
+      type: apiKey
+      in: header
+      name: vmware-api-session-id
+      description: Session token obtained via POST /cis/session
+    basicAuth:
       type: http
-      scheme: bearer
-      description: API token for authentication
+      scheme: basic
+      description: Username and password for session creation
 externalDocs:
-  description: Operations for Applications REST API Documentation
-  url: https://developer.broadcom.com/xapis/operations-for-applications-rest-api/latest/
+  description: vSphere Automation API Reference
+  url: https://developer.broadcom.com/xapis/vsphere-automation-api/latest/

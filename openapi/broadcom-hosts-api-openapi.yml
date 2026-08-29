@@ -1,23 +1,27 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Broadcom Operations for Applications REST Alerts Hosts API
-  description: The VMware Aria Operations for Applications REST API (formerly Tanzu Observability by Wavefront) enables programmatic interaction with the observability service. It supports querying metrics, managing dashboards, alerts, events, sources, user accounts, API tokens, and ingesting data directly. The API uses JSON payloads over HTTPS and supports both API token and session-based authentication.
-  version: 2.0.0
+  title: Broadcom Hosts API
   contact:
     name: Broadcom Developer Support
     url: https://developer.broadcom.com
   license:
     name: Proprietary
     url: https://www.broadcom.com/company/legal/licensing
+  version: '1.0'
+  description: 'Operations tagged Hosts across 2 of this provider''s published API definitions: broadcom-vmware-cloud-foundation-openapi.yml, broadcom-vsphere-automation-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
-- url: https://{instance}.wavefront.com/api/v2
-  description: Operations for Applications instance
+- url: https://{sddc-manager}/v1
+  description: SDDC Manager instance
   variables:
-    instance:
-      default: example
-      description: Your Operations for Applications instance name
-security:
-- bearerAuth: []
+    sddc-manager:
+      default: sddc-manager.example.com
+      description: The hostname of the SDDC Manager
+- url: https://{vcenter}/api
+  description: vCenter Server instance
+  variables:
+    vcenter:
+      default: vcenter.example.com
+      description: The hostname or IP address of the vCenter Server
 tags:
 - name: Hosts
   description: ESXi host management
@@ -36,6 +40,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/HostList'
+      security:
+      - bearerAuth: []
     post:
       summary: Broadcom Commission hosts
       description: Commissions one or more hosts for use in VCF.
@@ -57,6 +63,15 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Task'
+      security:
+      - bearerAuth: []
+    servers:
+    - url: https://{sddc-manager}/v1
+      description: SDDC Manager instance
+      variables:
+        sddc-manager:
+          default: sddc-manager.example.com
+          description: The hostname of the SDDC Manager
   /hosts/{id}:
     get:
       summary: Broadcom Get host details
@@ -79,6 +94,15 @@ paths:
                 $ref: '#/components/schemas/Host'
         '404':
           description: Host not found
+      security:
+      - bearerAuth: []
+    servers:
+    - url: https://{sddc-manager}/v1
+      description: SDDC Manager instance
+      variables:
+        sddc-manager:
+          default: sddc-manager.example.com
+          description: The hostname of the SDDC Manager
   /vcenter/host:
     get:
       summary: Broadcom List hosts
@@ -112,57 +136,17 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/HostSummary'
+      security:
+      - sessionAuth: []
+    servers:
+    - url: https://{vcenter}/api
+      description: vCenter Server instance
+      variables:
+        vcenter:
+          default: vcenter.example.com
+          description: The hostname or IP address of the vCenter Server
 components:
   schemas:
-    HostSummary:
-      type: object
-      properties:
-        host:
-          type: string
-        name:
-          type: string
-        connection_state:
-          type: string
-          enum:
-          - CONNECTED
-          - DISCONNECTED
-          - NOT_RESPONDING
-        power_state:
-          type: string
-          enum:
-          - POWERED_ON
-          - POWERED_OFF
-          - STANDBY
-    HostList:
-      type: object
-      properties:
-        elements:
-          type: array
-          items:
-            $ref: '#/components/schemas/Host'
-    HostCommissionSpec:
-      type: object
-      required:
-      - fqdn
-      - username
-      - password
-      - networkPoolId
-      - storageType
-      properties:
-        fqdn:
-          type: string
-        username:
-          type: string
-        password:
-          type: string
-        networkPoolId:
-          type: string
-        storageType:
-          type: string
-          enum:
-          - VSAN
-          - NFS
-          - VMFS_FC
     Host:
       type: object
       properties:
@@ -188,6 +172,36 @@ components:
           properties:
             id:
               type: string
+    HostCommissionSpec:
+      type: object
+      required:
+      - fqdn
+      - username
+      - password
+      - networkPoolId
+      - storageType
+      properties:
+        fqdn:
+          type: string
+        username:
+          type: string
+        password:
+          type: string
+        networkPoolId:
+          type: string
+        storageType:
+          type: string
+          enum:
+          - VSAN
+          - NFS
+          - VMFS_FC
+    HostList:
+      type: object
+      properties:
+        elements:
+          type: array
+          items:
+            $ref: '#/components/schemas/Host'
     Task:
       type: object
       properties:
@@ -217,11 +231,38 @@ components:
             properties:
               message:
                 type: string
+    HostSummary:
+      type: object
+      properties:
+        host:
+          type: string
+        name:
+          type: string
+        connection_state:
+          type: string
+          enum:
+          - CONNECTED
+          - DISCONNECTED
+          - NOT_RESPONDING
+        power_state:
+          type: string
+          enum:
+          - POWERED_ON
+          - POWERED_OFF
+          - STANDBY
   securitySchemes:
     bearerAuth:
       type: http
       scheme: bearer
-      description: API token for authentication
-externalDocs:
-  description: Operations for Applications REST API Documentation
-  url: https://developer.broadcom.com/xapis/operations-for-applications-rest-api/latest/
+      description: Access token obtained via POST /tokens
+    basicAuth:
+      type: http
+      scheme: basic
+    sessionAuth:
+      type: apiKey
+      in: header
+      name: vmware-api-session-id
+      description: Session token obtained via POST /cis/session
+x-refined-from:
+- broadcom-vmware-cloud-foundation-openapi.yml
+- broadcom-vsphere-automation-openapi.yml
