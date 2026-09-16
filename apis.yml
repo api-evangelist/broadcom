@@ -1,6 +1,8 @@
 aid: broadcom
 url: https://raw.githubusercontent.com/api-evangelist/broadcom/refs/heads/main/apis.yml
 common:
+- type: Website
+  url: https://broadcom.com
 - type: CapabilityMap
   url: capabilities/broadcom-capability-edges.yml
   name: Broadcom Business Capability Map
@@ -715,12 +717,13 @@ accessModel:
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/broadcom.png
 access: 3rd-Party
 created: '2025-01-14'
-modified: '2026-08-21'
+modified: '2026-09-16'
 position: Consuming
-description: Broadcom is a global technology company that specializes in the design and manufacturing of semiconductors
-  and other hardware components for a wide range of industries. They provide a diverse portfolio of products for
-  the enterprise, data center, networking, telecommunications, and consumer electronics markets. Broadcom's technology
-  is used in a variety of devices such as smartphones, tablets, routers, and smart TVs.
+description: Broadcom is a global technology company that specializes in the design and manufacturing
+  of semiconductors and other hardware components for a wide range of industries. They provide a diverse
+  portfolio of products for the enterprise, data center, networking, telecommunications, and consumer
+  electronics markets. Broadcom's technology is used in a variety of devices such as smartphones, tablets,
+  routers, and smart TVs.
 maintainers:
 - FN: Kin Lane
   email: info@apievangelist.com
