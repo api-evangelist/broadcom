@@ -465,6 +465,8 @@ apis:
   description: Session management operations
   humanURL: https://developer.broadcom.com/xapis/vsphere-automation-api/latest/
   tags:
+  - Sessions
+  tags_raw:
   - Session
   properties:
   - type: OpenAPI
