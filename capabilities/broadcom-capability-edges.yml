@@ -11,7 +11,7 @@ capability_model:
   attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
     CC BY 4.0
   notice: NOTICE
-edge_count: 8
+edge_count: 9
 edges:
 - tag: Hosts
   spec_file: broadcom-hosts-api-openapi.yml
@@ -92,3 +92,13 @@ edges:
   reason: CRUD over alert definitions in VMware Aria Operations for Applications (Tanzu Observability).
     These are IT monitoring alert rules, explicitly not financial-crime or business alerting, so this
     is IT operations monitoring.
+- tag: Dashboards
+  spec_file: broadcom-dashboards-api-openapi.yml
+  capability_id: BC-4220.20
+  capability_id_l1: BC-4220
+  capability_name: Observability Management
+  confidence: 0.7
+  evidence: '"managing dashboards, alerts, events" in the observability service; "Create a dashboard"'
+  reason: Observability dashboards for the running service; monitoring visualisation rather than business
+    BI reporting. Some ambiguity with BC-610.50 Analytics & BI, hence moderate confidence.
+  recovered_from: capability-edges-sweep.json
