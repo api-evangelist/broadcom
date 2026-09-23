@@ -122,19 +122,6 @@ paths:
           description: Alert deleted
 components:
   schemas:
-    AlertList:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/Alert'
-        offset:
-          type: integer
-        limit:
-          type: integer
-        totalItems:
-          type: integer
     Alert:
       type: object
       properties:
@@ -162,6 +149,19 @@ components:
               type: array
               items:
                 type: string
+    AlertList:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Alert'
+        offset:
+          type: integer
+        limit:
+          type: integer
+        totalItems:
+          type: integer
   securitySchemes:
     bearerAuth:
       type: http

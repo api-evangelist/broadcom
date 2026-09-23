@@ -139,31 +139,55 @@ paths:
           description: The hostname or IP address of the vCenter Server
 components:
   schemas:
-    Host:
+    Cluster:
       type: object
       properties:
         id:
           type: string
+        name:
+          type: string
+        primaryDatastoreType:
+          type: string
+        isDefault:
+          type: boolean
+        isStretched:
+          type: boolean
+        hosts:
+          type: array
+          items:
+            $ref: '#/components/schemas/Host'
+    HostCommissionSpec:
+      type: object
+      required:
+      - fqdn
+      - username
+      - password
+      - networkPoolId
+      - storageType
+      properties:
         fqdn:
           type: string
-        ipAddress:
+        username:
           type: string
-        status:
+        password:
+          type: string
+        networkPoolId:
+          type: string
+        storageType:
           type: string
           enum:
-          - ASSIGNED
-          - UNASSIGNED
-          - DECOMMISSIONED
-        domain:
+          - VSAN
+          - NFS
+          - VMFS_FC
+    ClusterUpdateSpec:
+      type: object
+      properties:
+        hostSpecs:
+          type: array
+          items:
+            $ref: '#/components/schemas/HostCommissionSpec'
+        clusterExpansionSpec:
           type: object
-          properties:
-            id:
-              type: string
-        cluster:
-          type: object
-          properties:
-            id:
-              type: string
     Task:
       type: object
       properties:
@@ -193,29 +217,6 @@ components:
             properties:
               message:
                 type: string
-    HostCommissionSpec:
-      type: object
-      required:
-      - fqdn
-      - username
-      - password
-      - networkPoolId
-      - storageType
-      properties:
-        fqdn:
-          type: string
-        username:
-          type: string
-        password:
-          type: string
-        networkPoolId:
-          type: string
-        storageType:
-          type: string
-          enum:
-          - VSAN
-          - NFS
-          - VMFS_FC
     ClusterList:
       type: object
       properties:
@@ -223,32 +224,31 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Cluster'
-    ClusterUpdateSpec:
-      type: object
-      properties:
-        hostSpecs:
-          type: array
-          items:
-            $ref: '#/components/schemas/HostCommissionSpec'
-        clusterExpansionSpec:
-          type: object
-    Cluster:
+    Host:
       type: object
       properties:
         id:
           type: string
-        name:
+        fqdn:
           type: string
-        primaryDatastoreType:
+        ipAddress:
           type: string
-        isDefault:
-          type: boolean
-        isStretched:
-          type: boolean
-        hosts:
-          type: array
-          items:
-            $ref: '#/components/schemas/Host'
+        status:
+          type: string
+          enum:
+          - ASSIGNED
+          - UNASSIGNED
+          - DECOMMISSIONED
+        domain:
+          type: object
+          properties:
+            id:
+              type: string
+        cluster:
+          type: object
+          properties:
+            id:
+              type: string
     ClusterSummary:
       type: object
       properties:

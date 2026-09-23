@@ -1,7 +1,9 @@
 ---
 title: OpenAI and Broadcom announce strategic collaboration to ...
 url: https://investors.broadcom.com/news-releases/news-release-details/openai-and-broadcom-announce-strategic-collaboration-deploy-10
-date: '2026-05-25'
+published: ''
+date_basis: harvested
+harvested: '2026-05-25'
 query: '"Broadcom" press release artificial intelligence'
 position: 2
 source: serpapi-google

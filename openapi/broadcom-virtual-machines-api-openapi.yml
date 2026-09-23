@@ -197,6 +197,25 @@ paths:
           description: VM not found
 components:
   schemas:
+    VMSummary:
+      type: object
+      properties:
+        vm:
+          type: string
+          description: Virtual machine identifier
+        name:
+          type: string
+          description: Virtual machine name
+        power_state:
+          type: string
+          enum:
+          - POWERED_ON
+          - POWERED_OFF
+          - SUSPENDED
+        cpu_count:
+          type: integer
+        memory_size_MiB:
+          type: integer
     PowerInfo:
       type: object
       properties:
@@ -236,25 +255,6 @@ components:
           properties:
             version:
               type: string
-    VMSummary:
-      type: object
-      properties:
-        vm:
-          type: string
-          description: Virtual machine identifier
-        name:
-          type: string
-          description: Virtual machine name
-        power_state:
-          type: string
-          enum:
-          - POWERED_ON
-          - POWERED_OFF
-          - SUSPENDED
-        cpu_count:
-          type: integer
-        memory_size_MiB:
-          type: integer
     VMCreateSpec:
       type: object
       required:

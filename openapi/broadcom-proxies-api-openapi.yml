@@ -73,6 +73,13 @@ paths:
           description: Proxy deleted
 components:
   schemas:
+    ProxyList:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Proxy'
     Proxy:
       type: object
       properties:
@@ -92,13 +99,6 @@ components:
         lastCheckInTime:
           type: integer
           format: int64
-    ProxyList:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/Proxy'
   securitySchemes:
     bearerAuth:
       type: http

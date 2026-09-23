@@ -36,7 +36,8 @@
     "broadcom-vmware-cloud-foundation-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
     "broadcom-vsphere-automation-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
     "tag 'Clusters' spans 2 source specs (broadcom-vmware-cloud-foundation-openapi.yml, broadcom-vsphere-automation-openapi.yml): per-path servers applied",
-    "tag 'Hosts' spans 2 source specs (broadcom-vmware-cloud-foundation-openapi.yml, broadcom-vsphere-automation-openapi.yml): per-path servers applied"
+    "tag 'Hosts' spans 2 source specs (broadcom-vmware-cloud-foundation-openapi.yml, broadcom-vsphere-automation-openapi.yml): per-path servers applied",
+    "apis.yml register: already-registered"
   ],
   "skipped": [
     "broadcom-alerts-api-openapi.yml: previously refined output, superseded by openapi/_original/",

@@ -63,6 +63,13 @@ paths:
                 $ref: '#/components/schemas/Source'
 components:
   schemas:
+    SourceList:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Source'
     Source:
       type: object
       properties:
@@ -76,13 +83,6 @@ components:
             type: string
         description:
           type: string
-    SourceList:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/Source'
   securitySchemes:
     bearerAuth:
       type: http

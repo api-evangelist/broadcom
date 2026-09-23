@@ -1,7 +1,9 @@
 ---
 title: Broadcom agrees to support development of Meta's next- ...
 url: https://www.manufacturingdive.com/news/broadcom-support-meta-next-generation-ai-chips/818108/
-date: '2026-05-25'
+published: ''
+date_basis: harvested
+harvested: '2026-05-25'
 query: '"Broadcom" press release artificial intelligence'
 position: 4
 source: serpapi-google

@@ -147,31 +147,6 @@ paths:
           description: The hostname or IP address of the vCenter Server
 components:
   schemas:
-    Host:
-      type: object
-      properties:
-        id:
-          type: string
-        fqdn:
-          type: string
-        ipAddress:
-          type: string
-        status:
-          type: string
-          enum:
-          - ASSIGNED
-          - UNASSIGNED
-          - DECOMMISSIONED
-        domain:
-          type: object
-          properties:
-            id:
-              type: string
-        cluster:
-          type: object
-          properties:
-            id:
-              type: string
     HostCommissionSpec:
       type: object
       required:
@@ -231,6 +206,31 @@ components:
             properties:
               message:
                 type: string
+    Host:
+      type: object
+      properties:
+        id:
+          type: string
+        fqdn:
+          type: string
+        ipAddress:
+          type: string
+        status:
+          type: string
+          enum:
+          - ASSIGNED
+          - UNASSIGNED
+          - DECOMMISSIONED
+        domain:
+          type: object
+          properties:
+            id:
+              type: string
+        cluster:
+          type: object
+          properties:
+            id:
+              type: string
     HostSummary:
       type: object
       properties:

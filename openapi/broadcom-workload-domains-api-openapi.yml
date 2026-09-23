@@ -96,38 +96,6 @@ paths:
                 $ref: '#/components/schemas/Task'
 components:
   schemas:
-    Host:
-      type: object
-      properties:
-        id:
-          type: string
-        fqdn:
-          type: string
-        ipAddress:
-          type: string
-        status:
-          type: string
-          enum:
-          - ASSIGNED
-          - UNASSIGNED
-          - DECOMMISSIONED
-        domain:
-          type: object
-          properties:
-            id:
-              type: string
-        cluster:
-          type: object
-          properties:
-            id:
-              type: string
-    DomainList:
-      type: object
-      properties:
-        elements:
-          type: array
-          items:
-            $ref: '#/components/schemas/Domain'
     DomainCreateSpec:
       type: object
       required:
@@ -143,6 +111,48 @@ components:
           type: object
         nsxTSpec:
           type: object
+    DomainList:
+      type: object
+      properties:
+        elements:
+          type: array
+          items:
+            $ref: '#/components/schemas/Domain'
+    Cluster:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        primaryDatastoreType:
+          type: string
+        isDefault:
+          type: boolean
+        isStretched:
+          type: boolean
+        hosts:
+          type: array
+          items:
+            $ref: '#/components/schemas/Host'
+    Domain:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        type:
+          type: string
+          enum:
+          - MANAGEMENT
+          - VI
+        status:
+          type: string
+        clusters:
+          type: array
+          items:
+            $ref: '#/components/schemas/Cluster'
     Task:
       type: object
       properties:
@@ -172,41 +182,31 @@ components:
             properties:
               message:
                 type: string
-    Domain:
+    Host:
       type: object
       properties:
         id:
           type: string
-        name:
+        fqdn:
           type: string
-        type:
+        ipAddress:
           type: string
-          enum:
-          - MANAGEMENT
-          - VI
         status:
           type: string
-        clusters:
-          type: array
-          items:
-            $ref: '#/components/schemas/Cluster'
-    Cluster:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        primaryDatastoreType:
-          type: string
-        isDefault:
-          type: boolean
-        isStretched:
-          type: boolean
-        hosts:
-          type: array
-          items:
-            $ref: '#/components/schemas/Host'
+          enum:
+          - ASSIGNED
+          - UNASSIGNED
+          - DECOMMISSIONED
+        domain:
+          type: object
+          properties:
+            id:
+              type: string
+        cluster:
+          type: object
+          properties:
+            id:
+              type: string
   securitySchemes:
     bearerAuth:
       type: http
