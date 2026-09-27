@@ -96,63 +96,6 @@ paths:
                 $ref: '#/components/schemas/Task'
 components:
   schemas:
-    DomainCreateSpec:
-      type: object
-      required:
-      - domainName
-      - vcenterSpec
-      - computeSpec
-      properties:
-        domainName:
-          type: string
-        vcenterSpec:
-          type: object
-        computeSpec:
-          type: object
-        nsxTSpec:
-          type: object
-    DomainList:
-      type: object
-      properties:
-        elements:
-          type: array
-          items:
-            $ref: '#/components/schemas/Domain'
-    Cluster:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        primaryDatastoreType:
-          type: string
-        isDefault:
-          type: boolean
-        isStretched:
-          type: boolean
-        hosts:
-          type: array
-          items:
-            $ref: '#/components/schemas/Host'
-    Domain:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        type:
-          type: string
-          enum:
-          - MANAGEMENT
-          - VI
-        status:
-          type: string
-        clusters:
-          type: array
-          items:
-            $ref: '#/components/schemas/Cluster'
     Task:
       type: object
       properties:
@@ -182,6 +125,30 @@ components:
             properties:
               message:
                 type: string
+    DomainList:
+      type: object
+      properties:
+        elements:
+          type: array
+          items:
+            $ref: '#/components/schemas/Domain'
+    Cluster:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        primaryDatastoreType:
+          type: string
+        isDefault:
+          type: boolean
+        isStretched:
+          type: boolean
+        hosts:
+          type: array
+          items:
+            $ref: '#/components/schemas/Host'
     Host:
       type: object
       properties:
@@ -207,6 +174,39 @@ components:
           properties:
             id:
               type: string
+    Domain:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        type:
+          type: string
+          enum:
+          - MANAGEMENT
+          - VI
+        status:
+          type: string
+        clusters:
+          type: array
+          items:
+            $ref: '#/components/schemas/Cluster'
+    DomainCreateSpec:
+      type: object
+      required:
+      - domainName
+      - vcenterSpec
+      - computeSpec
+      properties:
+        domainName:
+          type: string
+        vcenterSpec:
+          type: object
+        computeSpec:
+          type: object
+        nsxTSpec:
+          type: object
   securitySchemes:
     bearerAuth:
       type: http

@@ -109,7 +109,7 @@ paths:
     get:
       summary: Broadcom List clusters
       description: Returns information about clusters in the vCenter Server.
-      operationId: listClusters
+      operationId: getVcenterCluster
       tags:
       - Clusters
       parameters:
@@ -130,6 +130,8 @@ paths:
                   $ref: '#/components/schemas/ClusterSummary'
       security:
       - sessionAuth: []
+      x-operation-id-source: normalized
+      x-operation-id-original: listClusters
     servers:
     - url: https://{vcenter}/api
       description: vCenter Server instance
@@ -139,6 +141,51 @@ paths:
           description: The hostname or IP address of the vCenter Server
 components:
   schemas:
+    Task:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        status:
+          type: string
+          enum:
+          - IN_PROGRESS
+          - SUCCESSFUL
+          - FAILED
+          - CANCELLED
+        type:
+          type: string
+        creationTimestamp:
+          type: string
+          format: date-time
+        completionTimestamp:
+          type: string
+          format: date-time
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              message:
+                type: string
+    ClusterUpdateSpec:
+      type: object
+      properties:
+        hostSpecs:
+          type: array
+          items:
+            $ref: '#/components/schemas/HostCommissionSpec'
+        clusterExpansionSpec:
+          type: object
+    ClusterList:
+      type: object
+      properties:
+        elements:
+          type: array
+          items:
+            $ref: '#/components/schemas/Cluster'
     Cluster:
       type: object
       properties:
@@ -179,51 +226,6 @@ components:
           - VSAN
           - NFS
           - VMFS_FC
-    ClusterUpdateSpec:
-      type: object
-      properties:
-        hostSpecs:
-          type: array
-          items:
-            $ref: '#/components/schemas/HostCommissionSpec'
-        clusterExpansionSpec:
-          type: object
-    Task:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        status:
-          type: string
-          enum:
-          - IN_PROGRESS
-          - SUCCESSFUL
-          - FAILED
-          - CANCELLED
-        type:
-          type: string
-        creationTimestamp:
-          type: string
-          format: date-time
-        completionTimestamp:
-          type: string
-          format: date-time
-        errors:
-          type: array
-          items:
-            type: object
-            properties:
-              message:
-                type: string
-    ClusterList:
-      type: object
-      properties:
-        elements:
-          type: array
-          items:
-            $ref: '#/components/schemas/Cluster'
     Host:
       type: object
       properties:

@@ -68,6 +68,13 @@ paths:
                 $ref: '#/components/schemas/Task'
 components:
   schemas:
+    TaskList:
+      type: object
+      properties:
+        elements:
+          type: array
+          items:
+            $ref: '#/components/schemas/Task'
     Task:
       type: object
       properties:
@@ -97,13 +104,6 @@ components:
             properties:
               message:
                 type: string
-    TaskList:
-      type: object
-      properties:
-        elements:
-          type: array
-          items:
-            $ref: '#/components/schemas/Task'
   securitySchemes:
     bearerAuth:
       type: http

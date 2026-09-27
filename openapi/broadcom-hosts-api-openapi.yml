@@ -107,7 +107,7 @@ paths:
     get:
       summary: Broadcom List hosts
       description: Returns information about hosts in the vCenter Server.
-      operationId: listHosts
+      operationId: getVcenterHost
       tags:
       - Hosts
       parameters:
@@ -138,6 +138,8 @@ paths:
                   $ref: '#/components/schemas/HostSummary'
       security:
       - sessionAuth: []
+      x-operation-id-source: normalized
+      x-operation-id-original: listHosts
     servers:
     - url: https://{vcenter}/api
       description: vCenter Server instance
@@ -170,13 +172,31 @@ components:
           - VSAN
           - NFS
           - VMFS_FC
-    HostList:
+    Host:
       type: object
       properties:
-        elements:
-          type: array
-          items:
-            $ref: '#/components/schemas/Host'
+        id:
+          type: string
+        fqdn:
+          type: string
+        ipAddress:
+          type: string
+        status:
+          type: string
+          enum:
+          - ASSIGNED
+          - UNASSIGNED
+          - DECOMMISSIONED
+        domain:
+          type: object
+          properties:
+            id:
+              type: string
+        cluster:
+          type: object
+          properties:
+            id:
+              type: string
     Task:
       type: object
       properties:
@@ -206,31 +226,13 @@ components:
             properties:
               message:
                 type: string
-    Host:
+    HostList:
       type: object
       properties:
-        id:
-          type: string
-        fqdn:
-          type: string
-        ipAddress:
-          type: string
-        status:
-          type: string
-          enum:
-          - ASSIGNED
-          - UNASSIGNED
-          - DECOMMISSIONED
-        domain:
-          type: object
-          properties:
-            id:
-              type: string
-        cluster:
-          type: object
-          properties:
-            id:
-              type: string
+        elements:
+          type: array
+          items:
+            $ref: '#/components/schemas/Host'
     HostSummary:
       type: object
       properties:
