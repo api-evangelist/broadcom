@@ -132,19 +132,6 @@ paths:
           description: Dashboard deleted
 components:
   schemas:
-    DashboardList:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/Dashboard'
-        offset:
-          type: integer
-        limit:
-          type: integer
-        totalItems:
-          type: integer
     Dashboard:
       type: object
       properties:
@@ -178,6 +165,19 @@ components:
           type: string
         updaterId:
           type: string
+    DashboardList:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Dashboard'
+        offset:
+          type: integer
+        limit:
+          type: integer
+        totalItems:
+          type: integer
   securitySchemes:
     bearerAuth:
       type: http

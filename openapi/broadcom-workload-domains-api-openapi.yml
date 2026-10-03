@@ -96,42 +96,21 @@ paths:
                 $ref: '#/components/schemas/Task'
 components:
   schemas:
-    Task:
+    DomainCreateSpec:
       type: object
+      required:
+      - domainName
+      - vcenterSpec
+      - computeSpec
       properties:
-        id:
+        domainName:
           type: string
-        name:
-          type: string
-        status:
-          type: string
-          enum:
-          - IN_PROGRESS
-          - SUCCESSFUL
-          - FAILED
-          - CANCELLED
-        type:
-          type: string
-        creationTimestamp:
-          type: string
-          format: date-time
-        completionTimestamp:
-          type: string
-          format: date-time
-        errors:
-          type: array
-          items:
-            type: object
-            properties:
-              message:
-                type: string
-    DomainList:
-      type: object
-      properties:
-        elements:
-          type: array
-          items:
-            $ref: '#/components/schemas/Domain'
+        vcenterSpec:
+          type: object
+        computeSpec:
+          type: object
+        nsxTSpec:
+          type: object
     Cluster:
       type: object
       properties:
@@ -174,6 +153,35 @@ components:
           properties:
             id:
               type: string
+    Task:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        status:
+          type: string
+          enum:
+          - IN_PROGRESS
+          - SUCCESSFUL
+          - FAILED
+          - CANCELLED
+        type:
+          type: string
+        creationTimestamp:
+          type: string
+          format: date-time
+        completionTimestamp:
+          type: string
+          format: date-time
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              message:
+                type: string
     Domain:
       type: object
       properties:
@@ -192,21 +200,13 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Cluster'
-    DomainCreateSpec:
+    DomainList:
       type: object
-      required:
-      - domainName
-      - vcenterSpec
-      - computeSpec
       properties:
-        domainName:
-          type: string
-        vcenterSpec:
-          type: object
-        computeSpec:
-          type: object
-        nsxTSpec:
-          type: object
+        elements:
+          type: array
+          items:
+            $ref: '#/components/schemas/Domain'
   securitySchemes:
     bearerAuth:
       type: http

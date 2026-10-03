@@ -149,54 +149,6 @@ paths:
           description: The hostname or IP address of the vCenter Server
 components:
   schemas:
-    HostCommissionSpec:
-      type: object
-      required:
-      - fqdn
-      - username
-      - password
-      - networkPoolId
-      - storageType
-      properties:
-        fqdn:
-          type: string
-        username:
-          type: string
-        password:
-          type: string
-        networkPoolId:
-          type: string
-        storageType:
-          type: string
-          enum:
-          - VSAN
-          - NFS
-          - VMFS_FC
-    Host:
-      type: object
-      properties:
-        id:
-          type: string
-        fqdn:
-          type: string
-        ipAddress:
-          type: string
-        status:
-          type: string
-          enum:
-          - ASSIGNED
-          - UNASSIGNED
-          - DECOMMISSIONED
-        domain:
-          type: object
-          properties:
-            id:
-              type: string
-        cluster:
-          type: object
-          properties:
-            id:
-              type: string
     Task:
       type: object
       properties:
@@ -226,6 +178,31 @@ components:
             properties:
               message:
                 type: string
+    Host:
+      type: object
+      properties:
+        id:
+          type: string
+        fqdn:
+          type: string
+        ipAddress:
+          type: string
+        status:
+          type: string
+          enum:
+          - ASSIGNED
+          - UNASSIGNED
+          - DECOMMISSIONED
+        domain:
+          type: object
+          properties:
+            id:
+              type: string
+        cluster:
+          type: object
+          properties:
+            id:
+              type: string
     HostList:
       type: object
       properties:
@@ -233,6 +210,29 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Host'
+    HostCommissionSpec:
+      type: object
+      required:
+      - fqdn
+      - username
+      - password
+      - networkPoolId
+      - storageType
+      properties:
+        fqdn:
+          type: string
+        username:
+          type: string
+        password:
+          type: string
+        networkPoolId:
+          type: string
+        storageType:
+          type: string
+          enum:
+          - VSAN
+          - NFS
+          - VMFS_FC
     HostSummary:
       type: object
       properties:

@@ -197,45 +197,6 @@ paths:
           description: VM not found
 components:
   schemas:
-    VMInfo:
-      type: object
-      properties:
-        name:
-          type: string
-        power_state:
-          type: string
-          enum:
-          - POWERED_ON
-          - POWERED_OFF
-          - SUSPENDED
-        cpu:
-          type: object
-          properties:
-            count:
-              type: integer
-            cores_per_socket:
-              type: integer
-        memory:
-          type: object
-          properties:
-            size_MiB:
-              type: integer
-        guest_OS:
-          type: string
-        hardware:
-          type: object
-          properties:
-            version:
-              type: string
-    PowerInfo:
-      type: object
-      properties:
-        state:
-          type: string
-          enum:
-          - POWERED_ON
-          - POWERED_OFF
-          - SUSPENDED
     VMSummary:
       type: object
       properties:
@@ -287,6 +248,45 @@ components:
           properties:
             count:
               type: integer
+    VMInfo:
+      type: object
+      properties:
+        name:
+          type: string
+        power_state:
+          type: string
+          enum:
+          - POWERED_ON
+          - POWERED_OFF
+          - SUSPENDED
+        cpu:
+          type: object
+          properties:
+            count:
+              type: integer
+            cores_per_socket:
+              type: integer
+        memory:
+          type: object
+          properties:
+            size_MiB:
+              type: integer
+        guest_OS:
+          type: string
+        hardware:
+          type: object
+          properties:
+            version:
+              type: string
+    PowerInfo:
+      type: object
+      properties:
+        state:
+          type: string
+          enum:
+          - POWERED_ON
+          - POWERED_OFF
+          - SUSPENDED
   securitySchemes:
     sessionAuth:
       type: apiKey
