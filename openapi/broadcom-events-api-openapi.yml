@@ -72,13 +72,6 @@ paths:
                 $ref: '#/components/schemas/Event'
 components:
   schemas:
-    EventList:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/Event'
     Event:
       type: object
       properties:
@@ -100,6 +93,13 @@ components:
           type: array
           items:
             type: string
+    EventList:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Event'
   securitySchemes:
     bearerAuth:
       type: http

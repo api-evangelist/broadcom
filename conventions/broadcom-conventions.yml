@@ -1,0 +1,28 @@
+generated: '2026-10-04'
+method: searched
+generator: extract-docs-artifacts.py (local)
+source: https://apis.io/onboarding/
+sources:
+- https://apis.io/onboarding/
+- https://apis.io/developer/onboarding
+- https://apis.io/developer/getting-started
+- https://apis.io/developer/authentication
+idempotency:
+  coverage: none
+  evidence: The documentation does not describe any idempotency key or header for write operations.
+pagination:
+  style: page-based
+  params:
+  - page
+  - limit
+  response_fields:
+  - meta.total
+  - meta.page
+  - meta.limit
+  - meta.pages
+  - data
+  evidence: Collections return { meta, data } with page‑based pagination (e.g., GET /search?q=weather&page=2&limit=25).
+authentication: Optional API key via the X-API-Key header; also supports agent authentication with Signature-Key header and HTTP message signatures,
+  and OAuth 2.0 flows (client credentials, PKCE).
+rate_limit_signaling: Headers include RateLimit-Policy and X-RateLimit-Tier; 429 indicates rate‑limit, 402 indicates tier‑payment required.
+docs: https://apis.io/onboarding/

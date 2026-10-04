@@ -197,57 +197,6 @@ paths:
           description: VM not found
 components:
   schemas:
-    VMSummary:
-      type: object
-      properties:
-        vm:
-          type: string
-          description: Virtual machine identifier
-        name:
-          type: string
-          description: Virtual machine name
-        power_state:
-          type: string
-          enum:
-          - POWERED_ON
-          - POWERED_OFF
-          - SUSPENDED
-        cpu_count:
-          type: integer
-        memory_size_MiB:
-          type: integer
-    VMCreateSpec:
-      type: object
-      required:
-      - name
-      - guest_OS
-      - placement
-      properties:
-        name:
-          type: string
-        guest_OS:
-          type: string
-        placement:
-          type: object
-          properties:
-            folder:
-              type: string
-            host:
-              type: string
-            cluster:
-              type: string
-            datastore:
-              type: string
-        memory:
-          type: object
-          properties:
-            size_MiB:
-              type: integer
-        cpu:
-          type: object
-          properties:
-            count:
-              type: integer
     VMInfo:
       type: object
       properties:
@@ -287,6 +236,57 @@ components:
           - POWERED_ON
           - POWERED_OFF
           - SUSPENDED
+    VMCreateSpec:
+      type: object
+      required:
+      - name
+      - guest_OS
+      - placement
+      properties:
+        name:
+          type: string
+        guest_OS:
+          type: string
+        placement:
+          type: object
+          properties:
+            folder:
+              type: string
+            host:
+              type: string
+            cluster:
+              type: string
+            datastore:
+              type: string
+        memory:
+          type: object
+          properties:
+            size_MiB:
+              type: integer
+        cpu:
+          type: object
+          properties:
+            count:
+              type: integer
+    VMSummary:
+      type: object
+      properties:
+        vm:
+          type: string
+          description: Virtual machine identifier
+        name:
+          type: string
+          description: Virtual machine name
+        power_state:
+          type: string
+          enum:
+          - POWERED_ON
+          - POWERED_OFF
+          - SUSPENDED
+        cpu_count:
+          type: integer
+        memory_size_MiB:
+          type: integer
   securitySchemes:
     sessionAuth:
       type: apiKey

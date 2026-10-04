@@ -1,0 +1,23 @@
+generated: '2026-10-04'
+method: searched
+generator: extract-docs-artifacts.py (local)
+source: https://apis.io/developer/deprecation
+sources:
+- https://apis.io/developer/deprecation
+- https://apis.io/onboarding/
+- https://apis.io/developer/onboarding
+- https://apis.io/developer/getting-started
+versioning:
+  scheme: path
+  current: https://apis.io/api/v1
+  how_selected: Version changes only for a breaking change; otherwise stays at /v1
+deprecation:
+  notice_period: 6 months for endpoint or field deprecation in /v1; 12 months for retiring an entire API version
+  headers:
+  - Deprecation
+  - Sunset
+  - Link
+  docs: Responses carry Deprecation and Sunset headers (RFC 9745 and RFC 8594), plus a Link header with rel="deprecation"
+note: Fields not stated in the provided pages are set to null.
+status_page: null
+docs: https://apis.io/developer/deprecation

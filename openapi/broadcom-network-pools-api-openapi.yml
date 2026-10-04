@@ -57,6 +57,13 @@ paths:
                 $ref: '#/components/schemas/NetworkPool'
 components:
   schemas:
+    NetworkPoolList:
+      type: object
+      properties:
+        elements:
+          type: array
+          items:
+            $ref: '#/components/schemas/NetworkPool'
     NetworkPool:
       type: object
       properties:
@@ -77,13 +84,6 @@ components:
                 type: string
               gateway:
                 type: string
-    NetworkPoolList:
-      type: object
-      properties:
-        elements:
-          type: array
-          items:
-            $ref: '#/components/schemas/NetworkPool'
   securitySchemes:
     bearerAuth:
       type: http

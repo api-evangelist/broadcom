@@ -1,6 +1,123 @@
 aid: broadcom
+
 url: https://raw.githubusercontent.com/api-evangelist/broadcom/refs/heads/main/apis.yml
+
+name: Broadcom
+
+tags:
+- Cloud Infrastructure
+- Gateways
+- Management
+- Networks
+- Observability
+- Virtualization
+- Fortune 500
+- Broadcom
+
+deliveryModel:
+  model: unknown
+  open_source: false
+  commercial: false
+  callable_host: true
+  label: Delivery model not determined — needs a product licence on record
+  confidence: low
+  source:
+  - openapi
+  generated: '2026-08-28'
+  method: derived
+
+accessModel:
+  pricing: enterprise
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Enterprise
+  confidence: medium
+  source:
+  - plans
+  - authentication
+  - security
+  generated: '2026-09-03'
+  method: derived
+
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/broadcom.png
+
+access: 3rd-Party
+
+created: '2025-01-14'
+
+modified: '2026-09-16'
+
+position: Consuming
+
+description: Broadcom is a global technology company that specializes in the design and manufacturing
+  of semiconductors and other hardware components for a wide range of industries. They provide a diverse
+  portfolio of products for the enterprise, data center, networking, telecommunications, and consumer
+  electronics markets. Broadcom's technology is used in a variety of devices such as smartphones, tablets,
+  routers, and smart TVs.
+
+maintainers:
+- FN: Kin Lane
+  email: info@apievangelist.com
+
+specificationVersion: '0.23'
+
 common:
+- type: FinOps
+  url: finops/broadcom-finops.yml
+- type: RateLimits
+  url: rate-limits/broadcom-rate-limits.yml
+- type: Plans
+  url: plans/broadcom-plans-pricing.yml
+- type: Spectral
+  url: rules/broadcom-rules.yml
+- type: Spectral
+  url: rules/broadcom-jsonschema-spectral-rules.yml
+- type: Vocabulary
+  url: vocabulary/broadcom-vocabulary.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: DataModel
+  url: data-model/broadcom-data-model.yml
+- type: Conventions
+  url: conventions/broadcom-conventions.yml
+- type: Deprecation
+  url: lifecycle/broadcom-lifecycle.yml
+- type: Lifecycle
+  url: lifecycle/broadcom-lifecycle.yml
+- type: ErrorCatalog
+  url: errors/broadcom-problem-types.yml
+- type: Conformance
+  url: conformance/broadcom-conformance.yml
+- type: AgentCard
+  url: a2a/broadcom-a2a.yml
+- type: SecurityTxt
+  url: well-known/broadcom-apis-security.txt
+- type: WellKnown
+  url: well-known/broadcom-well-known.yml
+- type: Hosts
+  url: hosts/broadcom-hosts.yml
+- type: Vendors
+  url: vendors/broadcom-vendors.yml
+- type: Support
+  url: https://support.broadcom.com
+- type: StatusPage
+  url: https://status.broadcom.com/
+- type: SignUp
+  url: https://community.broadcom.com/register
+- type: Security
+  url: https://www.broadcom.com/products/mainframe/security
+- type: PrivacyPolicy
+  url: https://www.broadcom.com/company/legal/privacy
+- type: Leadership
+  url: https://www.broadcom.com/products/cybersecurity/endpoint/management/it-management-suite
+- type: GettingStarted
+  url: https://apis.io/onboarding/
+- type: Documentation
+  url: https://developer.broadcom.com/
+- type: APIReference
+  url: https://apis.io/llms.txt
 - type: Website
   url: https://broadcom.com
 - type: CapabilityMap
@@ -52,6 +169,7 @@ common:
   x-relationship: acquisition
   x-generated-by: broadcom-family:2026-08-21
   x-acquired: 2023
+
 apis:
 - aid: broadcom:broadcom-alerts-api
   name: Broadcom Alerts API
@@ -681,53 +799,11 @@ apis:
     url: json-schema/broadcom-workload-domain-schema.json
   - type: JSONSchema
     url: json-schema/broadcom-task-schema.json
-name: Broadcom
-tags:
-- Cloud Infrastructure
-- Gateways
-- Management
-- Networks
-- Observability
-- Virtualization
-- Fortune 500
-- Broadcom
+
 type: Index
-deliveryModel:
-  model: unknown
-  open_source: false
-  commercial: false
-  callable_host: true
-  label: Delivery model not determined — needs a product licence on record
-  confidence: low
-  source:
-  - openapi
-  generated: '2026-08-28'
-  method: derived
-accessModel:
-  pricing: enterprise
-  onboarding: unknown
-  trial: false
-  try_now: false
-  public: false
-  label: Enterprise
-  confidence: medium
-  source:
-  - plans
-  - authentication
-  - security
-  generated: '2026-09-03'
-  method: derived
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/broadcom.png
-access: 3rd-Party
-created: '2025-01-14'
-modified: '2026-09-16'
-position: Consuming
-description: Broadcom is a global technology company that specializes in the design and manufacturing
-  of semiconductors and other hardware components for a wide range of industries. They provide a diverse
-  portfolio of products for the enterprise, data center, networking, telecommunications, and consumer
-  electronics markets. Broadcom's technology is used in a variety of devices such as smartphones, tablets,
-  routers, and smart TVs.
-maintainers:
-- FN: Kin Lane
-  email: info@apievangelist.com
-specificationVersion: '0.23'
+x-enrichment:
+  date: '2026-10-04'
+  status: enriched
+  artifacts_added: 30
+  pass: modular-v1
+  engine: identity=local,contract=local,surfaces=local,docs=local,regulatory=local

@@ -141,6 +141,13 @@ paths:
           description: The hostname or IP address of the vCenter Server
 components:
   schemas:
+    ClusterList:
+      type: object
+      properties:
+        elements:
+          type: array
+          items:
+            $ref: '#/components/schemas/Cluster'
     Cluster:
       type: object
       properties:
@@ -158,13 +165,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Host'
-    ClusterList:
-      type: object
-      properties:
-        elements:
-          type: array
-          items:
-            $ref: '#/components/schemas/Cluster'
     Host:
       type: object
       properties:
@@ -190,29 +190,6 @@ components:
           properties:
             id:
               type: string
-    HostCommissionSpec:
-      type: object
-      required:
-      - fqdn
-      - username
-      - password
-      - networkPoolId
-      - storageType
-      properties:
-        fqdn:
-          type: string
-        username:
-          type: string
-        password:
-          type: string
-        networkPoolId:
-          type: string
-        storageType:
-          type: string
-          enum:
-          - VSAN
-          - NFS
-          - VMFS_FC
     Task:
       type: object
       properties:
@@ -251,6 +228,29 @@ components:
             $ref: '#/components/schemas/HostCommissionSpec'
         clusterExpansionSpec:
           type: object
+    HostCommissionSpec:
+      type: object
+      required:
+      - fqdn
+      - username
+      - password
+      - networkPoolId
+      - storageType
+      properties:
+        fqdn:
+          type: string
+        username:
+          type: string
+        password:
+          type: string
+        networkPoolId:
+          type: string
+        storageType:
+          type: string
+          enum:
+          - VSAN
+          - NFS
+          - VMFS_FC
     ClusterSummary:
       type: object
       properties:

@@ -1,0 +1,38 @@
+generated: '2026-10-04'
+method: generated
+generator: extract-docs-artifacts.py skills (local)
+source: openapi/broadcom-api-tokens-api-openapi.yml
+skills:
+- file: skills/broadcom-api-tokens-create-and-list.md
+  name: broadcom-api-tokens-create-and-list
+  api: openapi/broadcom-api-tokens-api-openapi.yml
+  operations:
+  - createApiToken
+  - listApiTokens
+- file: skills/broadcom-session-create-and-delete.md
+  name: broadcom-session-create-and-delete
+  api: openapi/broadcom-session-api-openapi.yml
+  operations:
+  - createSession
+  - deleteSession
+- file: skills/broadcom-alerts-manage.md
+  name: broadcom-alerts-manage
+  api: openapi/broadcom-alerts-api-openapi.yml
+  operations:
+  - listAlerts
+  - createAlert
+  - getAlert
+  - updateAlert
+  - deleteAlert
+- file: skills/broadcom-events-list-and-create.md
+  name: broadcom-events-list-and-create
+  api: openapi/broadcom-events-api-openapi.yml
+  operations:
+  - listEvents
+  - createEvent
+- file: skills/broadcom-network-pools-create.md
+  name: broadcom-network-pools-create
+  api: openapi/broadcom-network-pools-api-openapi.yml
+  operations:
+  - listNetworkPools
+  - createNetworkPool

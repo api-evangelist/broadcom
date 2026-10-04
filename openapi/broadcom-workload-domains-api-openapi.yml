@@ -96,21 +96,24 @@ paths:
                 $ref: '#/components/schemas/Task'
 components:
   schemas:
-    DomainCreateSpec:
+    Domain:
       type: object
-      required:
-      - domainName
-      - vcenterSpec
-      - computeSpec
       properties:
-        domainName:
+        id:
           type: string
-        vcenterSpec:
-          type: object
-        computeSpec:
-          type: object
-        nsxTSpec:
-          type: object
+        name:
+          type: string
+        type:
+          type: string
+          enum:
+          - MANAGEMENT
+          - VI
+        status:
+          type: string
+        clusters:
+          type: array
+          items:
+            $ref: '#/components/schemas/Cluster'
     Cluster:
       type: object
       properties:
@@ -182,24 +185,21 @@ components:
             properties:
               message:
                 type: string
-    Domain:
+    DomainCreateSpec:
       type: object
+      required:
+      - domainName
+      - vcenterSpec
+      - computeSpec
       properties:
-        id:
+        domainName:
           type: string
-        name:
-          type: string
-        type:
-          type: string
-          enum:
-          - MANAGEMENT
-          - VI
-        status:
-          type: string
-        clusters:
-          type: array
-          items:
-            $ref: '#/components/schemas/Cluster'
+        vcenterSpec:
+          type: object
+        computeSpec:
+          type: object
+        nsxTSpec:
+          type: object
     DomainList:
       type: object
       properties:

@@ -1,0 +1,295 @@
+generated: '2026-10-04'
+method: derived
+generator: derive-vocabulary.py
+source:
+- openapi/broadcom-alerts-api-openapi.yml
+- openapi/broadcom-api-tokens-api-openapi.yml
+- openapi/broadcom-authentication-api-openapi.yml
+- openapi/broadcom-clusters-api-openapi.yml
+- openapi/broadcom-content-library-api-openapi.yml
+vocabulary:
+  name: Broadcom Domain Vocabulary
+  description: 'Terms declared by Broadcom''s own API contract: its resource groups, objects and enumerations, with the contract''s definitions.
+    Derived, not authored.'
+  version: '2026-10-04'
+  terms:
+  - term: Alerts
+    definition: Alert management
+    tags:
+    - Resource Group
+    source: openapi/broadcom-alerts-api-openapi.yml
+  - term: API Tokens
+    definition: API token management
+    tags:
+    - Resource Group
+    source: openapi/broadcom-api-tokens-api-openapi.yml
+  - term: Authentication
+    definition: Token-based authentication
+    tags:
+    - Resource Group
+    source: openapi/broadcom-authentication-api-openapi.yml
+  - term: Clusters
+    definition: Cluster management
+    tags:
+    - Resource Group
+    source: openapi/broadcom-clusters-api-openapi.yml
+  - term: Content Library
+    definition: Content library management
+    tags:
+    - Resource Group
+    source: openapi/broadcom-content-library-api-openapi.yml
+  - term: Dashboards
+    definition: Dashboard management
+    tags:
+    - Resource Group
+    source: openapi/broadcom-dashboards-api-openapi.yml
+  - term: Datastores
+    definition: Operations for managing datastores
+    tags:
+    - Resource Group
+    source: openapi/broadcom-datastores-api-openapi.yml
+  - term: Events
+    definition: Event management
+    tags:
+    - Resource Group
+    source: openapi/broadcom-events-api-openapi.yml
+  - term: Hosts
+    definition: ESXi host management
+    tags:
+    - Resource Group
+    source: openapi/broadcom-hosts-api-openapi.yml
+  - term: Network Pools
+    definition: Network pool management
+    tags:
+    - Resource Group
+    source: openapi/broadcom-network-pools-api-openapi.yml
+  - term: Networks
+    definition: Operations for managing networks
+    tags:
+    - Resource Group
+    source: openapi/broadcom-networks-api-openapi.yml
+  - term: Proxies
+    definition: Proxy management
+    tags:
+    - Resource Group
+    source: openapi/broadcom-proxies-api-openapi.yml
+  - term: Query
+    definition: Query metrics data
+    tags:
+    - Resource Group
+    source: openapi/broadcom-query-api-openapi.yml
+  - term: Session
+    definition: Session management operations
+    tags:
+    - Resource Group
+    source: openapi/broadcom-session-api-openapi.yml
+  - term: Sources
+    definition: Source management
+    tags:
+    - Resource Group
+    source: openapi/broadcom-sources-api-openapi.yml
+  - term: Tagging
+    definition: Tag management and association operations
+    tags:
+    - Resource Group
+    source: openapi/broadcom-tagging-api-openapi.yml
+  - term: Tasks
+    definition: Asynchronous task monitoring
+    tags:
+    - Resource Group
+    source: openapi/broadcom-tasks-api-openapi.yml
+  - term: Upgrades
+    definition: System upgrade management
+    tags:
+    - Resource Group
+    source: openapi/broadcom-upgrades-api-openapi.yml
+  - term: Virtual Machines
+    definition: Operations for managing virtual machines
+    tags:
+    - Resource Group
+    source: openapi/broadcom-virtual-machines-api-openapi.yml
+  - term: Workload Domains
+    definition: Workload domain lifecycle management
+    tags:
+    - Resource Group
+    source: openapi/broadcom-workload-domains-api-openapi.yml
+  - term: AlertList
+    definition: 'Object declared by the contract with fields: items, offset, limit, totalItems.'
+    tags:
+    - Object
+    source: openapi/broadcom-alerts-api-openapi.yml#/components/schemas/AlertList
+  - term: Alert
+    definition: 'Object declared by the contract with fields: id, name, condition, minutes, severity, target, tags.'
+    tags:
+    - Object
+    source: openapi/broadcom-alerts-api-openapi.yml#/components/schemas/Alert
+  - term: ApiToken
+    definition: 'Object declared by the contract with fields: id, name, createdEpochMillis.'
+    tags:
+    - Object
+    source: openapi/broadcom-api-tokens-api-openapi.yml#/components/schemas/ApiToken
+  - term: TokenResponse
+    definition: 'Object declared by the contract with fields: accessToken, tokenType.'
+    tags:
+    - Object
+    source: openapi/broadcom-authentication-api-openapi.yml#/components/schemas/TokenResponse
+  - term: Cluster
+    definition: 'Object declared by the contract with fields: id, name, primaryDatastoreType, isDefault, isStretched, hosts.'
+    tags:
+    - Object
+    source: openapi/broadcom-clusters-api-openapi.yml#/components/schemas/Cluster
+  - term: ClusterList
+    definition: 'Object declared by the contract with fields: elements.'
+    tags:
+    - Object
+    source: openapi/broadcom-clusters-api-openapi.yml#/components/schemas/ClusterList
+  - term: Host
+    definition: 'Object declared by the contract with fields: id, fqdn, ipAddress, status, domain, cluster.'
+    tags:
+    - Object
+    source: openapi/broadcom-clusters-api-openapi.yml#/components/schemas/Host
+  - term: HostCommissionSpec
+    definition: 'Object declared by the contract with fields: fqdn, username, password, networkPoolId, storageType.'
+    tags:
+    - Object
+    source: openapi/broadcom-clusters-api-openapi.yml#/components/schemas/HostCommissionSpec
+  - term: Task
+    definition: 'Object declared by the contract with fields: id, name, status, type, creationTimestamp, completionTimestamp, errors.'
+    tags:
+    - Object
+    source: openapi/broadcom-clusters-api-openapi.yml#/components/schemas/Task
+  - term: ClusterUpdateSpec
+    definition: 'Object declared by the contract with fields: hostSpecs, clusterExpansionSpec.'
+    tags:
+    - Object
+    source: openapi/broadcom-clusters-api-openapi.yml#/components/schemas/ClusterUpdateSpec
+  - term: ClusterSummary
+    definition: 'Object declared by the contract with fields: cluster, name, ha_enabled, drs_enabled.'
+    tags:
+    - Object
+    source: openapi/broadcom-clusters-api-openapi.yml#/components/schemas/ClusterSummary
+  - term: Dashboard
+    definition: 'Object declared by the contract with fields: id, name, description, url, sections, tags, creatorId, updaterId.'
+    tags:
+    - Object
+    source: openapi/broadcom-dashboards-api-openapi.yml#/components/schemas/Dashboard
+  - term: DashboardList
+    definition: 'Object declared by the contract with fields: items, offset, limit, totalItems.'
+    tags:
+    - Object
+    source: openapi/broadcom-dashboards-api-openapi.yml#/components/schemas/DashboardList
+  - term: DatastoreSummary
+    definition: 'Object declared by the contract with fields: datastore, name, type, capacity, free_space.'
+    tags:
+    - Object
+    source: openapi/broadcom-datastores-api-openapi.yml#/components/schemas/DatastoreSummary
+  - term: EventList
+    definition: 'Object declared by the contract with fields: items.'
+    tags:
+    - Object
+    source: openapi/broadcom-events-api-openapi.yml#/components/schemas/EventList
+  - term: Event
+    definition: 'Object declared by the contract with fields: id, name, startTime, endTime, annotations, tags.'
+    tags:
+    - Object
+    source: openapi/broadcom-events-api-openapi.yml#/components/schemas/Event
+  - term: HostList
+    definition: 'Object declared by the contract with fields: elements.'
+    tags:
+    - Object
+    source: openapi/broadcom-hosts-api-openapi.yml#/components/schemas/HostList
+  - term: HostSummary
+    definition: 'Object declared by the contract with fields: host, name, connection_state, power_state.'
+    tags:
+    - Object
+    source: openapi/broadcom-hosts-api-openapi.yml#/components/schemas/HostSummary
+  - term: NetworkPool
+    definition: 'Object declared by the contract with fields: id, name, networks.'
+    tags:
+    - Object
+    source: openapi/broadcom-network-pools-api-openapi.yml#/components/schemas/NetworkPool
+  - term: NetworkPoolList
+    definition: 'Object declared by the contract with fields: elements.'
+    tags:
+    - Object
+    source: openapi/broadcom-network-pools-api-openapi.yml#/components/schemas/NetworkPoolList
+  - term: NetworkSummary
+    definition: 'Object declared by the contract with fields: network, name, type.'
+    tags:
+    - Object
+    source: openapi/broadcom-networks-api-openapi.yml#/components/schemas/NetworkSummary
+  - term: Proxy
+    definition: 'Object declared by the contract with fields: id, name, hostname, version, status, lastCheckInTime.'
+    tags:
+    - Object
+    source: openapi/broadcom-proxies-api-openapi.yml#/components/schemas/Proxy
+  - term: ProxyList
+    definition: 'Object declared by the contract with fields: items.'
+    tags:
+    - Object
+    source: openapi/broadcom-proxies-api-openapi.yml#/components/schemas/ProxyList
+  - term: QueryResult
+    definition: 'Object declared by the contract with fields: timeseries, query, granularity.'
+    tags:
+    - Object
+    source: openapi/broadcom-query-api-openapi.yml#/components/schemas/QueryResult
+  - term: Source
+    definition: 'Object declared by the contract with fields: id, sourceName, tags, description.'
+    tags:
+    - Object
+    source: openapi/broadcom-sources-api-openapi.yml#/components/schemas/Source
+  - term: SourceList
+    definition: 'Object declared by the contract with fields: items.'
+    tags:
+    - Object
+    source: openapi/broadcom-sources-api-openapi.yml#/components/schemas/SourceList
+  - term: TagAssociationSpec
+    definition: 'Object declared by the contract with fields: tag_id, object_id.'
+    tags:
+    - Object
+    source: openapi/broadcom-tagging-api-openapi.yml#/components/schemas/TagAssociationSpec
+  - term: TaskList
+    definition: 'Object declared by the contract with fields: elements.'
+    tags:
+    - Object
+    source: openapi/broadcom-tasks-api-openapi.yml#/components/schemas/TaskList
+  - term: UpgradeList
+    definition: 'Object declared by the contract with fields: elements.'
+    tags:
+    - Object
+    source: openapi/broadcom-upgrades-api-openapi.yml#/components/schemas/UpgradeList
+  - term: VMSummary
+    definition: 'Object declared by the contract with fields: vm, name, power_state, cpu_count, memory_size_MiB.'
+    tags:
+    - Object
+    source: openapi/broadcom-virtual-machines-api-openapi.yml#/components/schemas/VMSummary
+  - term: VMCreateSpec
+    definition: 'Object declared by the contract with fields: name, guest_OS, placement, memory, cpu.'
+    tags:
+    - Object
+    source: openapi/broadcom-virtual-machines-api-openapi.yml#/components/schemas/VMCreateSpec
+  - term: VMInfo
+    definition: 'Object declared by the contract with fields: name, power_state, cpu, memory, guest_OS, hardware.'
+    tags:
+    - Object
+    source: openapi/broadcom-virtual-machines-api-openapi.yml#/components/schemas/VMInfo
+  - term: PowerInfo
+    definition: 'Object declared by the contract with fields: state.'
+    tags:
+    - Object
+    source: openapi/broadcom-virtual-machines-api-openapi.yml#/components/schemas/PowerInfo
+  - term: DomainCreateSpec
+    definition: 'Object declared by the contract with fields: domainName, vcenterSpec, computeSpec, nsxTSpec.'
+    tags:
+    - Object
+    source: openapi/broadcom-workload-domains-api-openapi.yml#/components/schemas/DomainCreateSpec
+  - term: Domain
+    definition: 'Object declared by the contract with fields: id, name, type, status, clusters.'
+    tags:
+    - Object
+    source: openapi/broadcom-workload-domains-api-openapi.yml#/components/schemas/Domain
+  - term: DomainList
+    definition: 'Object declared by the contract with fields: elements.'
+    tags:
+    - Object
+    source: openapi/broadcom-workload-domains-api-openapi.yml#/components/schemas/DomainList

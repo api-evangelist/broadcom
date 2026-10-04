@@ -1,0 +1,8 @@
+generated: '2026-10-04'
+method: derived
+source: none
+deployment:
+  mode: none
+  package: ""
+  auth: unknown
+  verified: derived

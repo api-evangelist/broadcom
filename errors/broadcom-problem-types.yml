@@ -1,0 +1,42 @@
+generated: '2026-10-04'
+method: derived
+generator: derive-problem-types.py
+source:
+- openapi/broadcom-alerts-api-openapi.yml
+- openapi/broadcom-api-tokens-api-openapi.yml
+- openapi/broadcom-authentication-api-openapi.yml
+- openapi/broadcom-clusters-api-openapi.yml
+- openapi/broadcom-content-library-api-openapi.yml
+- openapi/broadcom-dashboards-api-openapi.yml
+- openapi/broadcom-datastores-api-openapi.yml
+- openapi/broadcom-events-api-openapi.yml
+- openapi/broadcom-hosts-api-openapi.yml
+- openapi/broadcom-network-pools-api-openapi.yml
+- openapi/broadcom-networks-api-openapi.yml
+- openapi/broadcom-proxies-api-openapi.yml
+format: custom
+envelope:
+  media_type: null
+  schema: null
+coverage:
+  operations: 51
+  statuses_declared: 3
+problems:
+- status: 400
+  title: Bad Request
+  description: Bad request
+  operations: 1
+  media_types: []
+  schema: null
+- status: 401
+  title: Unauthorized
+  description: Unauthorized
+  operations: 11
+  media_types: []
+  schema: null
+- status: 404
+  title: Not Found
+  description: VM not found
+  operations: 6
+  media_types: []
+  schema: null
