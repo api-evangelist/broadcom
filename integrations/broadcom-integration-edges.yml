@@ -1,8 +1,10 @@
 generated: '2026-10-13'
 method: searched
 checked:
+- https://github.com/marketplace?type=apps
 - https://github.com/open-telemetry/opentelemetry.io/blob/main/data/ecosystem/vendors.yaml
 - https://github.com/open-telemetry/opentelemetry.io/blob/main/data/registry/
+- https://marketplace.visualstudio.com/vscode
 marketplace_apps: []
 edges:
 - partner_name: OpenTelemetry
@@ -28,6 +30,43 @@ edges:
     detected: '2026-10-13'
   detected_by: sweep-observability.py
   detected: '2026-10-13'
+- partner_name: GitHub Marketplace (apps)
+  partner: github
+  partner_match: aggregator
+  type: marketplace
+  marketplace: github-apps
+  channel: partner-built
+  relationship: platform-app
+  direction: third-party
+  evidence: https://github.com/marketplace/ca-endevor-bridge-for-git
+  listing_count: 1
+  apps:
+  - Endevor® Bridge for Git by Broadcom
+  publisher_name: Broadcom
+  detected_by: sweep-devtools.py
+  detected: '2026-10-14'
+- partner_name: Visual Studio Code Marketplace
+  partner: vs-code-marketplace
+  partner_match: aggregator
+  type: marketplace
+  marketplace: vscode
+  channel: partner-built
+  relationship: platform-app
+  direction: third-party
+  evidence: https://marketplace.visualstudio.com/publishers/broadcomMFD
+  listing_count: 10
+  apps:
+  - Debugger for Mainframe
+  - COBOL Language Support
+  - COBOL Control Flow
+  - HLASM Language Support
+  - Explorer for Endevor
+  publisher_name: Broadcom
+  badges:
+  - Verified publisher
+  - Verified domain
+  detected_by: sweep-devtools.py
+  detected: '2026-10-14'
 source:
 - https://github.com/open-telemetry/opentelemetry.io/blob/main/data/ecosystem/vendors.yaml
 - https://github.com/open-telemetry/opentelemetry.io/blob/main/data/registry/

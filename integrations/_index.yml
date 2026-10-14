@@ -27,3 +27,27 @@
     detected: '2026-10-13'
   status: not-a-workflow
   arazzo: null
+- slug: broadcom-github-marketplace-apps
+  label: GitHub Marketplace (apps)
+  partner: github
+  partner_name: GitHub Marketplace (apps)
+  type: marketplace
+  marketplace: github-apps
+  channel: partner-built
+  evidence: https://github.com/marketplace/ca-endevor-bridge-for-git
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: broadcom-visual-studio-code-marketplace
+  label: Visual Studio Code Marketplace
+  partner: vs-code-marketplace
+  partner_name: Visual Studio Code Marketplace
+  type: marketplace
+  marketplace: vscode
+  channel: partner-built
+  evidence: https://marketplace.visualstudio.com/publishers/broadcomMFD
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
