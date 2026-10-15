@@ -181,3 +181,47 @@
     detected: '2026-10-15'
   status: not-a-workflow
   arazzo: null
+- slug: broadcom-fedramp
+  label: FedRAMP
+  partner_name: FedRAMP
+  category: FedRAMP authorization
+  type: contract
+  channel: regulator-register
+  evidence: https://marketplace.fedramp.gov/products/FR2130949241
+  source: edge
+  relationship: standard-participant
+  contract_reference:
+    register: FedRAMP Marketplace data (github.com/18F/fedramp-data data/data.json @4b73d9247f)
+    standard: FedRAMP
+    spec_file: null
+    role: fedramp-authorized
+    registered_name: Broadcom
+    register_id: FR2130949241
+    matched_domain: broadcom.com
+    matched_by: domain+name-among-holders
+    domain_source: poc-email
+    designations:
+    - Compliant
+    - In Process
+    packages:
+    - Clarity
+    - General Support Systems (GSS)
+    - Rally
+    - Symantec Gov Cloud Security (GCS)
+    service_models:
+    - PaaS
+    - SaaS
+    paths:
+    - Agency
+    signal_note: certified_products = one entry per AUTHORIZED impact level, never per package; packages, service
+      models, paths and leveraging agencies are context, never counted. The register lists current designations
+      only (revoked / expired are removed), so lapsed is always false
+    detected_by: sweep-gov-cloud.py
+    detected: '2026-10-15'
+    certified_products:
+    - product: FedRAMP Moderate
+      impact_level: Moderate
+      lapsed: false
+      latest_authorization: '2022-04-20'
+  status: not-a-workflow
+  arazzo: null
