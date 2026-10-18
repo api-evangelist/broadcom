@@ -225,3 +225,16 @@
       latest_authorization: '2022-04-20'
   status: not-a-workflow
   arazzo: null
+- slug: broadcom-slack-own
+  label: Slack (own)
+  partner: slack
+  partner_name: Slack (own)
+  category: Slack app
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://slack.com/marketplace/A6HHK0MB5-symantec-cloudsoc-eu
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
