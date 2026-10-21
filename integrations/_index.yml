@@ -239,3 +239,28 @@
     detected: '2026-10-19'
   status: not-a-workflow
   arazzo: null
+- slug: broadcom-open-compute-project-foundation
+  label: Open Compute Project Foundation
+  partner_name: Open Compute Project Foundation
+  category: open data center hardware standards membership
+  type: register
+  channel: standard-directory
+  evidence: https://www.opencompute.org/membership/membership-directory
+  source: edge
+  relationship: standard-participant
+  contract_reference:
+    register: Open Compute Project membership directory (opencompute.org/membership/membership-directory)
+    standard: Open Compute Project (OCP) specifications
+    spec_file: null
+    role: ocp-member
+    registered_name: Broadcom Inc.
+    register_id: https://www.broadcom.com/
+    matched_domain: broadcom.com
+    matched_by: domain+name-among-holders
+    member_since: '2018'
+    signal_note: 'participation only: corporate membership of the Open Compute Project (level recorded as partner_tier);
+      membership is not product conformance (OCP Accepted / Inspired products are a separate marketplace, not read)'
+    detected_by: sweep-data-center-tier-certification.py
+    detected: '2026-10-21'
+  status: not-a-workflow
+  arazzo: null
