@@ -439,3 +439,74 @@
     identity_source: wikidata P856 (labelled provenance step; Kin 2026-10-15 decision 1)
   status: not-a-workflow
   arazzo: null
+- slug: broadcom-wi-fi-alliance-certified-products
+  label: Wi-Fi Alliance certified products
+  partner_name: Wi-Fi Alliance certified products
+  category: Wi-Fi certification
+  type: register
+  channel: standard-directory
+  evidence: https://www.wi-fi.org/product-finder
+  source: edge
+  relationship: standard-participant
+  contract_reference:
+    register: Wi-Fi Alliance product finder (wi-fi.org/product-finder; prf.cert.wi-fi.org public JSON / CSV)
+    standard: Wi-Fi CERTIFIED
+    spec_file: null
+    role: wi-fi-certified-product
+    registered_name: Broadcom Corporation
+    register_id: WFA133650
+    matched_domain: null
+    matched_by: register-name
+    register_name_note: register-name 'broadcom' = broadcom; wikidata P856 broadcom.com agrees or unheld
+    certified_products:
+    - product: Computers & Accessories
+      lapsed: false
+      newest_certification: '2015-05-19'
+      generations:
+      - Wi-Fi 7
+      - Wi-Fi 6
+      - Wi-Fi 5 (ac)
+      - Wi-Fi 4 (n)
+    - product: Other
+      lapsed: false
+      newest_certification: '2026-01-21'
+      generations:
+      - Wi-Fi 7
+      - Wi-Fi 6
+      - Wi-Fi 5 (ac)
+      - Wi-Fi 4 (n)
+    - product: Routers
+      lapsed: false
+      newest_certification: '2025-12-31'
+      generations:
+      - Wi-Fi 7
+      - Wi-Fi 6
+      - Wi-Fi 5 (ac)
+      - Wi-Fi 4 (n)
+    - product: Tablets, Ereaders & Cameras
+      lapsed: false
+      newest_certification: '2014-04-22'
+      generations:
+      - Wi-Fi 7
+      - Wi-Fi 6
+      - Wi-Fi 5 (ac)
+      - Wi-Fi 4 (n)
+    products_sample:
+    - 802.11 b/g/n wireless adapter
+    - ADSL2+ Wireless Modem
+    - Atlas-III
+    - BCM4312 802.11b/g Wireless Station
+    - BCM4398
+    - BCM4705 802.11N Draft 2.0 Compliant Wireless Router
+    - BCM94309CB
+    - BCM94312HMGB 802.11 b/g wireless adapter
+    signal_note: certified_products = one entry per Wi-Fi Alliance product category, never per product, variant
+      or CID; generations are context. Wi-Fi CERTIFIED does not expire and the finder marks nothing withdrawn, so
+      lapsed is false
+    detected_by: sweep-wireless-connectivity-certification.py
+    detected: '2026-10-22'
+    identity_source: register-name
+    identity_note: register gave only the name; exact normalised match to the repo's apis.yml name, one repo, Wikidata
+      P856 not contradicting (Kin 2026-10-20 decision 2)
+  status: not-a-workflow
+  arazzo: null
