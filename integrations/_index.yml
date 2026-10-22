@@ -264,6 +264,34 @@
     detected: '2026-10-21'
   status: not-a-workflow
   arazzo: null
+- slug: broadcom-mozilla-firefox-add-ons-amo
+  label: Mozilla Firefox Add-ons (AMO)
+  partner_name: Mozilla Firefox Add-ons (AMO)
+  category: browser extension (Firefox Add-ons)
+  type: marketplace
+  marketplace: firefox-add-ons
+  channel: partner-built
+  evidence: https://addons.mozilla.org/en-US/firefox/addon/threat-intel/
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: 'Firefox Add-ons (addons.mozilla.org public API v5 search: authors, homepage, support_url)'
+    spec_file: null
+    role: firefox-add-on-publisher
+    registered_name: Broadcom Enterprise Security Group
+    register_id: https://addons.mozilla.org/api/v5/addons/addon/threat-intel/
+    matched_domain: broadcom.com
+    matched_by: domain+name-among-holders
+    matched_name: Broadcom Enterprise Security Group
+    builder: publisher
+    signal_note: ONE edge per provider for the store; listing alone = participation. The AMO author name (builder
+      publisher) or homepage + support_url both on the provider's domain (builder domain-attested) identifies it;
+      extension / user counts are context, never counted. No Mozilla repo in all/*, so no platform-side edge exists
+      to mirror.
+    detected_by: sweep-browser-extension-stores.py
+    detected: '2026-10-21'
+  status: not-a-workflow
+  arazzo: null
 - slug: broadcom-common-criteria-portal-ccra-certified-products
   label: Common Criteria Portal (CCRA certified products)
   partner_name: Common Criteria Portal (CCRA certified products)
@@ -280,8 +308,8 @@
     spec_file: null
     role: cc-certified-manufacturer
     registered_name: Broadcom Corporation
-    matched_domain: null
-    matched_by: register-name
+    matched_domain: broadcom.com
+    matched_by: domain+name-among-holders
     certified_products:
     - product: ICs, Smart Cards and Smart Card-Related Devices and Systems
       product_type: ICs, Smart Cards and Smart Card-Related Devices and Systems
@@ -328,10 +356,8 @@
       product counts are context, never counted'
     detected_by: sweep-common-criteria-certified-products.py
     detected: '2026-10-21'
-    register_name_note: register-name 'broadcom' = broadcom; wikidata P856 broadcom.com agrees or unheld
-    identity_source: register-name
-    identity_note: register gave only the name; exact normalised match to the repo's apis.yml name, one repo, Wikidata
-      P856 not contradicting (Kin 2026-10-20 decision 2)
+    identity: wikidata Q555925 'Broadcom' P856 https://www.broadcom.com/
+    identity_source: wikidata P856 (labelled provenance step; Kin 2026-10-15 decision 1)
   status: not-a-workflow
   arazzo: null
 - slug: broadcom-niap-product-compliant-list-us-ccevs
@@ -350,8 +376,8 @@
     spec_file: null
     role: niap-pcl-vendor
     registered_name: Broadcom
-    matched_domain: null
-    matched_by: register-name
+    matched_domain: broadcom.com
+    matched_by: domain+name-among-holders
     signal_note: 'certified_products = one entry per NIAP technology type with a Certified (current) or Archived
       (lapsed: true) PCL product, Protection Profiles named; products In Progress are listing only (in_evaluation),
       never certified; product counts are context, never counted'
@@ -409,37 +435,7 @@
       - PP_BASE_VIRTUALIZATION_V1.1
     in_evaluation:
     - Firewall
-    register_name_note: register-name 'broadcom' = broadcom; wikidata P856 broadcom.com agrees or unheld
-    identity_source: register-name
-    identity_note: register gave only the name; exact normalised match to the repo's apis.yml name, one repo, Wikidata
-      P856 not contradicting (Kin 2026-10-20 decision 2)
-  status: not-a-workflow
-  arazzo: null
-- slug: broadcom-mozilla-firefox-add-ons-amo
-  label: Mozilla Firefox Add-ons (AMO)
-  partner_name: Mozilla Firefox Add-ons (AMO)
-  category: browser extension (Firefox Add-ons)
-  type: marketplace
-  marketplace: firefox-add-ons
-  channel: partner-built
-  evidence: https://addons.mozilla.org/en-US/firefox/addon/threat-intel/
-  source: edge
-  relationship: platform-app
-  contract_reference:
-    register: 'Firefox Add-ons (addons.mozilla.org public API v5 search: authors, homepage, support_url)'
-    spec_file: null
-    role: firefox-add-on-publisher
-    registered_name: Broadcom Enterprise Security Group
-    register_id: https://addons.mozilla.org/api/v5/addons/addon/threat-intel/
-    matched_domain: broadcom.com
-    matched_by: domain+name-among-holders
-    matched_name: Broadcom Enterprise Security Group
-    builder: publisher
-    signal_note: ONE edge per provider for the store; listing alone = participation. The AMO author name (builder
-      publisher) or homepage + support_url both on the provider's domain (builder domain-attested) identifies it;
-      extension / user counts are context, never counted. No Mozilla repo in all/*, so no platform-side edge exists
-      to mirror.
-    detected_by: sweep-browser-extension-stores.py
-    detected: '2026-10-21'
+    identity: wikidata Q555925 'Broadcom' P856 https://www.broadcom.com/
+    identity_source: wikidata P856 (labelled provenance step; Kin 2026-10-15 decision 1)
   status: not-a-workflow
   arazzo: null
