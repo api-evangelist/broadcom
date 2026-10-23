@@ -36,6 +36,7 @@ checked:
 - https://csrc.nist.gov/projects/cryptographic-module-validation-program/validated-modules/search/all
 - https://csrc.nist.gov/projects/cryptographic-module-validation-program/validated-modules/search?SearchMode=Advanced&Standard=140-2&CertificateStatus=Historical&ValidationYear=0
 - https://dir.texas.gov/resource-library-item/tx-ramp-certified-cloud-products
+- ansible/integrations/ansible-integration-edges.yml
 marketplace_apps: []
 edges:
 - partner_name: OpenTelemetry
@@ -98,40 +99,6 @@ edges:
   - Verified domain
   detected_by: sweep-devtools.py
   detected: '2026-10-14'
-- partner_name: Datadog (own)
-  partner: datadog
-  partner_match: mirror
-  mirror_match: domain+name-among-holders
-  type: marketplace
-  relationship: platform-app
-  direction: third-party
-  channel: partner-built
-  marketplace: own
-  evidence: https://github.com/DataDog/integrations-extras/tree/master/watchtower_ziris
-  mirror_of: datadog/integrations/datadog-integration-edges.yml
-  apps:
-  - Broadcom WatchTower z/IRIS
-  listing_count: 1
-  detected: '2026-10-14'
-  detected_by: mirror-platform-listings.py
-  category: Mainframes
-- partner_name: Slack (own)
-  partner: slack
-  partner_match: mirror
-  mirror_match: domain+name-among-holders
-  type: marketplace
-  relationship: platform-app
-  direction: third-party
-  channel: partner-built
-  marketplace: own
-  evidence: https://slack.com/marketplace/A6HHK0MB5-symantec-cloudsoc-eu
-  mirror_of: slack/integrations/slack-integration-edges.yml
-  apps:
-  - Symantec CloudSOC EU
-  listing_count: 1
-  detected: '2026-10-18'
-  detected_by: mirror-platform-listings.py
-  category: Slack app
 - partner_name: FedRAMP
   partner: null
   partner_match: register
@@ -807,6 +774,71 @@ edges:
     detected: '2026-10-22'
   detected_by: sweep-tx-ramp-certified-cloud.py
   first_seen: '2026-10-22'
+- partner_name: Datadog (own)
+  partner: datadog
+  partner_match: mirror
+  mirror_match: domain+name-among-holders
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://github.com/DataDog/integrations-extras/tree/master/watchtower_ziris
+  mirror_of: datadog/integrations/datadog-integration-edges.yml
+  apps:
+  - Broadcom WatchTower z/IRIS
+  listing_count: 1
+  detected: '2026-10-14'
+  detected_by: mirror-platform-listings.py
+  category: Mainframes
+- partner_name: Slack (own)
+  partner: slack
+  partner_match: mirror
+  mirror_match: domain+name-among-holders
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://slack.com/marketplace/A6HHK0MB5-symantec-cloudsoc-eu
+  mirror_of: slack/integrations/slack-integration-edges.yml
+  apps:
+  - Symantec CloudSOC EU
+  listing_count: 1
+  detected: '2026-10-18'
+  detected_by: mirror-platform-listings.py
+  category: Slack app
+- partner_name: Ansible (ansible-galaxy)
+  partner: ansible
+  partner_match: mirror
+  mirror_match: domain+name-among-holders
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: ansible-galaxy
+  evidence: https://galaxy.ansible.com/ui/repo/published/broadcom/zowe_core/
+  mirror_of: ansible/integrations/ansible-integration-edges.yml
+  apps:
+  - broadcom.zowe_core
+  - broadcom.endevor
+  - broadcom.ops
+  - broadcom.spool
+  - broadcom.view
+  - broadcom.dbm_db2
+  - broadcom.ca7
+  - broadcom.endevor_bridge_for_git
+  - broadcom.file_master_plus
+  - broadcom.sysview
+  - broadcom.mat
+  - broadcom.mat_pma_util
+  - broadcom.idms
+  - broadcom.zowe_core_3
+  - broadcom.jclcheck
+  listing_count: 1
+  detected: '2026-10-22'
+  detected_by: mirror-platform-listings.py
+  category: configuration-management content listing (Ansible collection)
 source:
 - https://github.com/open-telemetry/opentelemetry.io/blob/main/data/ecosystem/vendors.yaml
 - https://github.com/open-telemetry/opentelemetry.io/blob/main/data/registry/
