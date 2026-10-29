@@ -1,4 +1,4 @@
-# Broadcom (broadcom)
+# Broadcom
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,103 +66,189 @@
 
 Broadcom is a global technology company that specializes in the design and manufacturing of semiconductors and other hardware components for a wide range of industries. They provide a diverse portfolio of products for the enterprise, data center, networking, telecommunications, and consumer electronics markets. Broadcom's technology is used in a variety of devices such as smartphones, tablets, routers, and smart TVs.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/broadcom/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/broadcom/refs/heads/main/apis.yml)
+**Areas:** Cloud Infrastructure · Gateways · Management · Networks · Observability · Virtualization · Fortune 500 · Broadcom
 
-## Scope
+## Broadcom on APIs.io
 
-- **Type:** Index
-- **Position:** Consumer
-- **Access:** 3rd-Party
+Everything profiled for Broadcom is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/broadcom/](https://apis.io/providers/broadcom/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (20)
 
-- Cloud Infrastructure
-- Gateways
-- Management
-- Networks
-- Observability
-- Virtualization
+- [Broadcom Alerts API](https://apis.io/apis/broadcom/broadcom-alerts-api/) — Alert management
+- [Broadcom API Tokens API](https://apis.io/apis/broadcom/broadcom-api-tokens-api/) — API token management
+- [Broadcom Authentication API](https://apis.io/apis/broadcom/broadcom-authentication-api/) — Token-based authentication
+- [Broadcom Clusters API](https://apis.io/apis/broadcom/broadcom-clusters-api/) — Cluster management
+- [Broadcom Content Library API](https://apis.io/apis/broadcom/broadcom-content-library-api/) — Content library management
+- [Broadcom Dashboards API](https://apis.io/apis/broadcom/broadcom-dashboards-api/) — Dashboard management
+- [Broadcom Datastores API](https://apis.io/apis/broadcom/broadcom-datastores-api/) — Operations for managing datastores
+- [Broadcom Events API](https://apis.io/apis/broadcom/broadcom-events-api/) — Event management
+- [Broadcom Hosts API](https://apis.io/apis/broadcom/broadcom-hosts-api/) — ESXi host management
+- [Broadcom Network Pools API](https://apis.io/apis/broadcom/broadcom-network-pools-api/) — Network pool management
+- [Broadcom Networks API](https://apis.io/apis/broadcom/broadcom-networks-api/) — Operations for managing networks
+- [Broadcom Proxies API](https://apis.io/apis/broadcom/broadcom-proxies-api/) — Proxy management
+- [Broadcom Query API](https://apis.io/apis/broadcom/broadcom-query-api/) — Query metrics data
+- [Broadcom Session API](https://apis.io/apis/broadcom/broadcom-session-api/) — Session management operations
+- [Broadcom Sources API](https://apis.io/apis/broadcom/broadcom-sources-api/) — Source management
+- [Broadcom Tagging API](https://apis.io/apis/broadcom/broadcom-tagging-api/) — Tag management and association operations
+- [Broadcom Tasks API](https://apis.io/apis/broadcom/broadcom-tasks-api/) — Asynchronous task monitoring
+- [Broadcom Upgrades API](https://apis.io/apis/broadcom/broadcom-upgrades-api/) — System upgrade management
+- [Broadcom Virtual Machines API](https://apis.io/apis/broadcom/broadcom-virtual-machines-api/) — Operations for managing virtual machines
+- [Broadcom Workload Domains API](https://apis.io/apis/broadcom/broadcom-workload-domains-api/) — Workload domain lifecycle management
 
-## Timestamps
+### Published properties
 
-- **Created:** 2025-01-14
-- **Modified:** 2026-05-19
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### Agentic access (1)
 
-### Broadcom vSphere Automation API
+Which operations an agent can call, which act, and which need a human in the loop.
 
-The vSphere Automation API provides a unified programmatic interface for managing VMware vSphere environments. It enables automation of virtual machine lifecycle management, host and cluster configuration, content library management, tagging, and other vSphere infrastructure operations.
+- [Broadcom Agentic Access](https://apis.io/agentic-access/broadcom/broadcom-agentic-access/)
 
-- **Human URL:** [https://developer.broadcom.com/xapis/vsphere-automation-api/latest/](https://developer.broadcom.com/xapis/vsphere-automation-api/latest/)
+#### JSON Schema (7)
 
-#### Tags
+The data models the API reads and writes.
 
-- Data Center
-- Infrastructure
-- Virtualization
+- [Broadcom Alert](https://apis.io/schemas/broadcom/broadcom-alert/)
+- [Broadcom Cluster](https://apis.io/schemas/broadcom/broadcom-cluster/)
+- [Broadcom Dashboard](https://apis.io/schemas/broadcom/broadcom-dashboard/)
+- [Broadcom Host](https://apis.io/schemas/broadcom/broadcom-host/)
+- [Broadcom Task](https://apis.io/schemas/broadcom/broadcom-task/)
+- [Broadcom Virtual Machine](https://apis.io/schemas/broadcom/broadcom-virtual-machine/)
+- [Broadcom Workload Domain](https://apis.io/schemas/broadcom/broadcom-workload-domain/)
 
-#### Properties
+#### JSON-LD (1)
 
-- [Documentation](https://developer.broadcom.com/xapis/vsphere-automation-api/latest/)
-- [OpenAPI](openapi/broadcom-vsphere-automation-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/broadcom-vsphere-automation.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/broadcom-vsphere-automation.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [JSON Schema](json-schema/broadcom-virtual-machine-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/broadcom-host-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/broadcom-cluster-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON-LD](json-ld/broadcom-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
+Linked-data contexts for the provider's vocabulary.
 
-### Broadcom Operations for Applications REST API
+- [Broadcom Context](https://apis.io/jsonld/broadcom/broadcom-context/)
 
-The VMware Aria Operations for Applications REST API (formerly Tanzu Observability by Wavefront) enables programmatic interaction with the observability service. It supports querying metrics, managing dashboards, alerts, events, sources, user accounts, API tokens, and ingesting data directly.
+#### Collections (23)
 
-- **Human URL:** [https://developer.broadcom.com/xapis/operations-for-applications-rest-api/latest/](https://developer.broadcom.com/xapis/operations-for-applications-rest-api/latest/)
+Postman and Open Collection request collections.
 
-#### Tags
+- [Broadcom Operations for Applications REST Alerts API](https://apis.io/collections/broadcom/open-broadcom-alerts-api/)
+- [Broadcom Operations for Applications REST Alerts API Tokens API](https://apis.io/collections/broadcom/open-broadcom-api-tokens-api/)
+- [Broadcom Operations for Applications REST Alerts Authentication API](https://apis.io/collections/broadcom/open-broadcom-authentication-api/)
+- [Broadcom Operations for Applications REST Alerts Clusters API](https://apis.io/collections/broadcom/open-broadcom-clusters-api/)
+- [Broadcom Operations for Applications REST Alerts Content Library API](https://apis.io/collections/broadcom/open-broadcom-content-library-api/)
+- [Broadcom Operations for Applications REST Alerts Dashboards API](https://apis.io/collections/broadcom/open-broadcom-dashboards-api/)
+- [Broadcom Operations for Applications REST Alerts Datastores API](https://apis.io/collections/broadcom/open-broadcom-datastores-api/)
+- [Broadcom Operations for Applications REST Alerts Events API](https://apis.io/collections/broadcom/open-broadcom-events-api/)
+- [Broadcom Operations for Applications REST Alerts Hosts API](https://apis.io/collections/broadcom/open-broadcom-hosts-api/)
+- [Broadcom Operations for Applications REST Alerts Network Pools API](https://apis.io/collections/broadcom/open-broadcom-network-pools-api/)
+- [Broadcom Operations for Applications REST Alerts Networks API](https://apis.io/collections/broadcom/open-broadcom-networks-api/)
+- [Broadcom Operations for Applications REST API](https://apis.io/collections/broadcom/open-broadcom-operations-for-applications/)
+- [Broadcom Operations for Applications REST Alerts Proxies API](https://apis.io/collections/broadcom/open-broadcom-proxies-api/)
+- [Broadcom Operations for Applications REST Alerts Query API](https://apis.io/collections/broadcom/open-broadcom-query-api/)
+- [Broadcom Operations for Applications REST Alerts Session API](https://apis.io/collections/broadcom/open-broadcom-session-api/)
+- [Broadcom Operations for Applications REST Alerts Sources API](https://apis.io/collections/broadcom/open-broadcom-sources-api/)
+- [Broadcom Operations for Applications REST Alerts Tagging API](https://apis.io/collections/broadcom/open-broadcom-tagging-api/)
+- [Broadcom Operations for Applications REST Alerts Tasks API](https://apis.io/collections/broadcom/open-broadcom-tasks-api/)
+- [Broadcom Operations for Applications REST Alerts Upgrades API](https://apis.io/collections/broadcom/open-broadcom-upgrades-api/)
+- [Broadcom Operations for Applications REST Alerts Virtual Machines API](https://apis.io/collections/broadcom/open-broadcom-virtual-machines-api/)
+- [Broadcom VMware Cloud Foundation API](https://apis.io/collections/broadcom/open-broadcom-vmware-cloud-foundation/)
+- [Broadcom vSphere Automation API](https://apis.io/collections/broadcom/open-broadcom-vsphere-automation/)
+- [Broadcom Operations for Applications REST Alerts Workload Domains API](https://apis.io/collections/broadcom/open-broadcom-workload-domains-api/)
 
-- Metrics
-- Monitoring
-- Observability
+#### Governance rules (2)
 
-#### Properties
+Spectral rulesets for the provider's contracts.
 
-- [Documentation](https://developer.broadcom.com/xapis/operations-for-applications-rest-api/latest/)
-- [OpenAPI](openapi/broadcom-operations-for-applications-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/broadcom-operations-for-applications.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/broadcom-operations-for-applications.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [JSON Schema](json-schema/broadcom-dashboard-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/broadcom-alert-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON-LD](json-ld/broadcom-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
+- [Broadcom — jsonschema rules](https://apis.io/rules/broadcom/broadcom-jsonschema-spectral-rules/)
+- [Broadcom API Rules](https://apis.io/rules/broadcom/broadcom-rules/)
 
-### Broadcom VMware Cloud Foundation API
+#### Security (2)
 
-The VMware Cloud Foundation API provides RESTful endpoints for managing SDDC (Software-Defined Data Center) infrastructure through the SDDC Manager. It enables automation of host commissioning, cluster management, workload domain lifecycle, network pool configuration, task monitoring, and VCF management component deployments.
+Authentication, trust centre, and vulnerability disclosure.
 
-- **Human URL:** [https://developer.broadcom.com/xapis/sddc-manager-api/latest/](https://developer.broadcom.com/xapis/sddc-manager-api/latest/)
+- [Broadcom Authentication](https://apis.io/security/broadcom/broadcom-authentication/)
+- [Broadcom Domain Security](https://apis.io/security/broadcom/broadcom-domain-security/)
 
-#### Tags
+#### Plans and pricing (1)
 
-- Cloud Infrastructure
-- Data Center
-- SDDC
+Published plans, tiers and prices.
 
-#### Properties
+- [Broadcom Plans Pricing](https://apis.io/plans/broadcom/broadcom-plans-pricing/)
 
-- [Documentation](https://developer.broadcom.com/xapis/sddc-manager-api/latest/)
-- [OpenAPI](openapi/broadcom-vmware-cloud-foundation-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/broadcom-vmware-cloud-foundation.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/broadcom-vmware-cloud-foundation.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [JSON Schema](json-schema/broadcom-workload-domain-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/broadcom-task-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON-LD](json-ld/broadcom-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
+#### Rate limits (1)
 
-## Common Properties
+Published request limits.
 
-- [GitHub Organization](https://github.com/Broadcom)
-- [LinkedIn](https://www.linkedin.com/company/broadcom)
+- [Broadcom Rate Limits](https://apis.io/rate-limits/broadcom/broadcom-rate-limits/)
 
-## Maintainers
+#### FinOps (1)
 
-**FN:** Kin Lane
-**Email:** info@apievangelist.com
+What the API costs to run, by operation.
+
+- [Broadcom Finops](https://apis.io/finops/broadcom/broadcom-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://broadcom.com)
+- [Documentation](https://developer.broadcom.com/)
+- [Getting started](https://apis.io/onboarding/)
+- [API reference](https://apis.io/llms.txt)
+- [Sign up](https://community.broadcom.com/register)
+- [Support](https://support.broadcom.com)
+- [Security](https://www.broadcom.com/products/mainframe/security)
+- [Privacy policy](https://www.broadcom.com/company/legal/privacy)
+- [GitHub](https://github.com/Broadcom)
+- [Status](https://status.broadcom.com/)
+
+## API Evangelist rating
+
+**Kin Score 46.0** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 64.3 |
+| Contract quality | 63.3 |
+| Contract governance | 22.0 |
+| Operational transparency | 44.7 |
+| Developer ergonomics | 47.0 |
+| Access clarity | 28.9 |
+
+**Agent readiness 42.9** — agent-ready (gated down from agent-native)
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | served (partial credit) |
+| Idempotency | — |
+| Error Semantics | derived (partial credit) |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | yes |
+| Consent Identity | — |
+| Agent Card | conformant |
+| Dry Run Mode | — |
+| Delegated Identity | served (partial credit) |
+| Protected Resource Metadata | verified |
+| Dynamic Client Registration | yes |
+| Agentic Commerce | — |
+| Pagination Ratio | — |
+| Operation Distinctiveness | mostly |
+
+**Regulatory alignment 20.6** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/broadcom/](https://apis.io/providers/broadcom/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Broadcom: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/broadcom/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
